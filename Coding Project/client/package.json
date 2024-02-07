@@ -1,0 +1,22 @@
+{
+  "name": "silent-spaces",
+  "version": "1.0.0",
+  "description": "frontend for the Silent Spaces Locator Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs-440-at-uic/440-Group-3-Spring-2024.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs-440-at-uic/440-Group-3-Spring-2024/issues"
+  },
+  "homepage": "https://github.com/cs-440-at-uic/440-Group-3-Spring-2024#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
