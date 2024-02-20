@@ -1,34 +1,57 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import createError from "http-errors"
+import cors from "cors"
+import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
+import path from "path"
+import express from "express"
+import {PORT, URI} from "./config/index.js"
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// dirname fix because i am lazy
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-var app = express();
+// === config server ===
+let app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// === config header info ===
+app.use(cors()) // enables CORS
+app.disable("x-powered-by"); //Reduce fingerprinting
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
+// === connect to database ===
+// setup
+mongoose.Promise = global.Promise;
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(URI, { // no idea what this does
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(console.log("Connected to database"))
+  .catch((err) => console.log(err))
+
+// === config routes ===
+import { router as indexRouter } from './routes/index.js';
+import { router as usersRouter } from './routes/users.js';
+
+// === view engine setup ===
+app.set('views', `${__dirname}/views`);
+app.set('view engine', 'jade');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use(express.static(`${__dirname}/views`));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+// === error handling ===
+// catch 404
+app.use( (req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use( (err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -38,4 +61,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export { app }
