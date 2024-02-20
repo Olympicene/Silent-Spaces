@@ -11,6 +11,13 @@ html, body {
   height:100vh;
 }
 
+.image-container {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .laptop-img {
   height: 700px;
   width: 700px;
