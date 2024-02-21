@@ -1,12 +1,21 @@
-import './App.css';
-import LandingPage from './components/LandingPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import LandingPage from "./components/LandingPage";
+import Layout from './components/Layout';
+import MenuPage from "./components/MenuPage";
+import NoPage from './components/NoPage';
+
+export default function App() {
   return (
-    <div className="App">
-      <LandingPage/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Layout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="menu" element={<MenuPage />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;
