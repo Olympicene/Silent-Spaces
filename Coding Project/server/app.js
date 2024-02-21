@@ -34,14 +34,18 @@ mongoose
   .catch((err) => console.log(err))
 
 // === config routes ===
+import { router as authRouter } from './routes/auth.js';
+app.use('/v1/auth', authRouter);
+
 import { router as indexRouter } from './routes/index.js';
+app.use('/', indexRouter);
+
 import { router as usersRouter } from './routes/users.js';
+app.use('/users', usersRouter);
 
 // === view engine setup ===
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use(express.static(`${__dirname}/views`));
 
 // === error handling ===
@@ -53,6 +57,8 @@ app.use( (req, res, next) => {
 // error handler
 app.use( (err, req, res, next) => {
   // set locals, only providing error in development
+
+  console.log(err)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
