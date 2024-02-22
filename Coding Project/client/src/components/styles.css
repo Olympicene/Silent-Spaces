@@ -65,3 +65,79 @@ html, body {
   flex-direction: column;
 }
 
+/* menu page styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-image: url('../assets/blackGridBackground.svg');
+  background-repeat: repeat;
+  background-size: 500px;
+  background-attachment: local;
+  height: 93.5vh;
+  margin: 0;
+  padding: 0;
+}
+
+.left-border, .right-border {
+  position: absolute;
+  height: 93.5vh;
+  width: 93.5vh;
+}
+
+.left-border {
+  left: 0;
+}
+
+.right-border {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.subsection {
+  margin-top: 20px;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-container button {
+  width: 275px;
+  height: 50px; /* Adjust the height */
+  margin-bottom: 20px; /* Increase margin */
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  padding: 15px 30px; /* Increase padding */
+  border: none;
+  cursor: pointer;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  font-family: Arial, sans-serif;
+  font-size: 20px; /* Increase font size */
+}
+
+.buttons-container button:hover {
+  background-color: darkgreen;
+}
+
+.buttons-container button svg {
+  margin-right: 15px; /* Increase spacing between icon and text */
+  vertical-align: middle;
+}
+
+.buttons-container button span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  fill: white;
+}
