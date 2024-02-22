@@ -182,28 +182,104 @@ html, body {
   border-radius: 50%;
 }
 
-h2 {
+.createAccount h2 {
   font-family: 'Poppins';
   font-size: 30px;
   font-weight: 700;
   color: #F2F1DC;
 }
 
-h1 {
+.createAccount h1 {
   font-family: 'Poppins';
   font-size: 50px;
   font-weight: 700;
   color: #181D27;
 }
 
-input[type=text] {
+.createAccount [type=text] {
   background-color: #3A7D44;
   color: #181D27;
   opacity: 50%;
 }
 
-::placeholder {
+.createAccount ::placeholder {
   color: #181D27;
+}
+
+/* Split the screen in half */
+.img-text {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: clip;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+
+  color: #f2f1dc;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #f2f1dc;
+}
+
+.createAccount{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.createAccount h1{
+  font-family: 'Poppins';
+  font-size: 33px;
+  font-weight: 700;
+  color: #181D27;
+}
+
+createAccount input{
+  font-family: 'Poppins';
+  font-size: 33px;
+  font-weight: 700;
+  color: #181D27;
+}
+
+.createAccount [type=text] {
+  background-color: #3A7D44;
+  font-family: 'Poppins';
+  font-size: 17px;
+  color: #181D27;
+  opacity: 70%;
+  margin-inline: 10px;
+  margin-bottom: 12px;
+}
+
+.createAccount [type=password] {
+  background-color: #3A7D44;
+  font-family: 'Poppins';
+  font-size: 17px;
+  color: #181D27;
+  opacity: 70%;
+  margin-inline: 10px;
+  margin-bottom: 12px;
+}
+
+.createAccount [type=checkbox] {
+  background-color: #3A7D44;
+  font-family: 'Poppins';
+  font-size: 17px;
+  color: #181D27;
+  opacity: 70%;
+  margin-inline: 10px;
+  margin-bottom: 12px;
 }
 
 .green-button {
@@ -218,27 +294,7 @@ input[type=text] {
   margin: 4px 2px;
   border-radius: 12px;
 }
-
-.form-group {
-  margin-bottom: 15px;
-}
-.form-group::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-.form-group input[type="text"],
-.form-group input[type="email"] {
-  width: calc(50% - 5px);
-  float: left;
-}
-.form-group input[type="email"] {
-  width: 100%;
-}
+/*emily*/
 
 /* Log in page styles */
 .login-container{

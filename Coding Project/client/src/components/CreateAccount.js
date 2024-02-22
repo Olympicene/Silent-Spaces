@@ -8,26 +8,26 @@ const CreateAccount = () => {
             <div class="left half">
             <div class="centered">
                 <img src={windowintoStudyGroup} alt = ""/>
-                <h2> Welcome to Silent Spaces Locator </h2>
+                <h2>Welcome to</h2>
+                <h2>Silent Spaces Locator </h2>
             </div>
 
             </div>
             <div class="right half">
-                <div class= "centered">
+                <div class= "createAccount">
                     <h1> Create an Account</h1>
                     <form>
-                        <input class="side" type="text" id="fname" name="fname" placeholder="First Name"/>
-                        <input class="side" type="text" id="lname" name="lname" placeholder="Last Name"/>
-                        <input type="text" id="user" name="user" placeholder="Username"/>
-                        <input type="text" id="email" name="email" placeholder="Email"/>
-                        <input type="text" id="password" name="password" placeholder="Password"/>
+                        <input type="text" id="fname" size="10" name="fname" placeholder="First Name"/>
+                        <input type="text" id="lname" size="11" name="lname" placeholder="Last Name"/>
+                        <input type="text" id="user" size="30" name="user" placeholder="Username"/>
+                        <input type="text" id="email" size="30" name="email" placeholder="Email"/>
+                        <input type="password" id="password" size="30" name="password" placeholder="Password"/>
+                        <div>
+                            <input type="checkbox" id="ageLimit" name="ageLimit"/>
+                            <label for="scales">I agree that I am 13 years old or above</label>
+                        </div>
+                        <input type="submit" class= "green-button" value="Create Account"/>
                     </form>
-
-                    <div>
-                        <input type="checkbox" id="scales" name="scales" checked />
-                        <label for="scales">I agree that I am 13 years old or above</label>
-                    </div>
-                    <button class= "green-button">Create Account</button>
                 </div>
             </div>
         </div>
