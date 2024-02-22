@@ -1,0 +1,71 @@
+
+/* clearing margins by default so div fills screen */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-page {
+  background: linear-gradient(to right, #3A7D44 50%, #181D27 50%);
+  height:100vh;
+}
+
+.image-container {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.laptop-img {
+  height: 700px;
+  width: 700px;
+}
+
+/* menu page styles */
+.container {
+  text-align: center;
+  background-image: url('../assets/blackGridBackground.svg');
+  background-repeat: repeat;
+  background-size: 500px;
+  background-attachment: fixed;
+  height: 90vh;
+}
+
+.subsection {
+  margin-top: 20px;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-container button {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+}
+
+.buttons-container button:hover {
+  background-color: darkgreen;
+}
+
+.buttons-container button svg {
+  margin-right: 10px; /* Add some spacing between the icon and text */
+  vertical-align: middle;
+}
+
+.buttons-container button span {
+  display: inline-block;
+  vertical-align: middle;
+}
