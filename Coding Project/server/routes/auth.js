@@ -2,6 +2,7 @@ import express from "express"
 import { Register, Login } from "../controllers/auth.js"
 import Validate from "../middleware/validate.js"
 import { check } from "express-validator"
+import { Logout } from "../controllers/auth.js"
 const router = express.Router();
 
 router.post(
@@ -40,5 +41,7 @@ router.post(
     Validate,
     Login
 )
+
+router.get('/logout', Logout);
 
 export { router }
