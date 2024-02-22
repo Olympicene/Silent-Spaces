@@ -11,15 +11,57 @@ html, body {
   height:100vh;
 }
 
+.left-half {
+  float: left;
+  width: 50%;
+}
+
 .image-container {
   display: flex;
-  width: 50%;
   flex-direction: row;
-  justify-content: space-around;
+  float: right;
+  border: 3px solid #ccc;
+  padding: 0px;
+  align-items: start;
 }
 
 .laptop-img {
   height: 700px;
   width: 700px;
+}
+
+.div-title {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -40px;
+}
+
+.land-title {
+  display: inline-block;
+  text-align: left;
+  font-family: 'poppins-bold', sans-serif;
+  font-size: 6rem;
+  line-height: 1.333;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-button {
+  background-color: #181D27;
+  color: #ffff;
+  padding: 1rem 4rem;
+  border-radius: 1.5rem;
+  font-size: 2rem;
+  margin: 1rem;
+  cursor: pointer;
+  font-family: 'poppins', sans-serif;
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
