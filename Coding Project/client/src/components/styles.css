@@ -6,6 +6,7 @@ html, body {
   padding: 0;
 }
 
+/* landing page */
 .landing-page {
   background: linear-gradient(to right, #3A7D44 50%, #181D27 50%);
   height:100vh;
