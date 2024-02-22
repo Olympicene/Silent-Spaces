@@ -1,4 +1,6 @@
 import express from "express"
+import { Verify } from "../middleware/verify.js";
+
 var router = express.Router();
 
 
@@ -19,5 +21,12 @@ router.get('/v1', (req, res) => {
     })
   }
 });
+
+router.get('/v1/user', Verify, (req, res) => {
+  res.status(200).json({
+    status: "Success",
+    message: "Welcome to your Dashboard!",
+  })
+})
 
 export { router }

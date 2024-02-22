@@ -86,13 +86,28 @@ export async function Login(req, res) {
             })
         }
 
-        const { password, ...user_data } = user._doc;
+        let options = {
+            maxAge: 20 * 60 * 1000,
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+        }
 
+        const token = user.generateAccessJWT();
+        res.cookie("SessionID", token, options)
         res.status(200).json({
             status: "success",
-            data: [user_data],
-            message: "You have successfullly logged in."
+            message: "You have successfully logged in."
         })
+
+        // intial bench for login
+        // const { password, ...user_data } = user._doc;
+
+        // res.status(200).json({
+        //     status: "success",
+        //     data: [user_data],
+        //     message: "You have successfullly logged in."
+        // })
 
     } catch (err) {
         console.log(err)
