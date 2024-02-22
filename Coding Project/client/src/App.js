@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Layout from './Layout';
+
 import CreateAccount from "./components/CreateAccount";
 import LandingPage from "./components/LandingPage";
-import Layout from './components/Layout';
 import MenuPage from "./components/MenuPage";
 import NoPage from './components/NoPage';
 

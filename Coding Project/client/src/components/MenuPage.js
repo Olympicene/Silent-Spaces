@@ -2,33 +2,36 @@ import React from 'react';
 import './styles.css'; // Import the CSS file
 import { ReactComponent as MapIcon } from "../assets/locationIcon.svg";
 import { ReactComponent as ListIcon } from "../assets/clipboardIcon.svg";
+import { ReactComponent as Border } from '../assets/abstractBookshelf.svg';
 
 const MenuPage = () => {
     return (
         <div className="container">
-            <h1>Hi User</h1>
-            <div className="subsection">
-                <h2>Find a Space</h2>
-                <div className="buttons-container">
-                    <button>
-                        <MapIcon style={{ width: '50px', height: '50px', fill: 'white' }} />
-                        <span>From a Map</span>
-                    </button>
-                    <button>
-                        <ListIcon style={{ width: '50px', height: '50px', fill: 'white' }} />
-                        <span>From a List</span>
-                    </button>
+            <Border className="left-border" />
+            <Border className="right-border" />
+            <div>
+                <h1>Hi User</h1>
+                <div className="subsection">
+                    <h2>Find a Space</h2>
+                    <div className="buttons-container">
+                        <button style={{ backgroundColor: '#69B578' }}>
+                            <MapIcon class="icon" />
+                            <span>Find using Location</span>
+                        </button>
+                        <button style={{ backgroundColor: '#3A7D44' }}>
+                            <ListIcon class="icon" />
+                            <span>Find from a List</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div className="subsection">
                 <h2>Your Information</h2>
                 <div className="buttons-container">
-                    <button>Your Favorite Spaces</button>
-                </div>
-            </div>
-            <div className="subsection">
-                <div className="buttons-container">
-                    <button>Settings</button>
+                    <button style={{ backgroundColor: '#3A7D44', width: '225px' }}>
+                        Favorite Spaces
+                    </button>
+                    <button style={{ backgroundColor: '#D9D9D9', width: '225px', color: 'black' }}>
+                        Settings
+                    </button>
                 </div>
             </div>
         </div>
