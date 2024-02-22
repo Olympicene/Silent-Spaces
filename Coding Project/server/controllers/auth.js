@@ -71,8 +71,7 @@ export async function Login(req, res) {
             })
         }
 
-
-        const isPasswordValid = bcrypt.compare(
+        const isPasswordValid = await bcrypt.compare(
             `${req.body.password}`, 
             user.password
         )
@@ -120,4 +119,49 @@ export async function Login(req, res) {
     }
 
     res.end()
+}
+
+import Blacklist from "../models/Blacklist.js";
+/**
+ * @route POST /auth/logout
+ * @desc Logout user
+ * @access Public
+ */
+export async function Logout(req, res) {
+    try {
+
+        console.log("got here")
+        const authHeader = req.headers['cookie']
+
+        if (!authHeader) {
+            return res.status(204)
+        }
+
+        const cookie = authHeader.split('=')[1]
+        const accessToken = cookie.split(';')[0]
+
+        const checkIfBlacklisted = await Blacklist.findOne({ token: accessToken })
+
+        if (checkIfBlacklisted) {
+            return res.status(204) 
+        }
+
+        const newBlacklist = new Blacklist({
+            token: accessToken,
+        })
+
+        await newBlacklist.save();
+
+        res.clearCookie('SessionID', { httpOnly: true });
+        res.status(200).json({ message: 'You are logged out!' });
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ 
+            status: 'err',
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        })
+    }
 }
