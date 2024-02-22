@@ -143,6 +143,103 @@ html, body {
   fill: white;
 }
 
+/* Split the screen in half */
+.half {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: clip;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #3A7D44;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #f2f1dc;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+h2 {
+  font-family: 'Poppins';
+  font-size: 30px;
+  font-weight: 700;
+  color: #F2F1DC;
+}
+
+h1 {
+  font-family: 'Poppins';
+  font-size: 50px;
+  font-weight: 700;
+  color: #181D27;
+}
+
+input[type=text] {
+  background-color: #3A7D44;
+  color: #181D27;
+  opacity: 50%;
+}
+
+::placeholder {
+  color: #181D27;
+}
+
+.green-button {
+  background-color: #3A7D44;
+  border: none;
+  color: #F2F1DC;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: calc(50% - 5px);
+  float: left;
+}
+.form-group input[type="email"] {
+  width: 100%;
+}
+
 /* Log in page styles */
 .login-container{
   background: #254D32;
