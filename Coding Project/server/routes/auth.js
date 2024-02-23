@@ -8,25 +8,30 @@ const router = express.Router();
 router.post(
     "/register",
     check("email")
+        .notEmpty()
         .isEmail()
-        .withMessage("Enter a valid email address")
+        .withMessage("Please enter a valid email address")
         .normalizeEmail(),
+    check("username")
+        .notEmpty()
+        .withMessage("Please enter a username")
+        .trim()
+        .escape(),
     check("first_name")
-        .not()
-        .isEmpty()
+        .notEmpty()
         .withMessage("Your first name is required")
         .trim()
         .escape(),
     check("last_name")
-        .not()
-        .isEmpty()
+        .notEmpty()
         .withMessage("Your last name is required")
         .trim()
         .escape(),
     check("password")
-        .notEmpty()
         .isLength({min: 8})
-        .withMessage("Must be at least 8 chars long"),
+        .withMessage("Password must be at least 8 chars long")
+        .notEmpty()
+        .withMessage("Password cannot be empty"),
     Validate,
     Register
 )
