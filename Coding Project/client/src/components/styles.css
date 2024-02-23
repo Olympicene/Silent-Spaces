@@ -157,12 +157,14 @@ html, body {
 .left {
   left: 0;
   background-color: #3A7D44;
+  top: 50px
 }
 
 /* Control the right side */
 .right {
   right: 0;
   background-color: #f2f1dc;
+  top: 50px
 }
 
 /* If you want the content centered horizontally and vertically */
