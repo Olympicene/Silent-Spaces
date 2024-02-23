@@ -17,18 +17,62 @@ html, body {
   width: 50%;
 }
 
-.image-container {
-  display: flex;
-  flex-direction: row;
-  float: right;
-  border: 3px solid #ccc;
-  padding: 0px;
-  align-items: start;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 5vw);
+}
+
+.gallery__item--1 {
+  grid-column: 1 / span 2; 
+  grid-row: 1 / span 2;
+}
+
+.gallery__item--2 {
+  grid-column: 4 / span 2; 
+  grid-row: 1 / span 2;
+}
+
+.gallery__item--3 {
+  grid-column: 7 / span 2; 
+  grid-row: 1 / span 2;
+}
+
+.gallery__item--4 {
+  grid-column: 1 / span 2; 
+  grid-row: 4 / span 2;
+}
+
+.gallery__item--5 {
+  grid-column: 4 / span 2; 
+  grid-row: 4 / span 2;
+}
+
+.gallery__item--6 {
+  grid-column: 7 / span 2; 
+  grid-row: 4 / span 2;
+}
+
+.gallery__item--7 {
+  grid-column: 1 / span 2; 
+  grid-row: 7 / span 2;
+}
+
+.gallery__item--8 {
+  grid-column: 4 / span 2; 
+  grid-row: 7 / span 2;
+}
+
+.gallery__item--9 {
+  grid-column: 7 / span 2; 
+  grid-row: 7 / span 2;
 }
 
 .laptop-img {
-  height: 700px;
-  width: 700px;
+  height: 15rem;
+  width: 15rem;
+  object-fit: cover;
+  margin-left: -6rem;
 }
 
 .div-title {
