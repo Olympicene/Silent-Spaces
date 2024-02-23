@@ -196,14 +196,19 @@ html, body {
   color: #181D27;
 }
 
+.createAccount #uname {
+  display: flex;
+  justify-content: space-between;
+}
+
 .createAccount [type=text] {
-  background-color: #3A7D44;
+  background-color: #BBCEAE;
   color: #181D27;
   opacity: 50%;
 }
 
 .createAccount ::placeholder {
-  color: #181D27;
+  color: #3e3e3e;
 }
 
 /* Split the screen in half */
@@ -245,24 +250,27 @@ html, body {
   color: #181D27;
 }
 
-createAccount input{
+.createAccount input{
   font-family: 'Poppins';
   font-size: 33px;
   font-weight: 700;
   color: #181D27;
 }
 
-.createAccount [type=text] {
-  background-color: #3A7D44;
+.createAccount [type=text], .createAccount [type=password]  {
+  background-color: #BBCEAE;
   font-family: 'Poppins';
   font-size: 17px;
   color: #181D27;
-  opacity: 70%;
+  opacity: 100%;
   margin-inline: 10px;
   margin-bottom: 12px;
+  padding: 5px; 
+
+  border: 1px solid #BBCEAE;
 }
 
-.createAccount [type=password] {
+/* .createAccount [type=password] {
   background-color: #3A7D44;
   font-family: 'Poppins';
   font-size: 17px;
@@ -270,7 +278,7 @@ createAccount input{
   opacity: 70%;
   margin-inline: 10px;
   margin-bottom: 12px;
-}
+} */
 
 .createAccount [type=checkbox] {
   background-color: #3A7D44;

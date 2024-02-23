@@ -17,8 +17,10 @@ const CreateAccount = () => {
                 <div class= "createAccount">
                     <h1> Create an Account</h1>
                     <form>
-                        <input type="text" id="fname" size="10" name="fname" placeholder="First Name"/>
-                        <input type="text" id="lname" size="11" name="lname" placeholder="Last Name"/>
+                        <div id="uname">
+                            <input type="text" id="fname" size="10" name="fname" placeholder="First Name"/>
+                            <input type="text" id="lname" size="11" name="lname" placeholder="Last Name"/>
+                        </div>
                         <input type="text" id="user" size="30" name="user" placeholder="Username"/>
                         <input type="text" id="email" size="30" name="email" placeholder="Email"/>
                         <input type="password" id="password" size="30" name="password" placeholder="Password"/>
