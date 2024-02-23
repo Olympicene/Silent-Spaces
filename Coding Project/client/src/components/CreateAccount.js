@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import './styles.css';
 import windowintoStudyGroup from "../assets/windowIntoStudyGroup.svg";
 
@@ -28,13 +30,13 @@ const CreateAccount = () => {
                             <input type="checkbox" id="ageLimit" name="ageLimit"/>
                             <label for="scales">I agree that I am 13 years old or above</label>
                         </div>
-                        <input type="submit" class= "green-button" value="Create Account"/>
+                        <Link to="/menu">
+                            <input type="submit" class= "green-button" value="Create Account"/>
+                        </Link>
                     </form>
                 </div>
             </div>
         </div>
-        
-        
     )
 }
 

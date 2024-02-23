@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import { Link } from "react-router-dom";
 import './styles.css';
 import studyimage from "../assets/abtractPeoplePeerProgramming.svg";
 
@@ -40,7 +41,10 @@ const LogIn = () => {
                 
                 <div className='button-div'>
                     <button className='forgot-pw-button'>Forgot your Password?</button>
+                    <Link to="/menu">
                     <button className='login-button' onClick={handleClick}>LOG IN</button>
+                    </Link>
+                    
                 </div>
 
             </div>
