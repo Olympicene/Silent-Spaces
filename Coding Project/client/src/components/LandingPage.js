@@ -24,17 +24,6 @@ const LandingPage = () => {
           </div>
         </div>
 
-
-        {/* <div className='div-title'>
-          
-          
-        </div>
-
-        <div className='div-title'>
-          
-          
-        </div> */}
-
         <div className='button-div' >
         <Link to="/log-in">
         <button className='landing-button'>LOGIN</button>

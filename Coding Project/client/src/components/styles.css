@@ -117,11 +117,12 @@ html, body {
   background-color: #181D27;
   color: #ffff;
 
+  border: none;
   width: 80%;
   padding: 1rem 0;
   border-radius: 1.5rem;
   font-size: 2rem;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 1.25rem auto;
   
   cursor: pointer;
   font-family: 'poppins', sans-serif;
@@ -151,8 +152,8 @@ html, body {
 
 .left-border, .right-border {
   position: absolute;
-  height: 93.5vh;
-  width: 93.5vh;
+  height: 100vh;
+  width: 100vh;
 }
 
 .left-border {
@@ -226,14 +227,12 @@ html, body {
 .left {
   left: 0;
   background-color: #3A7D44;
-  top: 50px
 }
 
 /* Control the right side */
 .right {
   right: 0;
   background-color: #f2f1dc;
-  top: 50px
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -281,21 +280,10 @@ html, body {
   color: #3e3e3e;
 }
 
-/* Split the screen in half */
-.img-text {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: clip;
-  padding-top: 20px;
-}
 
 /* Control the left side */
 .left {
   left: 0;
-
   color: #f2f1dc;
 }
 
