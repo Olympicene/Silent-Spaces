@@ -140,6 +140,8 @@ html, body {
 .menu-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
   text-align: center;
   background-image: url('../assets/blackGridBackground.svg');
   background-repeat: repeat;
@@ -268,6 +270,10 @@ html, body {
 .createAccount #uname {
   display: flex;
   justify-content: space-between;
+}
+
+.createAccount #uname input {
+  width: 100%;
 }
 
 .createAccount [type=text] {
