@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 
 import './styles.css';
-import laptop from "../assets/laptopClipArt.svg";
+import laptop from "../assets/laptop.svg";
 
 const LandingPage = () => {
   return (
@@ -34,66 +34,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="right-half">
-
-        <div className='gallery'>
-
-          <div className='gallery__item gallery__item--1'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(-70deg)', paddingBottom: '4rem'}} alt=""/>
-            </figure>
-          </div>
-          
-          <div className='gallery__item gallery__item--2'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(180deg)', paddingBottom: '0.5rem'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--3'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(30deg)'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--4'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(60deg)', paddingBottom: '2rem'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--5'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(-30deg)', paddingBottom: '3rem'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--6'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(50deg)'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--7'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(-150deg)', paddingBottom: '3rem'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--8'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(70deg)'}} alt=""/>
-            </figure>
-          </div>
-
-          <div className='gallery__item gallery__item--9'>
-            <figure>
-              <img  src={laptop} class="laptop-img" style = {{transform: 'rotate(120deg)', paddingBottom: '4rem'}} alt=""/>
-            </figure>
-          </div>
-
-        </div>
-
+      <div className="landing-right-half">
       </div>
 
     </div>
