@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import RegistrationForm from './RegistrationForm';
 
 import './styles.css';
 import windowintoStudyGroup from "../assets/windowIntoStudyGroup.svg";
@@ -7,33 +8,18 @@ import windowintoStudyGroup from "../assets/windowIntoStudyGroup.svg";
 const CreateAccount = () => {
     return (
         <div>
-            <div class="left half">
-            <div class="centered">
+            <div className="left half">
+            <div className="centered">
                 <img src={windowintoStudyGroup} alt = ""/>
                 <h2>Welcome to</h2>
                 <h2>Silent Spaces Locator </h2>
             </div>
 
             </div>
-            <div class="right half">
-                <div class= "createAccount">
+            <div className="right half">
+                <div className= "createAccount">
                     <h1> Create an Account</h1>
-                    <form>
-                        <div id="uname">
-                            <input type="text" id="fname" size="10" name="fname" placeholder="First Name"/>
-                            <input type="text" id="lname" size="11" name="lname" placeholder="Last Name"/>
-                        </div>
-                        <input type="text" id="user" size="30" name="user" placeholder="Username"/>
-                        <input type="text" id="email" size="30" name="email" placeholder="Email"/>
-                        <input type="password" id="password" size="30" name="password" placeholder="Password"/>
-                        <div>
-                            <input type="checkbox" id="ageLimit" name="ageLimit"/>
-                            <label for="scales">I agree that I am 13 years old or above</label>
-                        </div>
-                        <Link to="/menu">
-                            <input type="submit" class= "green-button" value="Create Account"/>
-                        </Link>
-                    </form>
+                    <RegistrationForm/>
                 </div>
             </div>
         </div>
