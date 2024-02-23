@@ -111,11 +111,10 @@ html, body {
 }
 
 /* menu page styles */
-.container {
+.menu-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: white;
   background-image: url('../assets/blackGridBackground.svg');
   background-repeat: repeat;
   background-size: 500px;
@@ -202,12 +201,14 @@ html, body {
 .left {
   left: 0;
   background-color: #3A7D44;
+  top: 50px
 }
 
 /* Control the right side */
 .right {
   right: 0;
   background-color: #f2f1dc;
+  top: 50px
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -296,7 +297,7 @@ html, body {
 
 .createAccount input{
   font-family: 'Poppins';
-  font-size: 33px;
+  font-size: 1rem;
   font-weight: 700;
   color: #181D27;
 }
