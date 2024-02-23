@@ -9,20 +9,31 @@ const LandingPage = () => {
 
     <div className='landing-page'>
       <div className='left-half'>
-        <div className='div-title' style={{marginTop : "6rem"}}>
-          <h1 className='land-title' style={{color: "white"}}>SIL</h1>
-          <h1 className='land-title' style={{color: "#181D27"}}>ENT</h1>
+
+        <div className='logo'>
+          <div className='logo-left'>
+            <h1 className='land-title' style={{color: "white"}}>SIL</h1>
+            <h1 className='land-title' style={{color: "white"}}>SPA</h1>
+            <h1 className='land-title' style={{color: "white"}}>LOC</h1>
+          </div>
+
+          <div className='logo-right'>
+            <h1 className='land-title' style={{color: "#181D27"}}>ENT</h1>
+            <h1 className='land-title' style={{color: "#181D27"}}>CES</h1>
+            <h1 className='land-title' style={{color: "#181D27"}}>ATOR</h1>
+          </div>
+        </div>
+
+
+        {/* <div className='div-title'>
+          
+          
         </div>
 
         <div className='div-title'>
-          <h1 className='land-title' style={{color: "white"}}>SPA</h1>
-          <h1 className='land-title' style={{color: "#181D27"}}>CES</h1>
-        </div>
-
-        <div className='div-title' style={{marginBottom : "2rem"}}>
-          <h1 className='land-title' style={{color: "white"}}>LOC</h1>
-          <h1 className='land-title' style={{color: "#181D27"}}>ATOR</h1>
-        </div>
+          
+          
+        </div> */}
 
         <div className='button-div' >
         <Link to="/log-in">
