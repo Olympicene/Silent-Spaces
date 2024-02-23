@@ -14,7 +14,7 @@ const LogIn = () => {
             </div>
             
             <div className='right-half'>
-                <img className = 'peerprogram-img' src={studyimage}></img>
+                <img alt = "some people studying" className = 'peerprogram-img' src={studyimage}></img>
             </div>
         </div>
     )

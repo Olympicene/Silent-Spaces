@@ -9,7 +9,6 @@ const Login = () => {
     });
 
     const [errors, setErrors] = useState('');
-    const [success, setSuccess] = useState(false);
   
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,6 +48,7 @@ const Login = () => {
   
         const data = await response.json();
         console.log(data);
+        console.log('Cookies: ', response);
         navigate('/menu')
 
       } catch (error) {
@@ -75,7 +75,7 @@ const Login = () => {
             <div className='button-div'>
                 <button className='forgot-pw-button'>Forgot your Password?</button>
                 <button type="submit" className='login-button'>Log in</button>
-                {!(success) && <p>{errors}</p>}
+                {<p>{errors}</p>}
             </div>
 
             

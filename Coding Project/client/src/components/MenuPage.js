@@ -1,10 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css'; // Import the CSS file
 import { ReactComponent as MapIcon } from "../assets/locationIcon.svg";
 import { ReactComponent as ListIcon } from "../assets/clipboardIcon.svg";
 import { ReactComponent as Border } from '../assets/abstractBookshelf.svg';
+import { useNavigate } from "react-router-dom";
+
 
 const MenuPage = () => {
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState({
+        first_name: '',
+        last_name: '',
+        username: '',
+        email: '',
+        password: '',
+      });
+
+    const checkAuth = async () => {
+      
+      try {
+        const response = await fetch('http://localhost:5005/v1/user', {
+          method: 'GET',
+        });
+  
+        console.log(response)
+
+        if (!response.ok) {
+
+          throw new Error('Auth failed');
+        }
+  
+        const data = await response.json();
+        return data.body
+
+      } catch (error) {
+        console.error(error)
+      }
+    };
+
+    useEffect(()=>{
+        checkAuth()
+        .then(
+            data => setUserData
+        )
+    },[]);
+
+
     return (
         <div className="menu-container">
             <Border className="left-border" />
@@ -15,11 +56,11 @@ const MenuPage = () => {
                     <h2 style={{ color: 'white' }}>Find a Space</h2>
                     <div className="buttons-container">
                         <button style={{ backgroundColor: '#69B578' }}>
-                            <MapIcon class="icon" />
+                            <MapIcon className="icon" />
                             <span>Find using Location</span>
                         </button>
                         <button style={{ backgroundColor: '#3A7D44' }}>
-                            <ListIcon class="icon" />
+                            <ListIcon className="icon" />
                             <span>Find from a List</span>
                         </button>
                     </div>
