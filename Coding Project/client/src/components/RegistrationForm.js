@@ -74,22 +74,10 @@ const RegistrationForm = () => {
 
             <button type="submit" className= "green-button">Create Account</button>
 
-            <p>{errors}</p>
+            {!success && <p>{errors}</p>}
             {success && <h3>SUCCESS Please navigate to the <Link to="/log-in">login</Link> </h3>}
         </form>
     );
   };
   
   export default RegistrationForm;
-
-//   <form>
-
-//   <input type="password" id="password" size="30" name="password" placeholder="Password"/>
-//   <div>
-//       <input type="checkbox" id="ageLimit" name="ageLimit"/>
-//       <label for="scales">I agree that I am 13 years old or above</label>
-//   </div>
-//   <Link to="/menu">
-//       <input type="submit" class= "green-button" value="Create Account"/>
-//   </Link>
-// </form>
