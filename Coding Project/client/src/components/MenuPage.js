@@ -6,13 +6,13 @@ import { ReactComponent as Border } from '../assets/abstractBookshelf.svg';
 
 const MenuPage = () => {
     return (
-        <div className="container">
+        <div className="menu-container">
             <Border className="left-border" />
             <Border className="right-border" />
             <div>
-                <h1>Hi User</h1>
+                <h1 style={{ color: 'white' }}>Hi User</h1>
                 <div className="subsection">
-                    <h2>Find a Space</h2>
+                    <h2 style={{ color: 'white' }}>Find a Space</h2>
                     <div className="buttons-container">
                         <button style={{ backgroundColor: '#69B578' }}>
                             <MapIcon class="icon" />
@@ -24,7 +24,7 @@ const MenuPage = () => {
                         </button>
                     </div>
                 </div>
-                <h2>Your Information</h2>
+                <h2 style={{ color: 'white' }}>Your Information</h2>
                 <div className="buttons-container">
                     <button style={{ backgroundColor: '#3A7D44', width: '225px' }}>
                         Favorite Spaces

@@ -67,11 +67,10 @@ html, body {
 }
 
 /* menu page styles */
-.container {
+.menu-container {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: white;
   background-image: url('../assets/blackGridBackground.svg');
   background-repeat: repeat;
   background-size: 500px;

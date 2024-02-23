@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
+
 import './styles.css';
 import laptop from "../assets/laptopClipArt.svg";
 
@@ -22,8 +24,12 @@ const LandingPage = () => {
         </div>
 
         <div className='button-div' >
-          <button className='landing-button'>LOGIN</button>
-          <button className='landing-button'>CREATE ACCOUNT</button>
+        <Link to="/log-in">
+        <button className='landing-button'>LOGIN</button>
+        </Link>
+        <Link to="/sign-up">
+        <button className='landing-button'>CREATE ACCOUNT</button>
+        </Link>  
         </div>
       
       </div>
