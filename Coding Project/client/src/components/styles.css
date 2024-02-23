@@ -251,7 +251,7 @@ html, body {
 
 .createAccount input{
   font-family: 'Poppins';
-  font-size: 33px;
+  font-size: 1rem;
   font-weight: 700;
   color: #181D27;
 }
