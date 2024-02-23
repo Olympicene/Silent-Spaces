@@ -10,9 +10,13 @@ html, body {
 .landing-page {
   background: linear-gradient(to right, #3A7D44 50%, #181D27 50%);
   height:100vh;
+  display: flex;
+  align-items: center;
 }
 
+
 .left-half {
+  display: flexbox;
   float: left;
   width: 50%;
 }
@@ -83,51 +87,75 @@ html, body {
   margin-bottom: -40px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto 0 auto;
+  padding-right: 3rem;
+}
+
+.logo-left {
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
+.logo h1 {
+  margin: -2rem 0;
+}
+
 .land-title {
-  display: inline-block;
-  text-align: left;
   font-family: 'poppins-bold', sans-serif;
-  font-size: 6rem;
-  line-height: 1.333;
+  font-size: 8rem;
   margin: 0;
   padding: 0;
 }
 
+
 .landing-button {
   background-color: #181D27;
   color: #ffff;
-  padding: 1rem 4rem;
+
+  border: none;
+  width: 80%;
+  padding: 1rem 0;
   border-radius: 1.5rem;
   font-size: 2rem;
-  margin: 1rem;
+  margin: 0 auto 1.25rem auto;
+  
   cursor: pointer;
   font-family: 'poppins', sans-serif;
 }
 
 .button-div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-top: 4rem;
+  text-align: center;
 }
+
 
 /* menu page styles */
 .menu-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
   text-align: center;
   background-image: url('../assets/blackGridBackground.svg');
   background-repeat: repeat;
   background-size: 500px;
   background-attachment: local;
-  height: 93.5vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
 
 .left-border, .right-border {
   position: absolute;
-  height: 93.5vh;
-  width: 93.5vh;
+  height: 100vh;
+  width: 100vh;
 }
 
 .left-border {
@@ -201,14 +229,12 @@ html, body {
 .left {
   left: 0;
   background-color: #3A7D44;
-  top: 50px
 }
 
 /* Control the right side */
 .right {
   right: 0;
   background-color: #f2f1dc;
-  top: 50px
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -246,6 +272,10 @@ html, body {
   justify-content: space-between;
 }
 
+.createAccount #uname input {
+  width: 100%;
+}
+
 .createAccount [type=text] {
   background-color: #BBCEAE;
   color: #181D27;
@@ -256,21 +286,10 @@ html, body {
   color: #3e3e3e;
 }
 
-/* Split the screen in half */
-.img-text {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: clip;
-  padding-top: 20px;
-}
 
 /* Control the left side */
 .left {
   left: 0;
-
   color: #f2f1dc;
 }
 
