@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema(
             required: "Your first name is required",
             max: 25,
         },
-
         last_name: {
             type: String,
             required: "Your last name is required",
@@ -35,6 +34,16 @@ const UserSchema = new mongoose.Schema(
             required: true,
             default: "0x01",
         },
+        favorite_spaces: [
+            {
+                space_id: Number,
+            }
+        ],
+        user_reviews: [
+            {
+                review_id: Number,
+            }
+        ]
     },
     {timestamps: true}
 );
