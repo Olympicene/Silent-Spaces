@@ -1,8 +1,4 @@
 import mongoose from "mongoose"
-import bcrypt from "bcrypt"
-
-import jwt from 'jsonwebtoken'
-import { SECRET_ACCESS_TOKEN } from '../config/index.js'
 
 const SpaceSchema = new mongoose.Schema(
     {
@@ -92,3 +88,5 @@ const SpaceSchema = new mongoose.Schema(
     },
     {timestamps: true}
 );
+
+export default mongoose.model("space", SpaceSchema)
