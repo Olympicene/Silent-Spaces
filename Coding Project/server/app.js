@@ -43,6 +43,9 @@ app.use('/', indexRouter);
 import { router as usersRouter } from './routes/users.js';
 app.use('/users', usersRouter);
 
+import { router as spacesRouter } from './routes/spaces.js';
+app.use('/spaces', spacesRouter);
+
 // === view engine setup ===
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
