@@ -18,6 +18,10 @@ const SpaceSchema = new mongoose.Schema(
             required: "Space Name is required",
             max: 25,
         },
+        desc: {
+            type: String,
+            required: "Description is requried",
+        },
         coords: {
             type: {
                 lat: {
@@ -43,15 +47,15 @@ const SpaceSchema = new mongoose.Schema(
             type: {
                 noiseLevels: {
                     type: Number,
-                    enum: [1,2,3,4,5]
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
                 },
                 occupancy: {
                     type: Number,
-                    enum: [1,2,3,4,5]
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
                 },
-                occupancy: {
+                connectivity: {
                     type: Number,
-                    enum: [1,2,3,4,5]
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
                 }
             }
         },
