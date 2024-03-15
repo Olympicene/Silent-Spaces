@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const SpaceSchema = new mongoose.Schema(
     {
         id: {
-            type: int,
+            type: Number,
             required: "An ID is required",
             max: 25,
             unique: true

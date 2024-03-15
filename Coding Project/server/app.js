@@ -37,6 +37,9 @@ mongoose
 import { router as authRouter } from './routes/auth.js';
 app.use('/v1/auth', authRouter);
 
+import { router as adminRouter } from './routes/admin.js';
+app.use('/admin', adminRouter);
+
 import { router as indexRouter } from './routes/index.js';
 app.use('/', indexRouter);
 
