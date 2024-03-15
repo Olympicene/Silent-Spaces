@@ -1,5 +1,5 @@
 import express from "express"
-import Validate from "../middleware/validate.js"
+import { Verify } from "../middleware/verify.js"
 import { check } from "express-validator"
 import { AddSpaceBasic } from "../controllers/admin.js";
 
@@ -26,7 +26,7 @@ router.post(
     check("address")
         .notEmpty()
         .withMessage("Enter space address"),
-    Validate,
+    Verify,
     AddSpaceBasic
 )
 

@@ -1,19 +1,14 @@
 import express from "express"
-import { check } from "express-validator"
-import { AddFavoriteSpace } from "../controllers/users.js"
 import { Verify } from "../middleware/verify.js";
+import { AllSpacesSummary } from "../controllers/spaces.js"
+
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-/* POST new Favorite Space on the list*/
-router.post(
-  '/add-favorite-space',
-  Verify,
-  AddFavoriteSpace,
+/* GET all spaces */
+router.get(
+  '/all-spaces',
+  Verify, 
+  AllSpacesSummary,
 );
 
 export { router }
