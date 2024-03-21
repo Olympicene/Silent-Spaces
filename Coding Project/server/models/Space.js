@@ -14,6 +14,9 @@ const SpaceSchema = new mongoose.Schema(
             required: "Space Name is required",
             max: 25,
         },
+        img: {
+            type: String,
+        },
         desc: {
             type: String,
             required: "Description is requried",
