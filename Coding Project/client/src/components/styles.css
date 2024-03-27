@@ -212,39 +212,6 @@ html, body {
   border-radius: 50%;
 }
 
-.createAccount h2 {
-  font-family: 'Poppins';
-  font-size: 30px;
-  font-weight: 700;
-  color: #F2F1DC;
-}
-
-.createAccount h1 {
-  font-family: 'Poppins';
-  font-size: 50px;
-  font-weight: 700;
-  color: #181D27;
-}
-
-.createAccount #uname {
-  display: flex;
-  justify-content: space-between;
-}
-
-.createAccount #uname input {
-  width: 100%;
-}
-
-.createAccount [type=text] {
-  background-color: #BBCEAE;
-  color: #181D27;
-  opacity: 50%;
-}
-
-.createAccount ::placeholder {
-  color: #3e3e3e;
-}
-
 
 /* Control the left side */
 .left {
@@ -258,60 +225,6 @@ html, body {
   background-color: #f2f1dc;
 }
 
-.createAccount{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.createAccount h1{
-  font-family: 'Poppins';
-  font-size: 33px;
-  font-weight: 700;
-  color: #181D27;
-}
-
-.createAccount input{
-  font-family: 'Poppins';
-  font-size: 1rem;
-  font-weight: 700;
-  color: #181D27;
-}
-
-.createAccount [type=text], .createAccount [type=password]  {
-  background-color: #BBCEAE;
-  font-family: 'Poppins';
-  font-size: 17px;
-  color: #181D27;
-  opacity: 100%;
-  margin-inline: 10px;
-  margin-bottom: 12px;
-  padding: 5px; 
-
-  border: 1px solid #BBCEAE;
-}
-
-/* .createAccount [type=password] {
-  background-color: #3A7D44;
-  font-family: 'Poppins';
-  font-size: 17px;
-  color: #181D27;
-  opacity: 70%;
-  margin-inline: 10px;
-  margin-bottom: 12px;
-} */
-
-.createAccount [type=checkbox] {
-  background-color: #3A7D44;
-  font-family: 'Poppins';
-  font-size: 17px;
-  color: #181D27;
-  opacity: 70%;
-  margin-inline: 10px;
-  margin-bottom: 12px;
-}
 
 .green-button {
   background-color: #3A7D44;
@@ -361,22 +274,32 @@ html, body {
   object-fit: cover;
 }
 
-.login-input > input {
-  display:block;
+.standard-input-box > input {
   margin : 0 auto;
+  margin-bottom: 1rem;
   width: 24rem;
   height: 3rem;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem; 
   font-family: 'poppins', sans-serif;
-  background-color: #F2F1DC;
   opacity: 0.7;
-  color: #254D32;
   padding: 0.5rem;
 }
 
-.login-input > input::placeholder {
+.standard-input-box > input::placeholder {
   color: #254D32;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .login-button {
@@ -409,6 +332,7 @@ html, body {
 input:focus,
 select:focus,
 textarea:focus,
+input:focus,
 button:focus {
     outline: none;
 }

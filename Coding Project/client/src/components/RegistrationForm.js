@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import InputBox from "./InputBox";
 
 
 const RegistrationForm = () => {
@@ -61,16 +62,24 @@ const RegistrationForm = () => {
     return (
         <form onSubmit={handleSubmit}>
 
-            <div id="uname">
-                <input type="text" id="fname" size="10" name="first_name" placeholder="First Name" defaultValue={formData.first_name} onChange={handleChange}/>
-                <input type="text" id="lname" size="11" name="last_name" placeholder="Last Name" defaultValue={formData.last_name} onChange={handleChange}/>
+            <div id="side-by-side">
+              <InputBox features={{id:"fname", name:"first_name", type:"text", placeholder:"First Name"}} change={handleChange} 
+                        style={{backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
+
+              <InputBox features={{id:"lname", name:"last_name", type:"text", placeholder:"Last Name"}} change={handleChange}
+                            style={{backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
+
             </div>
 
-            <input type="text" id="user" size="30" name="username" placeholder="Username" defaultValue={formData.username} onChange={handleChange}/>
+            <InputBox features={{id:"user", name:"username", type:"text", placeholder:"Username"}} change={handleChange}
+                                        style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
-            <input type="text" id="email" size="30" name="email" placeholder="Email" defaultValue={formData.email} onChange={handleChange}/>
+            <InputBox features={{id:"email", name:"email", type:"text", placeholder:"Email"}} change={handleChange}
+                                        style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
-            <input type="password" id="password" size="30" name="password" placeholder="Password" defaultValue={formData.password} onChange={handleChange}/>
+            <InputBox features={{id:"password", name:"password", type:"text", placeholder:"Password"}} change={handleChange} 
+                                        style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
+
 
             <button type="submit" className= "green-button">Create Account</button>
 

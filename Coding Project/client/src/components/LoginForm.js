@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import InputBox from "./InputBox";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -58,26 +59,18 @@ const Login = () => {
   
     return (
         <form onSubmit={handleSubmit}>
-            <div className='login-input'>
-                <input id="first-name" 
-                    name="email"
-                    type="text" 
-                    placeholder="Email" 
-                    onChange={handleChange}/>
-                <input id="first-name" 
-                    name="password"
-                    type="password" 
-                    placeholder="Password" 
-                    onChange={handleChange}
-                    style={{marginBottom : "4rem"}}/>
-            </div>
+            <InputBox features={{id:"email", name:"email", type:"text", placeholder:"Email"}} 
+            change={handleChange} 
+            style={{display : "block", backgroundColor: "#F2F1DC", color: "#254D32"}}/>
+            <InputBox features={{id:"password", name:"password", type:"password", placeholder:"Password"}} 
+            change={handleChange} 
+            style={{display : "block", backgroundColor: "#F2F1DC", color: "#254D32", marginBottom : "4rem"}}/>
         
             <div className='button-div'>
                 <button className='forgot-pw-button'>Forgot your Password?</button>
                 <button type="submit" className='login-button'>Log in</button>
                 {<p>{errors}</p>}
             </div>
-
             
         </form>
   );

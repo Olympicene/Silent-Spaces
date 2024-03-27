@@ -16,7 +16,7 @@ const CreateAccount = () => {
 
             </div>
             <div className="right half">
-                <div className= "createAccount">
+                <div className='align-center'>
                     <h1> Create an Account</h1>
                     <RegistrationForm/>
                 </div>
