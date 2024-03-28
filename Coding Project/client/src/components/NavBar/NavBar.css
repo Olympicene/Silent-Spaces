@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'poppins', sans-serif;;
 }
 
   .nav-menu.active {
@@ -29,7 +30,6 @@
     background-color: #254D32;
     color: #F2F2F2;
     font-size: 2rem;
-    font-family: 'poppins', sans-serif;
     width: 95%;
     height: 100%;
     display: flex;
@@ -51,6 +51,17 @@
   .nav-menu-items {
     width: 100%; 
     background-color: #254D32;
+  }
+
+  .profile-section {
+    width: 80%;
+    height : 4rem;
+    position: absolute;
+    bottom: 1.5rem;
+    background-color: #E9E9E9;
+    margin-left: 25px;
+    border-radius: 20px;
+    padding: 0.5rem;
   }
 
   span {

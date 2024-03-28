@@ -1,7 +1,6 @@
 import React from 'react'
 import * as Io5Icons from "react-icons/io5";
 import * as FaIcons from "react-icons/fa";
-import * as IoIcons from "react-icons/io";
 
 export const NavbarData = [
     {
