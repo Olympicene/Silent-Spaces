@@ -5,6 +5,7 @@ import { ReactComponent as ListIcon } from "../assets/clipboardIcon.svg";
 import { ReactComponent as Border } from '../assets/abstractBookshelf.svg';
 import { useNavigate } from "react-router-dom";
 import SpaceTile from './SpaceTile';
+import NavBar from './NavBar';
 
 
 const MenuPage = () => {
@@ -76,8 +77,10 @@ const MenuPage = () => {
         //             </button>
         //         </div>
         //     </div>
-            
-        <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+        <>
+          <NavBar/>
+          <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+        </>  
             
         // </div>
     );
