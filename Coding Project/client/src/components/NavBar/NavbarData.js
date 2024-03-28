@@ -25,7 +25,7 @@ export const NavbarData = [
     {
         title : "settings",
         path : "/",
-        icon : <IoIcons.IoIosSettings />,
+        icon : <Io5Icons.IoSettingsSharp />,
         className : 'nav-text'
     }
 ]
