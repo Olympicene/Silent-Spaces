@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import InputBox from "../../components/InputBox";
+import InputBox from "../../components/InputBox/InputBox";
 
 
 const RegistrationForm = () => {

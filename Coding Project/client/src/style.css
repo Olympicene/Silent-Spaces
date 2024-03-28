@@ -307,17 +307,6 @@ html, body {
   margin-left: 1rem;
 }
 
-.material-icons-outlined {
-  font-size: 30px;
-}
-
-.material-icons-outlined:hover, .material-icons-outlined:focus {
-  cursor: pointer;
-}
-
-.material-icons-outlined:active{
-  transform: scale(0.96);
-}
 
 .align-center {
   position: absolute;
