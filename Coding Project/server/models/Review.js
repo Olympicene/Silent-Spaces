@@ -15,8 +15,54 @@ const ReviewSchema = new mongoose.Schema(
         comment: {
             type: String,
         },
+        amenities: {
+            type: {
+                has_outlets: {
+                    type: Boolean
+                },
+                has_whiteboards: {
+                    type: Boolean
+                },
+                has_screen: {
+                    type: Boolean
+                },
+                is_food_beverage_friendly: {
+                    type: Boolean 
+                },
+                has_printer: {
+                    type: Boolean
+                },
+                has_breakout_rooms: {
+                    type: Boolean
+                },
+                restrooms: {
+                    type: Boolean
+                },
+                seating_type: {
+                    type: String,
+                    enum: ["Group Seating", "Individual Seating"]
+                }
+            },
+        },
+        statistics: {
+            type: {
+                noiseLevels: {
+                    type: Number,
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                },
+                occupancy: {
+                    type: Number,
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                },
+                connectivity: {
+                    type: Number,
+                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                }
+            }
+        },
     },
     {timestamps: true}
+    
 );
 
-export default mongoose.model("review", ReviewSchema)
+export default mongoose.model("Review", ReviewSchema)

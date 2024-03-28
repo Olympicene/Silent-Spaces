@@ -46,6 +46,9 @@ app.use('/', indexRouter);
 import { router as spaceRouter } from './routes/space.js';
 app.use('/space', spaceRouter);
 
+import { router as reviewRouter } from './routes/review.js';
+app.use('/review', reviewRouter);
+
 // === view engine setup ===
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'jade');
