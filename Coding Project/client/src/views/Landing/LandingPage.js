@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
 
-import './styles.css';
-import laptop from "../assets/laptop.svg";
+import '../../style.css';
+import laptop from "../../assets/laptop.svg";
 
 const LandingPage = () => {
   return (

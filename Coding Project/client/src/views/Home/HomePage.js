@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './styles.css'; // Import the CSS file
-import { ReactComponent as MapIcon } from "../assets/locationIcon.svg";
-import { ReactComponent as ListIcon } from "../assets/clipboardIcon.svg";
-import { ReactComponent as Border } from '../assets/abstractBookshelf.svg';
+import '../../style.css'; // Import the CSS file
+import { ReactComponent as MapIcon } from "../../assets/locationIcon.svg";
+import { ReactComponent as ListIcon } from "../../assets/clipboardIcon.svg";
+import { ReactComponent as Border } from '../../assets/abstractBookshelf.svg';
 import { useNavigate } from "react-router-dom";
-import SpaceTile from './SpaceTile';
+import SpaceTile from '../../components/SpaceTile';
 
 
 const MenuPage = () => {

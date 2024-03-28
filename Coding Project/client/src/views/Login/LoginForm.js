@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import InputBox from "./InputBox";
+import InputBox from "../../components/InputBox";
 
 const Login = () => {
     const navigate = useNavigate();
