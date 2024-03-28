@@ -1,8 +1,8 @@
 import React from 'react';
-import RegistrationForm from './RegistrationForm';
+import RegistrationForm from './CreateAccountForm';
 
-import './styles.css';
-import windowintoStudyGroup from "../assets/windowIntoStudyGroup.svg";
+import '../../style.css';
+import windowintoStudyGroup from "../../assets/windowIntoStudyGroup.svg";
 
 const CreateAccount = () => {
     return (

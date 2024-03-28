@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './LoginForm';
-import './styles.css';
-import studyimage from "../assets/abtractPeoplePeerProgramming.svg";
+import '../../style.css';
+import studyimage from "../../assets/abtractPeoplePeerProgramming.svg";
 
 
 const LogIn = () => {
