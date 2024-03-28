@@ -294,6 +294,31 @@ html, body {
   justify-content: space-between;
 }
 
+.space-tile {
+  width: 20%;
+  background: #F2F2F2;
+  overflow: hidden;
+  font-family: 'poppins', sans-serif;
+  padding: 8px;
+}
+
+.tile-rating {
+  display: inline-block; 
+  margin-left: 1rem;
+}
+
+.material-icons-outlined {
+  font-size: 30px;
+}
+
+.material-icons-outlined:hover, .material-icons-outlined:focus {
+  cursor: pointer;
+}
+
+.material-icons-outlined:active{
+  transform: scale(0.96);
+}
+
 .align-center {
   position: absolute;
   top: 50%;
@@ -301,6 +326,7 @@ html, body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
 
 .login-button {
   padding: 0.5rem 1.5rem;
@@ -319,7 +345,6 @@ html, body {
 .forgot-pw-button {
   padding: 0.5rem 2rem;
   border-radius: 1rem;
-  font-size: 1.5rem;
   margin: 0.5rem;
   cursor: pointer;
   font-family: 'poppins', sans-serif;
