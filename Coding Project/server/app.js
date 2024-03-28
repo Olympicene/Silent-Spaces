@@ -19,6 +19,8 @@ app.use(cors()) // enables CORS
 app.disable("x-powered-by"); //Reduce fingerprinting
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+
+//middle ware
 app.use(express.json());
 
 // === connect to database ===
@@ -30,18 +32,19 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(console.log("Connected to database"))
+  .then(console.log("Connected to database")) // we listen in www.js
   .catch((err) => console.log(err))
 
 // === config routes ===
+// when we want to link these routes, we import them and pass the app to the route
 import { router as authRouter } from './routes/auth.js';
 app.use('/v1/auth', authRouter);
 
 import { router as indexRouter } from './routes/index.js';
 app.use('/', indexRouter);
 
-import { router as usersRouter } from './routes/users.js';
-app.use('/users', usersRouter);
+import { router as spaceRouter } from './routes/space.js';
+app.use('/space', spaceRouter);
 
 // === view engine setup ===
 app.set('views', `${__dirname}/views`);
