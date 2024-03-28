@@ -7,7 +7,7 @@ import { SECRET_ACCESS_TOKEN } from '../config/index.js'
 const SpaceSchema = new mongoose.Schema(
     {
         id: {
-            type: int,
+            type: Number,
             required: "An ID is required",
             max: 25,
             unique: true
@@ -96,3 +96,5 @@ const SpaceSchema = new mongoose.Schema(
     },
     {timestamps: true}
 );
+
+export default mongoose.model("Space", SpaceSchema)

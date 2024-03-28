@@ -4,6 +4,7 @@ import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'
 import { SECRET_ACCESS_TOKEN } from '../config/index.js'
 
+//define user structure
 const UserSchema = new mongoose.Schema(
     {
         username: {
@@ -80,4 +81,4 @@ UserSchema.methods.generateAccessJWT = function () {
     })
 }
 
-export default mongoose.model("users", UserSchema)
+export default mongoose.model("User", UserSchema)

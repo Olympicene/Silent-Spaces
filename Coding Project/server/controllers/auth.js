@@ -1,5 +1,11 @@
 import User from "../models/User.js"
 
+//inital structure for get functions
+// export async function getUsers (req,res) {
+//     const user = await User.find({}).sort({createdAt: -1})
+//     res.status(200).json(workouts)
+// }
+
 /**
  * @route POST v1/auth/register
  * @desc Resisters a user
@@ -8,13 +14,13 @@ import User from "../models/User.js"
 
 export async function Register(req, res) {
     try {
-        const { first_name, last_name, email, password } = req.body
+        const {first_name, last_name, email, password} = req.body
 
         // create new user
         const newUser = new User({
-            first_name,
-            last_name,
-            email,
+            first_name, 
+            last_name, 
+            email, 
             password,
         });
 
@@ -96,7 +102,8 @@ export async function Login(req, res) {
         res.cookie("SessionID", token, options)
         res.status(200).json({
             status: "success",
-            message: "You have successfully logged in."
+            message: "You have successfully logged in.",
+            recieved: user
         })
 
         // intial bench for login
@@ -119,6 +126,8 @@ export async function Login(req, res) {
     }
 
     res.end()
+
+    // END POINT: if you want any user information it is stored in the user variable
 }
 
 import Blacklist from "../models/Blacklist.js";
