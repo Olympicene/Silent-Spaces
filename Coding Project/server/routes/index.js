@@ -26,6 +26,7 @@ router.get('/v1/user', Verify, (req, res) => {
   res.status(200).json({
     status: "Success",
     message: "Welcome to your Dashboard!",
+    data: [req.user],
   })
 })
 

@@ -28,6 +28,8 @@ const HomePage = () => {
 
             const res = await response.json();
 
+            console.log(res)
+
             const updatedUserData = {
                 first_name: res.data[0].first_name,
                 last_name: res.data[0].last_name,
@@ -54,7 +56,8 @@ const HomePage = () => {
             }
 
             const res = await response.json();
-            const updatedSpaceData = res.data;
+            console.log(res)
+            const updatedSpaceData = res.data[0];
 
             setSpaceData(updatedSpaceData);
 

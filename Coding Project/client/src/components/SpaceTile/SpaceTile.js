@@ -16,7 +16,7 @@ const SpaceTile = ({details}) => {
                 <img src={(details.img === undefined ? studySpace : details.img)} alt = "" style={{width:"100%", objectFit: "cover"}}/>
             </div>
 =            <div style={{float:"left"}} >
-                <p style={{color: "black", fontSize:"1.5rem", margin:"0"}}>{details.name.substring(0, 20)}</p>
+                <p style={{color: "black", fontSize:"1.5rem", margin:"0"}}>{(details.name === undefined? "N/A" : details.name)}</p>
                 <p style={{color:"#595A5E", fontSize:"1rem", margin:"0"}}>{details.miles} miles away</p>
             </div>
             <div style={{float:"right"}}>

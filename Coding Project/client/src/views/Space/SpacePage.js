@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import NavBar from '../../components/NavBar/NavBar';
 import { Link } from "react-router-dom";
@@ -21,6 +23,49 @@ import { PiWifiSlashBold } from "react-icons/pi";
 import { PiWifiHighBold } from "react-icons/pi";
 
 const SpacePage = () => {
+    const navigate = useNavigate();
+
+    const [userData, setUserData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+    });
+
+    const checkAuth = async () => {
+        try {
+            const response = await fetch('http://localhost:5005/v1/user', {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                throw new Error('Auth failed');
+            }
+
+            const res = await response.json();
+
+            console.log(res)
+
+            const updatedUserData = {
+                first_name: res.data[0].first_name,
+                last_name: res.data[0].last_name,
+                email: res.data[0].email,
+            };
+
+            setUserData(updatedUserData);
+
+        } catch (error) {
+            console.error(error);
+            navigate('/log-in');
+        }
+    };
+
+    useEffect(() => {
+        checkAuth();
+    }, []);
+
+
+
     require('./Space.css')
 
     const [anchor, setAnchor] = useState(null);
@@ -35,7 +80,7 @@ const SpacePage = () => {
 
     return (
         <div className='spacePage'>
-            <NavBar/>
+            <NavBar info={userData}/>
             <div style={{marginLeft : "20vw"}}  className='space-content'>
                 <IconContext.Provider value={{color:"grey", size:"1.5rem"}}>
                 <div className='space-menu-bar'>
