@@ -7,7 +7,7 @@ import Space from "../models/Space.js"
  */
 export async function AllSpacesSummary(req, res) {
     try {
-        const spacesArray = await Space.find({}, {id:1, name:1, coords:1, rating:1});
+        const spacesArray = await Space.find({}, {id:1, name:1, img:1, coords:1, rating:1});
 
         res.status(200).json({
             status: "success",
