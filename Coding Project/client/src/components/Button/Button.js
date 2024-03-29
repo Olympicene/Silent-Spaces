@@ -4,7 +4,7 @@ const Button = ({children, theme, change, style}) => {
     require('./Button.css')
     return (
         <button 
-                className={theme} 
+                className={theme + " CTA-Button"} 
                 style={style}
                 onChange={change}
                 >
