@@ -11,19 +11,19 @@ export const NavbarData = [
     },
     {
         title : "map",
-        path : "/log-in",
+        path : "/map",
         icon : <FaIcons.FaMapMarkerAlt />,
         className : 'nav-text'
     },
     {
         title : "resources",
-        path : "/space",
+        path : "/resources",
         icon : <FaIcons.FaBook />,
         className : 'nav-text'
     },
     {
         title : "settings",
-        path : "/",
+        path : "/settings",
         icon : <Io5Icons.IoSettingsSharp />,
         className : 'nav-text'
     }
