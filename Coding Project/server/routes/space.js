@@ -3,7 +3,7 @@ import { check } from "express-validator"
 import { Verify } from "../middleware/verify.js";
 import Space from "../models/Space.js" 
 import Validate from "../middleware/validate.js"
-import {  AllSpacesSummary, FullSpaceInfo, SortedByProximity, createSpace, deleteSpace, updateSpace, filterByRatings, filterByNoise, filterByOccupancy, filterByConnectivity, sortByLetter} from "../controllers/space.js";
+import {  AllSpacesSummary, FullSpaceInfo, filterByAmenities, SortedByProximity, createSpace, deleteSpace, updateSpace, filterByRatings, filterByNoise, filterByOccupancy, filterByConnectivity, sortByLetter} from "../controllers/space.js";
 
 
 // router we will be using to handle get and post requests
@@ -49,7 +49,7 @@ router.get('/connectivity-ratings/sort', Validate, filterByConnectivity)
 router.get('/alphabetical-order/sort', Validate, sortByLetter)
 
 // GET a list of spaces based on amenities
-
+router.get('/amenities/sort', Validate, filterByAmenities)
 
 // GET a list of spaces based on distance
 // TODO: Annie You

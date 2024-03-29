@@ -321,20 +321,21 @@ export async function sortByLetter (req,res) {
 
 // GET a list of spaces based on amenities
 export async function filterByAmenities (req,res) {
-    const order = req.query.order;
-
-    if (order !== 'asc' && order !== 'desc'){
-        order = 'asc'
+    const filters = {}
+    const parameters = ['has_outlets', 'has_whiteboards', 'has_screen', 'is_food_beverage_friendly', 'has_printer', 'has_breakout_rooms', 'restrooms']
+    for (const param of parameters){
+        if(req.query[param] !== undefined){
+            filters['amenities.$(param)'] = Boolean(req.query[param])
+            console.log(Boolean(req.query[param]))
+        }
+    }
+    if(req.query.seating_type !== undefined){
+        filters['amenities.seating_type'] = (req.query[seating_type])
     }
 
     try {
-        const spaces = await Space.find({})
-        if (order == 'asc'){
-            spaces.sort((a,b) => a.rating - b.rating)
-        }
-        else{
-            spaces.sort((a,b) => b.rating - a.rating)
-        }
+        const spaces = await Space.find(filters).sort()
+        
         res.status(200).json({ spaces });
         
 
