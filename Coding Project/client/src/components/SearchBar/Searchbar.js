@@ -28,7 +28,7 @@ const Searchbar = () => {
                     placeholder="search for spaces"
                     onChange={handleChange}
                     value={searchInput} />
-                <button>
+                <button className='search-button'>
                     <FaSearch style={{paddingRight:"10px", fontSize:"1.5rem", paddingTop:"10px"}}/>
                     search
                 </button>

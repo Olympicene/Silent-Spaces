@@ -11,7 +11,7 @@
     padding: 10px;
 }
 
- button {
+ .search-button {
     margin-top : 1rem;
     right: 2rem;
     width : 25%;

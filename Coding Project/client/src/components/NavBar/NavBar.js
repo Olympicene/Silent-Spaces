@@ -19,7 +19,7 @@ function NavBar() {
               <li key = {index} className={item.className}>
                 <Link to = {item.path}>
                   {item.icon}
-                  <span>{item.title}</span>
+                  <span className='navbar-span'>{item.title}</span>
                 </Link>
               </li>
             )
