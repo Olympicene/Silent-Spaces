@@ -1,0 +1,19 @@
+.tag {
+    display: inline-block;
+    /* background-color: #3A7E44; */
+    padding: 10px 40px;
+    margin: 10px 10px 0px 10px;
+    border-radius: 80px;
+    font-size: 20px;
+
+    border: 2px solid;
+    border-color: black;
+}
+
+.tag:hover {
+    background-color: #3A7E44;
+    transition: 0.7s;
+    border-color: white;
+    color: white;
+    cursor: pointer;
+}

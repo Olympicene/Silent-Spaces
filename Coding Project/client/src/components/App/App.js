@@ -6,6 +6,7 @@ import LandingPage from "../../views/Landing/LandingPage";
 import MenuPage from "../../views/Home/HomePage";
 import NoPage from "../../views/Error/NoPage";
 import LogIn from "../../views/Login/LogInPage";
+import SpacePage from "../../views/Space/SpacePage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="menu" element={<MenuPage />} />
           <Route path="sign-up" element={<CreateAccount />} />
           <Route path="log-in" element={<LogIn />} />
+          <Route path="space" element={<SpacePage />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

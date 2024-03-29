@@ -1,0 +1,19 @@
+.amenity {
+    width: 33%;
+    height: 60px;
+    text-align: center;
+    /* background-color: red; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    color: grey;
+    transition: 0.7s;
+}
+
+.amenity:hover {
+    cursor: pointer;
+    scale: 1.15;
+    transition: 0.7s;
+}
