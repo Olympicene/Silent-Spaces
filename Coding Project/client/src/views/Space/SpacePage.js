@@ -1,3 +1,5 @@
+import React, {useState} from 'react';
+import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import NavBar from '../../components/NavBar/NavBar';
 import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons';
@@ -8,6 +10,7 @@ import star from "../../assets/blackstar.svg";
 import Tag from '../../components/Tag/Tag';
 import Amenity from '../../components/Amenity/Amenity';
 import Button from '../../components/Button/Button'
+import Popup from '../../components/Popup/Popup';
 import { Slider } from '@mui/material';
 
 import { FaVolumeMute } from "react-icons/fa";
@@ -19,6 +22,17 @@ import { PiWifiHighBold } from "react-icons/pi";
 
 const SpacePage = () => {
     require('./Space.css')
+
+    const [anchor, setAnchor] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchor(anchor ? null : event.currentTarget);
+    };
+
+    const open = Boolean(anchor);
+    const id = open ? 'simple-popper' : undefined;
+
+
     return (
         <div className='spacePage'>
             <NavBar/>
@@ -64,7 +78,7 @@ const SpacePage = () => {
                             <Tag>2024 Winner</Tag>
                         </div>
                         <div className='space-ameneties'>
-                            <p style={{color:"black", fontSize:"30px", margin: 20}}>ameneties:</p>
+                            <p style={{color:"black", fontSize:"30px", margin: 20}}>amenities:</p>
                             <div className='space-ameneties-list'>
                                 <Amenity>power outlets</Amenity>
                                 <Amenity>drinks allowed</Amenity>
@@ -108,7 +122,14 @@ const SpacePage = () => {
                             
                         </div>
                         </IconContext.Provider>
-                        <Button theme="contrast" style={{width: "95%", margin: 20}}> Review </Button>
+
+                        <div>
+                            <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>
+                            <BasePopup id={id} open={open} anchor={anchor}>
+                                <Popup/>
+                            </BasePopup>
+                        </div>
+
                     </div>
                 </div>
             </div>
