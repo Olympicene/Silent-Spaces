@@ -8,7 +8,7 @@ function NavBar() {
   require('./NavBar.css')
   return (
 
-    <div >
+    <div>
       <IconContext.Provider value={{color:"#ffff", size:"2rem"}}>
       <nav className='nav-menu active'> 
         <ul className='nav-menu-items'>

@@ -1,8 +1,14 @@
 .menu-page {
     background-color: #E9E9E9;
     height: 100vh;
-    margin: 0;
-    padding: 0;
+    width: 100vw;
+    display: flex;
+}
+
+.spacetiles-container {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
 }
 
 /* menu page styles */
