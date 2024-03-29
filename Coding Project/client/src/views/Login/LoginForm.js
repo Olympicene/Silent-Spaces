@@ -46,7 +46,6 @@ const Login = () => {
         }
   
         const data = await response.json();
-        console.log(response.cookie);
         navigate('/home')
 
       } catch (error) {

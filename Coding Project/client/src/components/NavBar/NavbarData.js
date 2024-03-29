@@ -5,7 +5,7 @@ import * as FaIcons from "react-icons/fa";
 export const NavbarData = [
     {
         title : "home",
-        path : "/menu",
+        path : "/home",
         icon : <Io5Icons.IoHome/>,
         className : 'nav-text'
     },

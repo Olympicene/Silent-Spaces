@@ -11,9 +11,7 @@ const HomePage = () => {
     const [userData, setUserData] = useState({
         first_name: '',
         last_name: '',
-        username: '',
         email: '',
-        password: '',
       });
 
 
@@ -25,14 +23,21 @@ const HomePage = () => {
           credentials: 'include',
         });
   
-        console.log(response)
-
         if (!response.ok) {
           throw new Error('Auth failed');
         }
   
-        const data = await response.json();
-        return data.body
+        const res = await response.json();
+
+        const updatedUserData = {
+          ...userData, 
+          first_name: res.data[0].first_name,
+          last_name: res.data[0].last_name,
+          email: res.data[0].email,
+        };
+
+        await setUserData(updatedUserData);
+        console.log(userData)
 
       } catch (error) {
         console.error(error)
@@ -42,10 +47,7 @@ const HomePage = () => {
 
     useEffect(()=>{
         checkAuth()
-        .then(
-            data => setUserData
-        )
-    },[]);
+    }, []);
 
     require('./HomePage.css')
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
@@ -54,7 +56,7 @@ const HomePage = () => {
     return (
         
         <div className='menu-page'>
-          <NavBar/>
+          <NavBar info={userData}/>
 
           <div className='right-side-menu' style={{marginLeft : "20vw"}}>
             <Searchbar/>
@@ -64,6 +66,7 @@ const HomePage = () => {
             </div>
             <hr width="90%" size="2"/>
             <div className='spacetiles-container'>
+              
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3", path:"/log-in"}} />
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />

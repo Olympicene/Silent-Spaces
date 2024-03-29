@@ -4,7 +4,11 @@ import {NavbarData} from './NavbarData'
 import { IconContext } from 'react-icons';
 import * as FaIcons from "react-icons/fa";
 
-function NavBar() {
+function NavBar({info}) {
+
+  
+
+
   require('./NavBar.css')
   return (
 
@@ -25,13 +29,13 @@ function NavBar() {
             )
           })}
           <div className='profile-section'>
-            <div style={{marginRight: "0.5rem", backgroundColor: "grey", display: "flex", borderRadius : "50%"}}>
+            <div style={{margin: "0.5rem 1.5rem 0.5rem 1rem", backgroundColor: "grey", display: "flex", borderRadius : "50%"}}>
               <FaIcons.FaUser style={{color:"black", size:"2rem", margin:"0.5rem"}}/>
             </div>
       
             <div style={{display:"inline-block"}}>
-              <p style={{fontSize:"1.2rem", margin: "0", padding: "0"}}>username</p>
-              <p style={{fontSize:"1rem", color:"#595A5E", margin: "0", padding: "0"}}>email</p>
+              <p style={{fontSize:"1.2rem", margin: "0", padding: "0"}}>{info.first_name + " " + info.last_name}</p>
+              <p style={{fontSize:"1rem", color:"#595A5E", margin: "0", padding: "0"}}>{info.email}</p>
             </div>
           </div>
         </ul>
