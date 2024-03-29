@@ -10,6 +10,13 @@ import Amenity from '../../components/Amenity/Amenity';
 import Button from '../../components/Button/Button'
 import { Slider } from '@mui/material';
 
+import { FaVolumeMute } from "react-icons/fa";
+import { FaVolumeHigh } from "react-icons/fa6";
+import { MdOutlinePersonOff } from "react-icons/md";
+import { MdOutlinePeople } from "react-icons/md";
+import { PiWifiSlashBold } from "react-icons/pi";
+import { PiWifiHighBold } from "react-icons/pi";
+
 const SpacePage = () => {
     require('./Space.css')
     return (
@@ -69,11 +76,39 @@ const SpacePage = () => {
                         </div>
                     </div>
                     <div className='space-ratings'>
+                        <IconContext.Provider value={{color:"grey", size:"3rem"}}>
                         <div className='space-stats'> 
-                        <Slider disabled defaultValue={30} aria-label="Disabled slider" />
+                            
+                            <div>
+                                <FaVolumeMute />
+                                <div className='space-stats-sound'>
+                                    <Slider disabled defaultValue={60} aria-label="Disabled slider" color="secondary" />
+                                </div>
+                                <FaVolumeHigh />
+                            </div>
+
+
+                            <div>
+                                <MdOutlinePersonOff />
+                                <div className='space-stats-crowd'>
+                                    <Slider disabled defaultValue={50} aria-label="Disabled slider" color="secondary" />
+                                </div>
+                                <MdOutlinePeople />
+                            </div>
+
+                            <div>
+                            <PiWifiSlashBold />
+                            <div className='space-stat-wifi'>
+                                <Slider disabled defaultValue={80} aria-label="Disabled slider" color="secondary" />
+                            </div>
+                            <PiWifiHighBold />
+                            </div>
+
+                             
                             
                         </div>
-                        <Button theme="constrast" style={{width: "95%", margin: 20}}> Review </Button>
+                        </IconContext.Provider>
+                        <Button theme="contrast" style={{width: "95%", margin: 20}}> Review </Button>
                     </div>
                 </div>
             </div>

@@ -101,9 +101,26 @@
 .space-stats {
     margin: 20px;
     background-color: rgb(205, 205, 205);
-    height: 300px;
     width: 95%;
     border-radius: 20px;
     
     box-shadow: 6px 6px;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.space-stats div{
+    margin: 20px;
+    width: 80%;
+    background-color: #e9e9e9;
+    padding: 0px 20px;
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
 }
