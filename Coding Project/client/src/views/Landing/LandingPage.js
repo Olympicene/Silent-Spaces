@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 
 import './Landing.css';
+import Button from '../../components/Button/Button';
 
 const LandingPage = () => {
   return (
@@ -25,10 +26,11 @@ const LandingPage = () => {
 
         <div className='button-div' >
         <Link to="/log-in">
-        <button className='landing-button'>LOGIN</button>
+          <Button theme="light" style={{width: "80%"}}>LOG IN</Button>
         </Link>
+
         <Link to="/sign-up">
-        <button className='landing-button'>CREATE ACCOUNT</button>
+          <Button theme="dark" style={{width: "80%"}}>CREATE ACCOUNT</Button>
         </Link>  
         </div>
       </div>
