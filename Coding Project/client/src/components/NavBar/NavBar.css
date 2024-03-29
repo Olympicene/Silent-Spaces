@@ -4,7 +4,6 @@
     height: 100vh;
     justify-content: center;
     display: flex;
-    position: fixed;
     top: 0;
     left: 0;
   }
@@ -43,6 +42,8 @@
 
   .nav-menu-items {
     background-color: #254D32;
+    min-height: 100%; 
+    position: relative; 
   }
 
   .profile-section {
@@ -53,12 +54,12 @@
     font-family: 'poppins', sans-serif;
     width: 80%;
     height : 4rem;
-    position: absolute;
-    bottom: 1.5rem;
     background-color: #E9E9E9;
     margin-left: 25px;
     border-radius: 20px;
     padding: 0.5rem;
+    bottom : 1.5rem;
+    position: absolute;
   }
 
   .navbar-span {
