@@ -2,7 +2,7 @@ import express from "express"
 import { check } from "express-validator"
 import { Verify } from "../middleware/verify.js";
 import Space from "../models/Space.js" 
-import {  AllSpacesSummary, FullSpaceInfo, createSpace } from "../controllers/space.js";
+import {  AllSpacesSummary, FullSpaceInfo, SortedByProximity, createSpace } from "../controllers/space.js";
 
 
 // router we will be using to handle get and post requests
@@ -25,10 +25,18 @@ router.get(
 
 /* GET a specific space given ID */
 router.get(
-  '/:id',
+  '/space-info/:id',
   Verify, 
   FullSpaceInfo,
 );
+
+/* GET all spaces sorted by proximity from the user */
+router.get(
+  '/sort',
+  Verify, 
+  SortedByProximity,
+);
+
 
 //POST a new space
 router.post('/', createSpace)

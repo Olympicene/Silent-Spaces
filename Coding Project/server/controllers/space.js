@@ -27,7 +27,7 @@ export async function AllSpacesSummary(req, res) {
 }
 
 /**
- * @route GET /space/:id
+ * @route GET /space/space-info/:id
  * @desc Get full information of a space given its ID
  * @access Public
  */
@@ -54,6 +54,45 @@ export async function FullSpaceInfo(req, res) {
 }
 
 /**
+ * @route GET /space/sort?lat=&lon=
+ * @desc Fetch all spaces sorted by user proximity
+ * @access Public
+ */
+export async function SortedByProximity(req, res) {
+    try {
+        var latitude = req.query.lat;
+        var longitude = req.query.lon;
+        const sortedSpaces = await Space
+        .find({
+            location: {
+              $near: {
+                $geometry: {
+                  type: "Point",
+                  coordinates: [latitude, longitude],
+                },
+                $maxDistance: 100000000,
+              },
+            },
+          }, {id:1, name:1, coords:1, rating:1});
+
+        res.status(200).json({
+            status: "success",
+            data: [sortedSpaces],
+            message: "Spaces fetched successfully!"
+        });
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ 
+            status: err,
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        })
+    }
+}
+
+/**
  * @route POST /space/add-space-basic
  * @desc Adds a basic space (id, name, desc, coords, address) -- Emily's using this one 
  * @access Public
@@ -61,19 +100,23 @@ export async function FullSpaceInfo(req, res) {
 export async function createSpace (req, res) {
 
     try {
-        const {id, name, desc, coords, address, rating, statistics, reviews, amenities} = req.body
+        const {id, name, img, desc, coords, address, rating, statistics, reviews, amenities} = req.body
 
         // create new user
         const newSpace = new Space({
-            id,
-            name,
-            desc,
-            coords,
-            address,
-            rating,
-            statistics,
-            reviews,
-            amenities
+            id: id,
+            name: name,
+            img: img,
+            desc: desc,
+            location: {
+                type: "Point",
+                coordinates: coords,
+            },
+            address: address,
+            rating: rating,
+            statistics: statistics,
+            reviews: reviews,
+            amenities: amenities,
         });
 
         // check if that id already exists

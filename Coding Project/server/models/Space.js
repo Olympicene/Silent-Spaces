@@ -8,7 +8,6 @@ const SpaceSchema = new mongoose.Schema(
             max: 25,
             unique: true
         },
-
         name: {
             type: String,
             required: "Space Name is required",
@@ -21,19 +20,12 @@ const SpaceSchema = new mongoose.Schema(
             type: String,
             required: "Description is requried",
         },
-        coords: {
+        location: {
             type: {
-                lat: {
-                    type: Number, 
-                    required: "The Latitude is required"
-                },
-                lon: {
-                    type: Number, 
-                    required: "The Longitude is required"
-                }
+                type: String,
+                default: 'Point',
             },
-            required: "Space Coordinate is required",
-            max: 25,
+            coordinates: [Number],
         },
         address: {
             type: String,

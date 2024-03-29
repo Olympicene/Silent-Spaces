@@ -8,16 +8,17 @@ import Space from "../models/Space.js"
 
 export async function AddSpaceBasic(req, res) {
     try {
-        const { id, name, desc, lat, lon, address } = req.body
+        const { id, name, img, desc, lat, lon, address } = req.body
 
         // create new user
         const newSpace = new Space({
             id: id,
             name: name,
+            img: img,
             desc: desc,
-            coords: {
-                lat: lat,
-                lon: lon,
+            location: {
+                type: "Point",
+                coordinates: [lat, lon],
             },
             address: address,
         });
