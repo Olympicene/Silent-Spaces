@@ -6,7 +6,7 @@ const InputBox = ({features, change, style}) => {
         <div className='standard-input-box'>
             <input id= {features.id}
                     name= {features.name}
-                    type= {features.text}
+                    type= {features.type}
                     placeholder= {features.placeholder}
                     onChange={change}
                     style={style}/>

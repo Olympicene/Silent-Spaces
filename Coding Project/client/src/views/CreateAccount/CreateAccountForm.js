@@ -74,10 +74,10 @@ const RegistrationForm = () => {
             <InputBox features={{id:"user", name:"username", type:"text", placeholder:"Username"}} change={handleChange}
                                         style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
-            <InputBox features={{id:"email", name:"email", type:"text", placeholder:"Email"}} change={handleChange}
+            <InputBox features={{id:"email", name:"email", type:"email", placeholder:"Email"}} change={handleChange}
                                         style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
-            <InputBox features={{id:"password", name:"password", type:"text", placeholder:"Password"}} change={handleChange} 
+            <InputBox features={{id:"password", name:"password", type:"password", placeholder:"Password"}} change={handleChange} 
                                         style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
 
