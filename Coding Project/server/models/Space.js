@@ -1,8 +1,4 @@
 import mongoose from "mongoose"
-import bcrypt from "bcrypt"
-
-import jwt from 'jsonwebtoken'
-import { SECRET_ACCESS_TOKEN } from '../config/index.js'
 
 const SpaceSchema = new mongoose.Schema(
     {
@@ -17,6 +13,9 @@ const SpaceSchema = new mongoose.Schema(
             type: String,
             required: "Space Name is required",
             max: 25,
+        },
+        img: {
+            type: String,
         },
         desc: {
             type: String,
