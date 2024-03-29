@@ -4,6 +4,7 @@ import RegistrationForm from './CreateAccountForm';
 import windowintoStudyGroup from "../../assets/windowIntoStudyGroup.svg";
 
 const CreateAccount = () => {
+    require('./CreateAccount.css')
     return (
         <div>
             <div className="left half">
