@@ -43,7 +43,6 @@ const Login = () => {
             setErrors(res.message)
           }
 
-
           throw new Error('Login failed');
         }
   

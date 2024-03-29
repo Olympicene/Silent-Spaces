@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import InputBox from "../../components/InputBox/InputBox";
-
+import Button from "../../components/Button/Button"
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -81,7 +81,7 @@ const RegistrationForm = () => {
                                         style={{display : "block", backgroundColor: "#BBCEAE", color: "#181D27", border: "1px solid #BBCEAE"}}/>
 
 
-            <button type="submit" className= "green-button">Create Account</button>
+            <Button type="submit" theme="contrast" style={{width : "70%", marginTop: "20px"}}> Register</Button>
 
             {!success && <p>{errors}</p>}
             {success && <h3>SUCCESS Please navigate to the <Link to="/log-in">login</Link> </h3>}
