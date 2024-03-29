@@ -9,3 +9,19 @@
     display: inline-block; 
     margin-left: 1rem;
   }
+
+  .spacetile-image {
+    width: 100%;
+    height: 60%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.spacetile-image img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}

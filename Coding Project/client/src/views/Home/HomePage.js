@@ -14,6 +14,8 @@ const HomePage = () => {
         email: '',
       });
 
+    const [spaceData, setSpaceData] = useState([]);
+
 
     const checkAuth = async (e) => {
       
@@ -37,7 +39,6 @@ const HomePage = () => {
         };
 
         await setUserData(updatedUserData);
-        console.log(userData)
 
       } catch (error) {
         console.error(error)
@@ -45,8 +46,36 @@ const HomePage = () => {
       }
     };
 
+    const getSpaces = async (e) => {
+      try {
+        const response = await fetch('http://localhost:5005/space/all-spaces', {
+          method: 'GET',
+          credentials: 'include',
+        });
+  
+        if (!response.ok) {
+          throw new Error('Auth failed');
+        }
+  
+        const res = await response.json();
+
+        console.log(res)
+        const updatedSpaceData = res.data[0];
+ 
+        console.log(updatedSpaceData)
+        await setSpaceData(updatedSpaceData);
+        
+
+      } catch (error) {
+        console.error(error)
+        navigate('/log-in')
+      }
+    }
+
+
     useEffect(()=>{
         checkAuth()
+        getSpaces()
     }, []);
 
     require('./HomePage.css')
@@ -65,14 +94,13 @@ const HomePage = () => {
               <Dropdown drop={{feature:"filter by ▼", options:filterbyOptions}}/>
             </div>
             <hr width="90%" size="2"/>
+            
             <div className='spacetiles-container'>
-              
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3", path:"/log-in"}} />
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              {spaceData.map((item, index) => {
+                return (
+                  <SpaceTile details={{img: item.img, name: item.name, miles:"< 5 miles", rating: item.rating}} />
+                )
+              })}
             </div>
 
           </div>
