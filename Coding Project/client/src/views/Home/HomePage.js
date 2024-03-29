@@ -6,7 +6,8 @@ import { ReactComponent as Border } from '../../assets/abstractBookshelf.svg';
 import { useNavigate } from "react-router-dom";
 import SpaceTile from '../../components/SpaceTile/SpaceTile';
 import NavBar from '../../components/NavBar/NavBar';
-
+import './HomePage.css';
+import Searchbar from '../../components/SearchBar/Searchbar';
 
 
 const MenuPage = () => {
@@ -78,10 +79,11 @@ const MenuPage = () => {
         //             </button>
         //         </div>
         //     </div>
-        <>
-          <NavBar/>
-          <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
-        </>  
+        <div className='menu-page'>
+          {/* <NavBar/>
+          <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} /> */}
+          <Searchbar/>
+        </div>  
             
         // </div>
     );
