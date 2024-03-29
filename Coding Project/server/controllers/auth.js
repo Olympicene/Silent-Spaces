@@ -174,3 +174,29 @@ export async function Logout(req, res) {
         })
     }
 }
+
+export async function getUser (req, res){
+    const { id } = req.params
+
+    const user = await User.findOne({username: id})
+    if (!user){
+        return res.status(404).json({error: "No such user"})
+    }
+
+    res.status(200).json(user)
+
+}
+
+export async function updateUser (req, res) {
+    const { id } = req.params
+
+    const user = await User.findOneAndUpdate({username: id}, {
+        ...req.body
+    }, {new: true}) // you can set this to false to return the old document instead
+
+    if (!user){
+        return res.status(404).json({error: "No such review"})
+    }
+
+    res.status(200).json(user)
+}
