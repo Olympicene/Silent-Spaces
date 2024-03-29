@@ -1,3 +1,4 @@
+import Review from "../models/Review.js";
 import Space from "../models/Space.js"
 
 /**
@@ -68,7 +69,7 @@ export async function SortedByProximity(req, res) {
               $near: {
                 $geometry: {
                   type: "Point",
-                  coordinates: [latitude, longitude],
+                  coordinates: [longitude, latitude],
                 },
                 $maxDistance: 100000000,
               },
@@ -148,6 +149,200 @@ export async function createSpace (req, res) {
     }
 }
 
-// delete a user
+// delete a space
+export async function deleteSpace (req, res) {
+    const { id } = req.params
 
-// update a user
+    // will check to see if the id is valid
+    // if (!mongoose.Types.ObjectId.isValid(id)){
+    //     return res.status(404).json({error: "No such review"})
+    // }
+    
+    const review = await Review.findOneAndDelete({id: id})
+    if (!review){
+        return res.status(404).json({error: "No such space"})
+    }
+
+    res.status(200).json(review)
+}
+
+// update a space
+export async function updateSpace (req, res) {
+    const { id } = req.params
+    //update the only the fields we need to update
+    //
+    const review = await Space.findOneAndUpdate({id: id}, {
+        ...req.body
+    }, {new: true}) // you can set this to false to return the old document instead
+
+    if (!review){
+        return res.status(404).json({error: "No such space"})
+    }
+
+    res.status(200).json(review)
+}
+
+// sort spaces based on ratings
+export async function filterByRatings (req,res) {
+    const order = req.query.order;
+
+    if (order !== 'asc' && order !== 'desc'){
+        order = 'asc'
+    }
+
+    try {
+        const spaces = await Space.find()
+        if (order == 'asc'){
+            spaces.sort((a,b) => a.rating - b.rating)
+        }
+        else{
+            spaces.sort((a,b) => b.rating - a.rating)
+        }
+        res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+export async function filterByNoise (req,res) {
+    const order = req.query.order;
+
+    if (order !== 'asc' && order !== 'desc'){
+        order = 'asc'
+    }
+
+    try {
+        let spaces = await Space.find()
+
+        //this will filter out spaces that have no statistics
+        spaces = spaces.filter(space => space.statistics)
+        if (order == 'asc'){
+            spaces.sort((a,b) => a.statistics.noiseLevels - b.statistics.noiseLevels)
+        }
+        else{
+            spaces.sort((a,b) => b.statistics.noiseLevels - a.statistics.noiseLevels)
+        }
+        res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+export async function filterByOccupancy (req,res) {
+    const order = req.query.order;
+
+    if (order !== 'asc' && order !== 'desc'){
+        order = 'asc'
+    }
+
+    try {
+        let spaces = await Space.find()
+
+        //this will filter out spaces that have no statistics
+        spaces = spaces.filter(space => space.statistics)
+
+        if (order == 'asc'){
+            spaces.sort((a,b) => a.statistics.occupancy - b.statistics.occupancy)
+        }
+        else{
+            spaces.sort((a,b) => b.statistics.occupancy - a.statistics.occupancy)
+        }
+        res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+export async function filterByConnectivity (req,res) {
+    const order = req.query.order;
+
+    if (order !== 'asc' && order !== 'desc'){
+        order = 'asc'
+    }
+
+    try {
+        let spaces = await Space.find()
+
+        //this will filter out spaces that have no statistics
+        spaces = spaces.filter(space => space.statistics)
+
+        if (order == 'asc'){
+            spaces.sort((a,b) => a.statistics.connectivity - b.statistics.connectivity)
+        }
+        else{
+            spaces.sort((a,b) => b.statistics.connectivity - a.statistics.connectivity)
+        }
+        res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+// GET a list of spaces based on alphabetical order
+export async function sortByLetter (req,res) {
+    let order = req.query.order;
+
+    if (order !== 'asc' && order !== 'desc'){
+        order = 'asc'
+    }
+
+    try {
+        //const spaces = await Space.find({}).sort({name: -1})
+        if (order === 'asc'){
+            let spaces = await Space.find({}).sort({name: 1})
+            spaces = spaces.filter(space => space.name)
+            res.status(200).json({ spaces });
+        }
+        else{
+            let spaces = await Space.find({}).sort({name: -1})
+            spaces = spaces.filter(space => space.name)
+            res.status(200).json({ spaces });
+        }
+        //res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+// GET a list of spaces based on amenities
+export async function filterByAmenities (req,res) {
+    const filters = {}
+    const parameters = ['has_outlets', 'has_whiteboards', 'has_screen', 'is_food_beverage_friendly', 'has_printer', 'has_breakout_rooms', 'restrooms']
+    for (const param of parameters){
+        if(req.query[param] !== undefined){
+            filters['amenities.$(param)'] = Boolean(req.query[param])
+            console.log(Boolean(req.query[param]))
+        }
+    }
+    if(req.query.seating_type !== undefined){
+        filters['amenities.seating_type'] = (req.query[seating_type])
+    }
+
+    try {
+        const spaces = await Space.find(filters).sort()
+        
+        res.status(200).json({ spaces });
+        
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+// GET a list of spaces based on distance
