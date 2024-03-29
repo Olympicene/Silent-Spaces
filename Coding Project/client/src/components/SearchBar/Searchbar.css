@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .searchbar {
     margin: auto;
     width: 50%;
@@ -18,9 +13,12 @@
     height : 75%;
     border-radius: 20px;
     background-color: #254D32;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #F2F2F2;
     text-align: center;
+    font-family: 'poppins', sans-serif;
+    outline: none;
+    border: 0;
 }
 
 .searchbar-input {
@@ -32,15 +30,12 @@
     border-radius: 20px;
     background-color: #F2F2F2;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border : 0;
 }
 
 .searchbar-input::placeholder {
     font-family: 'poppins', sans-serif;
     color: #254D32;
     font-size: 1.5rem;
-}
-
-input {
-    outline: none;
-    border : 0;
 }

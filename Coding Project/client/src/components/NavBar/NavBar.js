@@ -12,8 +12,8 @@ function NavBar() {
       <IconContext.Provider value={{color:"#ffff", size:"2rem"}}>
       <nav className='nav-menu active'> 
         <ul className='nav-menu-items'>
-          <h1 style={{marginTop:"1rem", marginBottom:"-10px"}}>SILENT</h1>
-          <h1> SPACES</h1>
+          <h1 style={{marginTop:"1.5rem", marginBottom:"-10px", marginLeft:"25px"}}>SILENT</h1>
+          <h1 style={{marginLeft:"25px"}}> SPACES</h1>
           {NavbarData.map((item, index) => {
             return (
               <li key = {index} className={item.className}>
@@ -30,8 +30,8 @@ function NavBar() {
             </div>
       
             <div style={{display:"inline-block"}}>
-              <p style={{fontSize:"1.2rem"}}>username</p>
-              <p style={{fontSize:"1rem", color:"#595A5E"}}>email</p>
+              <p style={{fontSize:"1.2rem", margin: "0", padding: "0"}}>username</p>
+              <p style={{fontSize:"1rem", color:"#595A5E", margin: "0", padding: "0"}}>email</p>
             </div>
           </div>
         </ul>
