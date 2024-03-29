@@ -320,7 +320,7 @@ export async function sortByLetter (req,res) {
 }
 
 // GET a list of spaces based on amenities
-export async function filterByRatings (req,res) {
+export async function filterByAmenities (req,res) {
     const order = req.query.order;
 
     if (order !== 'asc' && order !== 'desc'){
