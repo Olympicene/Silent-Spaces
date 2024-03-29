@@ -16,7 +16,9 @@
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #E9E9E9;
-    grid-gap: 10px;
+    grid-gap: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 /* menu page styles */
