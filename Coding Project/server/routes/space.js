@@ -2,7 +2,7 @@ import express from "express"
 import { check } from "express-validator"
 import { Verify } from "../middleware/verify.js";
 import Space from "../models/Space.js" 
-import { createSpace } from "../controllers/space.js";
+import {  AllSpacesSummary, FullSpaceInfo, createSpace } from "../controllers/space.js";
 
 
 // router we will be using to handle get and post requests
@@ -16,17 +16,20 @@ var router = express.Router();
 //   res.send('respond with a resource');
 // });
 
+/* GET all spaces */
+router.get(
+  '/all-spaces',
+  Verify, 
+  AllSpacesSummary,
+);
 
-// GET all spaces
-router.get('/', (req, res) => {
-  res.json({mssg: 'GET all users'});
-});
-
-//GET a single space
-// we can use the :id for route parameters, it can change
-router.get('/:id', (req, res) => {
-  res.json({mssg: 'GET a single users'});
-});
+/* GET a specific space given ID */
+// TODO extract ID field from url?
+router.get(
+  '/space-info/:id',
+  Verify, 
+  FullSpaceInfo,
+);
 
 //POST a new space
 router.post('/', createSpace)

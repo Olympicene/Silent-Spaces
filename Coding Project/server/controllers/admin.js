@@ -2,7 +2,7 @@ import Space from "../models/Space.js"
 
 /**
  * @route POST admin/add-space-basic
- * @desc Adds a basic space (id, name, desc, coords, address)
+ * @desc Adds a basic space (id, name, desc, coords, address) -- Annie's using this one 
  * @access Public
  */
 
