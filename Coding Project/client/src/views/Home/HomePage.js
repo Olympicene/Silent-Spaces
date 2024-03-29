@@ -82,7 +82,7 @@ const MenuPage = () => {
           <div className='right-side-menu' style={{marginLeft : "20vw"}}>
             <Searchbar/>
             <div className='spacetiles-container'>
-              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3", path:"/log-in"}} />
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
