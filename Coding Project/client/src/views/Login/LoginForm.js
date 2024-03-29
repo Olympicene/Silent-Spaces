@@ -57,6 +57,7 @@ const Login = () => {
       }
     };
   
+    require('./Login.css')
     return (
         <form onSubmit={handleSubmit}>
             <InputBox features={{id:"email", name:"email", type:"text", placeholder:"Email"}} 

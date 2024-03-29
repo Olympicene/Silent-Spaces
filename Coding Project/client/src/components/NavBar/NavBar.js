@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import {NavbarData} from './NavbarData'
 import { IconContext } from 'react-icons';
 import * as FaIcons from "react-icons/fa";
-import './NavBar.css';
 
 function NavBar() {
+  require('./NavBar.css')
   return (
+
     <div >
       <IconContext.Provider value={{color:"#ffff", size:"2rem"}}>
       <nav className='nav-menu active'> 

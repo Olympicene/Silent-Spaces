@@ -1,7 +1,7 @@
 import React from "react";
-import "./Button.css"
 
 const Button = ({children, theme, change, style}) => {
+    require('./Button.css')
     return (
         <button 
                 className={theme} 

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import './Searchbar.css';
 import { FaSearch } from "react-icons/fa";
 
 const Searchbar = () => {
@@ -19,6 +18,7 @@ const Searchbar = () => {
         document.getElementById('searchbar-input').style.fontSize = '1.5rem'
     }
 
+    require('./Searchbar.css')
     return (
         <div className='searchbar'>
                 <input
