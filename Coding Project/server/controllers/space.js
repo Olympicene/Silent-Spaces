@@ -74,7 +74,7 @@ export async function SortedByProximity(req, res) {
                 $maxDistance: 100000000,
               },
             },
-          }, {id:1, name:1, coords:1, rating:1});
+          }, {id:1, name:1, img:1, coords:1, rating:1});
 
         res.status(200).json({
             status: "success",
