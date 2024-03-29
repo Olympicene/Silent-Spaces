@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
 
-import '../../style.css';
-import laptop from "../../assets/laptop.svg";
+import './Landing.css';
 
 const LandingPage = () => {
   return (

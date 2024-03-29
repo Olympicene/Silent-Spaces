@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../style.css'; // Import the CSS file
+import './Home.css'; // Import the CSS file
 import { ReactComponent as MapIcon } from "../../assets/locationIcon.svg";
 import { ReactComponent as ListIcon } from "../../assets/clipboardIcon.svg";
 import { ReactComponent as Border } from '../../assets/abstractBookshelf.svg';
 import { useNavigate } from "react-router-dom";
 import SpaceTile from '../../components/SpaceTile/SpaceTile';
 import NavBar from '../../components/NavBar/NavBar';
+
 
 
 const MenuPage = () => {

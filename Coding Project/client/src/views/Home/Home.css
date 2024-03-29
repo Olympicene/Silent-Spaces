@@ -1,0 +1,143 @@
+/* menu page styles */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    text-align: center;
+    background-image: url('../../assets/blackGridBackground.svg');
+    background-repeat: repeat;
+    background-size: 500px;
+    background-attachment: local;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .left-border, .right-border {
+    position: absolute;
+    height: 100vh;
+    width: 100vh;
+  }
+  
+  .left-border {
+    left: 0;
+  }
+  
+  .right-border {
+    right: 0;
+    transform: rotate(180deg);
+  }
+  
+  .subsection {
+    margin-top: 20px;
+  }
+  
+  .buttons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons-container button {
+    width: 275px;
+    height: 50px; /* Adjust the height */
+    margin-bottom: 20px; /* Increase margin */
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    padding: 15px 30px; /* Increase padding */
+    border: none;
+    cursor: pointer;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Increase font size */
+  }
+  
+  .buttons-container button:hover {
+    background-color: darkgreen;
+  }
+  
+  .buttons-container button svg {
+    margin-right: 15px; /* Increase spacing between icon and text */
+    vertical-align: middle;
+  }
+  
+  .buttons-container button span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .icon {
+    width: 25px;
+    height: 25px;
+    fill: white;
+  }
+  
+  /* Split the screen in half */
+  .half {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: clip;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    background-color: #3A7D44;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color: #f2f1dc;
+  }
+  
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  /* Style the image inside the centered container, if needed */
+  .centered img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    color: #f2f1dc;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color: #f2f1dc;
+  }
+  
+  
+  .green-button {
+    background-color: #3A7D44;
+    border: none;
+    color: #F2F1DC;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+  }
