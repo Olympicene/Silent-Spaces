@@ -1,4 +1,5 @@
 import React from "react";
+import './InputBox.css';
 
 const InputBox = ({features, change, style}) => {
     return (

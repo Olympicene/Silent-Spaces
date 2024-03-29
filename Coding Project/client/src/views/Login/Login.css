@@ -74,38 +74,9 @@
       outline: none;
   }
   
-
-.standard-input-box > input {
-    margin : 0 auto;
-    margin-bottom: 1rem;
-    width: 24rem;
-    height: 3rem;
-    font-size: 1.5rem; 
-    font-family: 'poppins', sans-serif;
-    opacity: 0.7;
-    padding: 0.5rem;
-  }
-  
-  .standard-input-box > input::placeholder {
-    color: #254D32;
-  }
-  
   .side-by-side {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .space-tile {
-    width: 20%;
-    background: #F2F2F2;
-    overflow: hidden;
-    font-family: 'poppins', sans-serif;
-    padding: 8px;
-  }
-  
-  .tile-rating {
-    display: inline-block; 
-    margin-left: 1rem;
   }
   
   

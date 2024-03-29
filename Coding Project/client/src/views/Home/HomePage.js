@@ -79,9 +79,16 @@ const MenuPage = () => {
         //     </div>
         <div className='menu-page'>
           <NavBar/>
-          {/* <Searchbar/> */}
-          <div className='spacetiles-container'>
-            <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+          <div className='right-side-menu'>
+            <Searchbar/>
+            <div className='spacetiles-container'>
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+              <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />
+            </div>
           </div>
         </div>  
             

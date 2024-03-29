@@ -1,6 +1,7 @@
 import React from "react";
 import studySpace from "../../assets/studyspace.svg";
 import star from "../../assets/blackstar.svg";
+import './SpaceTile.css';
 
 const SpaceTile = ({details}) => {
     return (

@@ -1,0 +1,11 @@
+.space-tile {
+    background: #F2F2F2;
+    overflow: hidden;
+    font-family: 'poppins', sans-serif;
+    padding: 15px;
+  }
+  
+  .tile-rating {
+    display: inline-block; 
+    margin-left: 1rem;
+  }
