@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './LoginForm';
-import '../../style.css';
+import './Login.css';
 import studyimage from "../../assets/abtractPeoplePeerProgramming.svg";
 
 
