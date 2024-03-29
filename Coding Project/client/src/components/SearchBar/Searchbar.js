@@ -29,7 +29,7 @@ const Searchbar = () => {
                     onChange={handleChange}
                     value={searchInput} />
                 <button className='search-button'>
-                    <FaSearch style={{paddingRight:"10px", fontSize:"1.5rem", paddingTop:"10px"}}/>
+                    <FaSearch style={{fontSize:"1.5rem", height : "3.5rem"}}/>
                     search
                 </button>
         </div>
