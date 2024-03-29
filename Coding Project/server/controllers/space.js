@@ -68,7 +68,7 @@ export async function SortedByProximity(req, res) {
               $near: {
                 $geometry: {
                   type: "Point",
-                  coordinates: [latitude, longitude],
+                  coordinates: [longitude, latitude],
                 },
                 $maxDistance: 100000000,
               },

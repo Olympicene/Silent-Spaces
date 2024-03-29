@@ -18,7 +18,7 @@ export async function AddSpaceBasic(req, res) {
             desc: desc,
             location: {
                 type: "Point",
-                coordinates: [lat, lon],
+                coordinates: [lon, lat],
             },
             address: address,
         });
