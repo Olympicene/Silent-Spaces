@@ -24,9 +24,8 @@ router.get(
 );
 
 /* GET a specific space given ID */
-// TODO extract ID field from url?
 router.get(
-  '/space-info/:id',
+  '/:id',
   Verify, 
   FullSpaceInfo,
 );

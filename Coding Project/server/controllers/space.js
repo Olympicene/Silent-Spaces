@@ -27,19 +27,19 @@ export async function AllSpacesSummary(req, res) {
 }
 
 /**
- * @route GET /space/space-info/:id
+ * @route GET /space/:id
  * @desc Get full information of a space given its ID
  * @access Public
  */
 export async function FullSpaceInfo(req, res) {
     try {
-        // TODO change logic to extract ID field and find all the info from that space
-        const spacesArray = await Space.find({}, {id:1, name:1, coords:1, rating:1});
+        var queryid = req.params.id;
+        const spaceInfo = await Space.find({id: queryid}, {});
 
         res.status(200).json({
             status: "success",
-            data: [spacesArray],
-            message: "Spaces fetched successfully!"
+            data: spaceInfo,
+            message: "Space full information fetched successfully!"
         });
 
     } catch (err) {
