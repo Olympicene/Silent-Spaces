@@ -21,6 +21,13 @@
     padding-right: 10%;
 }
 
+.sort-and-filter {
+    display: flex;
+    justify-content: space-between;
+    float: right;
+    margin-right: 2rem;
+  }
+
 /* menu page styles */
 .menu-container {
     display: flex;
