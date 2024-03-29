@@ -27,6 +27,7 @@ const Login = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
+          credentials: 'include'
         });
   
         if (!response.ok) {
@@ -45,9 +46,8 @@ const Login = () => {
         }
   
         const data = await response.json();
-        console.log(data);
-        console.log('Cookies: ', response);
-        navigate('/menu')
+        console.log(response.cookie);
+        navigate('/home')
 
       } catch (error) {
         console.error('Error:', error);

@@ -6,7 +6,7 @@ import Searchbar from '../../components/SearchBar/Searchbar';
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 
-const MenuPage = () => {
+const HomePage = () => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({
         first_name: '',
@@ -16,17 +16,18 @@ const MenuPage = () => {
         password: '',
       });
 
-    const checkAuth = async () => {
+
+    const checkAuth = async (e) => {
       
       try {
         const response = await fetch('http://localhost:5005/v1/user', {
           method: 'GET',
+          credentials: 'include',
         });
   
         console.log(response)
 
         if (!response.ok) {
-
           throw new Error('Auth failed');
         }
   
@@ -35,6 +36,7 @@ const MenuPage = () => {
 
       } catch (error) {
         console.error(error)
+        navigate('/log-in')
       }
     };
 
@@ -77,4 +79,4 @@ const MenuPage = () => {
     );
 };
 
-export default MenuPage;
+export default HomePage;
