@@ -79,7 +79,7 @@ const MenuPage = () => {
         //     </div>
         <div className='menu-page'>
           <NavBar/>
-          <div className='right-side-menu'>
+          <div className='right-side-menu' style={{marginLeft : "20vw"}}>
             <Searchbar/>
             <div className='spacetiles-container'>
               <SpaceTile details={{name:"name", miles:"0.4", rating:"4.3"}} />

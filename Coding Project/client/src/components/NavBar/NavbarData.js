@@ -17,7 +17,7 @@ export const NavbarData = [
     },
     {
         title : "resources",
-        path : "/",
+        path : "/space",
         icon : <FaIcons.FaBook />,
         className : 'nav-text'
     },
