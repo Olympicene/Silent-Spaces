@@ -15,7 +15,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 let app = express();
 
 // === config header info ===
-app.use(cors()) // enables CORS
+app.use(cors({origin: 'http://localhost:3000' , credentials :  true})) // enables CORS
 app.disable("x-powered-by"); //Reduce fingerprinting
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
