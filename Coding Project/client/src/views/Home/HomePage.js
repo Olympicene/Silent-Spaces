@@ -118,7 +118,7 @@ const HomePage = () => {
 
     return (
         <div className='menu-page'>
-            <NavBar info={userData} />
+            <NavBar info={userData} page="home" />
 
             <div className='right-side-menu' style={{ marginLeft: "20vw" }}>
                 <Searchbar />

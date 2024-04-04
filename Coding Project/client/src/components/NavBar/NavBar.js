@@ -4,10 +4,8 @@ import {NavbarData} from './NavbarData'
 import { IconContext } from 'react-icons';
 import * as FaIcons from "react-icons/fa";
 
-function NavBar({info}) {
-
-  
-
+function NavBar({info, page}) {
+  console.log(page)
 
   require('./NavBar.css')
   return (
@@ -20,7 +18,7 @@ function NavBar({info}) {
           <h1 style={{marginLeft:"25px"}}> SPACES</h1>
           {NavbarData.map((item, index) => {
             return (
-              <li key = {index} className={item.className}>
+              <li key = {index} className={page === item.title ? "nav-text-focus" : item.className}>
                 <Link to = {item.path}>
                   {item.icon}
                   <span className='navbar-span'>{item.title}</span>

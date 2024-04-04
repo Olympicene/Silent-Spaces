@@ -35,7 +35,30 @@
     opacity: 0.9;
   }
 
-  .nav-text a:focus {
+  .nav-text-focus {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    height: 60px;
+  }
+
+  .nav-text-focus a {
+    text-decoration: none;
+    background-color: #778a7c;
+    opacity: 0.9;
+    color: #F2F2F2;
+    font-size: 2rem;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+
+  .nav-text-focus a:hover {
     background-color: #778a7c;
     opacity: 0.9;
   }
