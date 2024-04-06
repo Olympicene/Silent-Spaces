@@ -10,6 +10,7 @@
   width: 100%;
   height: 100%;
   background-color: #E9E9E9;
+  position: relative;
 }
 
 .spacetiles-container {
@@ -25,8 +26,13 @@
 .sort-and-filter {
   display: flex;
   justify-content: space-between;
-  float: right;
+  top : 0;
+  right : 3rem;
   margin-right: 2rem;
+  z-index: 2; 
+  margin : 1rem;
+  position: relative;
+  
 }
 
 /* Log in page styles */

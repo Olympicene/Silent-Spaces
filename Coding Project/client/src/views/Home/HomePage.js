@@ -120,12 +120,14 @@ const HomePage = () => {
         <div className='menu-page'>
             <NavBar info={userData} page="home" />
 
-            <div className='right-side-menu' style={{ marginLeft: "20vw" }}>
+            <div className='right-side-menu' style={{ marginLeft: "20vw"}}>
+                
                 <Searchbar />
                 <div className='sort-and-filter'>
                     <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortFilterChange} />
                     <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} />
                 </div>
+                
                 <hr width="90%" size="2" />
 
                 <div className='spacetiles-container'>

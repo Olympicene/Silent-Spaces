@@ -5,7 +5,7 @@
     width : 20rem;
     height : 15rem;
     padding : 1rem;
-    position : relative;
+    position: relative;
   }
 
   
@@ -15,7 +15,6 @@
   }
 
   .heart-icon {
-    position: absolute;
     top: 0;
     right: 0;
     margin: 10px;

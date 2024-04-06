@@ -16,6 +16,12 @@ export const NavbarData = [
         className : 'nav-text'
     },
     {
+        title : "favorites",
+        path : "/favorites",
+        icon : <FaIcons.FaHeart />,
+        className : 'nav-text'
+    },
+    {
         title : "resources",
         path : "/resources",
         icon : <FaIcons.FaBook />,
