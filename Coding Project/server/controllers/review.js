@@ -18,7 +18,7 @@ export async function getSpaceReviews (req,res) {
     res.status(200).json({
         status: "success",
         data: reviews,
-        message: 'Reviews recieved successfully for space ${space_id}.'}})
+        message: 'Reviews recieved successfully for space ${space_id}.'})
 }
 
 // GET a single review
@@ -38,7 +38,7 @@ export async function getReview (req, res) {
     res.status(200).json({
         status: "success",
         data: [review],
-        message: "Review Found."}})
+        message: "Review Found."})
 }
 
 export async function getSpaceAverages (req, res) {
@@ -65,7 +65,7 @@ export async function getSpaceAverages (req, res) {
             Overall_Score: overall_average,
             Overall_Noise: average_noise,
             Overall_Occupancy: average_occ,
-            Overall_Connectivity: average_connect
+            Overall_Connectivity: average_connect,
             message: "Review Statistics Calculated Successfully"
          });
     } catch (err) {
