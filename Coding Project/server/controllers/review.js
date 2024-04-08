@@ -18,7 +18,7 @@ export async function getSpaceReviews (req,res) {
     res.status(200).json({
         status: "success",
         data: reviews,
-        message: 'Reviews recieved successfully for space ${space_id}.'}})
+        message: 'Reviews recieved successfully for space ${space_id}.'})
 }
 
 // GET a single review
