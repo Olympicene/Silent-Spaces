@@ -5,14 +5,20 @@ import Mongoose from "mongoose"
 // GET all reviews for all spaces
 export async function getReviews (req,res) {
     const reviews = await Review.find({}).sort({createdAt: -1})
-    res.status(200).json(reviews)
+    res.status(200).json({
+        status: "success",
+        data: reviews,
+        message: "All Reviews Recieved."})
 }
 
 // Get all reviews for a single space
 export async function getSpaceReviews (req,res) {
     const { space_id } = req.params
     const reviews = await Review.find({space_id: space_id}).sort({createdAt: -1})
-    res.status(200).json(reviews)
+    res.status(200).json({
+        status: "success",
+        data: reviews,
+        message: 'Reviews recieved successfully for space ${space_id}.'}})
 }
 
 // GET a single review
@@ -29,7 +35,10 @@ export async function getReview (req, res) {
         return res.status(404).json({error: "No such review"})
     }
 
-    res.status(200).json(review)
+    res.status(200).json({
+        status: "success",
+        data: [review],
+        message: "Review Found."}})
 }
 
 export async function getSpaceAverages (req, res) {
@@ -57,6 +66,7 @@ export async function getSpaceAverages (req, res) {
             Overall_Noise: average_noise,
             Overall_Occupancy: average_occ,
             Overall_Connectivity: average_connect
+            message: "Review Statistics Calculated Successfully"
          });
     } catch (err) {
         console.error(err);
@@ -100,7 +110,12 @@ export async function deleteReview (req, res) {
         return res.status(404).json({error: "No such review"})
     }
 
-    res.status(200).json(review)
+    // res.status(200).json(review)
+    res.status(200).json({
+        status: "success",
+        data: [review],
+        message: "Review deleted successfully!"
+    })
 }
 
 export async function updateReview (req, res) {
@@ -121,5 +136,9 @@ export async function updateReview (req, res) {
         return res.status(404).json({error: "No such review"})
     }
 
-    res.status(200).json(review)
+    res.status(200).json({
+        status: "success",
+        data: [review],
+        message: "Review updated successfully!"
+    }})
 }

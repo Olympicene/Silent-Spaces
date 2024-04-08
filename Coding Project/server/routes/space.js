@@ -33,29 +33,29 @@ router.get(
 );
 
 //POST a new space
-router.post('/', Validate, createSpace)
+router.post('/', Verify, createSpace)
 
 // Delete a space
-router.delete('/:id', Validate, deleteSpace)
+router.delete('/:id', Verify, deleteSpace)
 
 // Update a space
-router.patch('/:id', Validate, updateSpace)
+router.patch('/:id', Verify, updateSpace)
 
 // TODO: fix the routes and agree on a standard
 
 // ---- SORT SPACE QUERIES ---- //
 
 // GET a list of spaces based on ratings
-router.get('/overall-ratings/sort', Validate, filterByRatings)
-router.get('/noise-ratings/sort', Validate, filterByNoise)
-router.get('/occupancy-ratings/sort', Validate, filterByOccupancy)
-router.get('/connectivity-ratings/sort', Validate, filterByConnectivity)
+router.get('/overall-ratings/sort', Verify, filterByRatings)
+router.get('/noise-ratings/sort', Verify, filterByNoise)
+router.get('/occupancy-ratings/sort', Verify, filterByOccupancy)
+router.get('/connectivity-ratings/sort', Verify, filterByConnectivity)
 
 // GET a list of spaces based on alphabetical order
-router.get('/alphabetical-order/sort', Validate, sortByLetter)
+router.get('/alphabetical-order/sort', Verify, sortByLetter)
 
 // GET a list of spaces based on amenities
-router.get('/amenities/sort', Validate, filterByAmenities)
+router.get('/amenities/sort', Verify, filterByAmenities)
 
 /* GET all spaces sorted by distance/proximity from the user */
 router.get(
