@@ -5,7 +5,6 @@ import Space from "../models/Space.js"
 import Validate from "../middleware/validate.js"
 import {  AllSpacesSummary, FullSpaceInfo, filterByAmenities, SortedByProximity, createSpace, deleteSpace, updateSpace, filterByRatings, filterByNoise, filterByOccupancy, filterByConnectivity, sortByLetter} from "../controllers/space.js";
 
-
 // router we will be using to handle get and post requests
 var router = express.Router();
 
@@ -16,6 +15,8 @@ var router = express.Router();
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
 // });
+
+// ---- BASIC SPACE QUERIES ---- //
 
 /* GET all spaces */
 router.get(
@@ -31,13 +32,18 @@ router.get(
   FullSpaceInfo,
 );
 
-/* GET all spaces sorted by proximity from the user */
-router.get(
-  '/sort',
-  Verify, 
-  SortedByProximity,
-);
+//POST a new space
+router.post('/', Validate, createSpace)
 
+// Delete a space
+router.delete('/:id', Validate, deleteSpace)
+
+// Update a space
+router.patch('/:id', Validate, updateSpace)
+
+// TODO: fix the routes and agree on a standard
+
+// ---- SORT SPACE QUERIES ---- //
 
 // GET a list of spaces based on ratings
 router.get('/overall-ratings/sort', Validate, filterByRatings)
@@ -51,23 +57,14 @@ router.get('/alphabetical-order/sort', Validate, sortByLetter)
 // GET a list of spaces based on amenities
 router.get('/amenities/sort', Validate, filterByAmenities)
 
-// GET a list of spaces based on distance
-// TODO: Annie You
+/* GET all spaces sorted by distance/proximity from the user */
+router.get(
+  '/sort',
+  Verify, 
+  SortedByProximity,
+);
 
-//POST a new space
-router.post('/', Validate, createSpace)
+// ---- FILTER SPACE QUERIES ---- //
 
-// Delete a space
-router.delete('/:id', Validate, deleteSpace)
-
-// Update a space
-router.patch('/:id', Validate, updateSpace)
-
-/* POST new Favorite Space on the list*/
-/*router.post(
-  '/add-favorite-space',
-  Verify,
-  AddFavoriteSpace,
-);*/
 
 export { router }
