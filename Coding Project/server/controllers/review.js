@@ -140,5 +140,5 @@ export async function updateReview (req, res) {
         status: "success",
         data: [review],
         message: "Review updated successfully!"
-    }})
+    })
 }

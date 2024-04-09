@@ -323,13 +323,18 @@ export async function sortByLetter (req,res) {
 export async function filterByAmenities (req,res) {
     const filters = {}
     const parameters = ['has_outlets', 'has_whiteboards', 'has_screen', 'is_food_beverage_friendly', 'has_printer', 'has_breakout_rooms', 'restrooms']
-    console.log(req)
     for (const param of parameters){
         if(req.query[param] !== undefined){
             filters['amenities.$(param)'] = Boolean(req.query[param])
+            console.log(param)
             console.log(Boolean(req.query[param]))
         }
+        else{
+            //WHAT CAN I PUT HERE INSTEAD
+            filters['amenities.$(param)'] = undefined 
+        }
     }
+    console.log(filters)
     if(req.query.seating_type !== undefined){
         filters['amenities.seating_type'] = (req.query[seating_type])
     }
