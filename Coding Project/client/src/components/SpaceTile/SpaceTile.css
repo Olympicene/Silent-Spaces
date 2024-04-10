@@ -14,21 +14,26 @@
     margin-left: 1rem;
   }
 
-  .heart-icon {
+  Heart {
     top: 0;
     right: 0;
-    margin: 10px;
   }
 
   .spacetile-image {
     width: 100%;
-    height: 60%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     left: 0; 
     top: 0;
+}
+
+.spacetile-info p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .spacetile-image img {
@@ -38,3 +43,22 @@
     left: 0; 
     top: 0;
 }
+
+.spacetile-info {
+  /* background-color: blue; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 60%;
+}
+
+.spacetile-rating {
+
+}
+
+.spacetile-summary {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+} 
