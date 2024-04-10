@@ -326,9 +326,15 @@ export async function filterByAmenities (req,res) {
     for (const param of parameters){
         if(req.query[param] !== undefined){
             filters['amenities.$(param)'] = Boolean(req.query[param])
+            console.log(param)
             console.log(Boolean(req.query[param]))
         }
+        else{
+            //WHAT CAN I PUT HERE INSTEAD
+            filters['amenities.$(param)'] = undefined 
+        }
     }
+    console.log(filters)
     if(req.query.seating_type !== undefined){
         filters['amenities.seating_type'] = (req.query[seating_type])
     }

@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema(
         username: {
             type: String,
             required: "Your username is required",
+            unique: true,
             max: 25,
         },
         first_name: {
