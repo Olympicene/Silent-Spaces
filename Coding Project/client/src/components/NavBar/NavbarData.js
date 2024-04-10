@@ -1,6 +1,8 @@
 import React from 'react'
 import * as Io5Icons from "react-icons/io5";
 import * as FaIcons from "react-icons/fa";
+import * as ImIcons from "react-icons/im";
+
 
 export const NavbarData = [
     {
@@ -19,6 +21,18 @@ export const NavbarData = [
         title : "favorites",
         path : "/favorites",
         icon : <FaIcons.FaHeart />,
+        className : 'nav-text'
+    },
+    {
+        title : "calendar",
+        path : "/calendar",
+        icon : <FaIcons.FaCalendar/>,
+        className : 'nav-text'
+    },
+    {
+        title : "study hub",
+        path : "/study-hub",
+        icon : <ImIcons.ImLibrary/>,
         className : 'nav-text'
     },
     {
