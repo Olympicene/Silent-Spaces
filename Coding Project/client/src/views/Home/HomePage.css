@@ -15,12 +15,10 @@
 
 .spacetiles-container {
   padding: 20px;
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: #E9E9E9;
-  grid-gap: 15px;
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 .sort-and-filter {

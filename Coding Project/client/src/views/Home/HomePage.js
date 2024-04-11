@@ -100,7 +100,6 @@ const HomePage = () => {
             setSpaceData(res.data[0]);
           }
 
-
       } catch (error) {
           console.error(error);
           navigate('/log-in');
@@ -121,18 +120,20 @@ const HomePage = () => {
             <NavBar info={userData} page="home" />
 
             <div className='right-side-menu' style={{ marginLeft: "20vw"}}>
-                
+
                 <Searchbar />
                 <div className='sort-and-filter'>
                     <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortFilterChange} />
                     <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} />
                 </div>
-                
+
                 <hr width="90%" size="2" />
 
                 <div className='spacetiles-container'>
                     {spaceData && spaceData.map((item, index) => (
-                        <SpaceTile key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating }} />
+                        <div className='spacetile'>
+                            <SpaceTile  key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating }} />
+                        </div>
                     ))}
                 </div>
             </div>
