@@ -21,8 +21,10 @@ import { MdOutlinePersonOff } from "react-icons/md";
 import { MdOutlinePeople } from "react-icons/md";
 import { PiWifiSlashBold } from "react-icons/pi";
 import { PiWifiHighBold } from "react-icons/pi";
+import {useParams} from "react-router-dom";
 
 const SpacePage = () => {
+    const {id} = useParams();
     const navigate = useNavigate();
 
     const [userData, setUserData] = useState({
@@ -30,6 +32,7 @@ const SpacePage = () => {
         last_name: '',
         email: '',
     });
+    const [spaceData, setSpaceData] = useState({});
 
     const checkAuth = async () => {
         try {
@@ -60,8 +63,31 @@ const SpacePage = () => {
         }
     };
 
+    const getSpace = async () => {
+        try {
+            const response = await fetch(`http://localhost:5005/space/space-info/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                throw new Error('Auth failed');
+            }
+
+            const res = await response.json();
+            // console.log(res.data[0])
+            setSpaceData(res.data[0])
+
+
+        } catch (error) {
+            console.error(error);
+            navigate('/log-in');
+        }
+    };
+
     useEffect(() => {
         checkAuth();
+        getSpace();
     }, []);
 
 
@@ -75,10 +101,11 @@ const SpacePage = () => {
     };
 
     const open = Boolean(anchor);
-    const id = open ? 'simple-popper' : undefined;
+    const popupState = open ? 'simple-popper' : undefined;
 
 
     return (
+         
         <div className='spacePage'>
             <NavBar info={userData}/>
             <div style={{marginLeft : "20vw"}}  className='space-content'>
@@ -100,15 +127,19 @@ const SpacePage = () => {
                 </div>
                 </IconContext.Provider>
                 <div className='imageCarousel'>
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FuMxoInU-cwU%2Fmaxresdefault.jpg%3Fsqp%3D-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgQSg1MA8%3D%26rs%3DAOn4CLA2ogBMU0cOd32Y2-eoHiZYPb1oFw&f=1&nofb=1&ipt=d33387150872cf642351c496057c4085d1294a37e3f23198fff957bfc6cbcfc0&ipo=images" alt="" />
+                    <img src={spaceData.img} alt="" />
                 </div>
                 <div className='space-info'>
                     <div className='space-labels'>
                         <div className='space-main-label'>
+
+                            { spaceData &&
                             <div>
-                                <p style={{fontSize:"50px", margin: 20}}> Example Study Space</p>
-                                <p style={{color:"grey", fontSize:"34px", margin: 20}}>123 Sesame Street</p>
+                                <p style={{fontSize:"50px", margin: 20}}> {spaceData.name}</p>
+                                <p style={{color:"grey", fontSize:"34px", margin: 20}}> {spaceData.address}</p>
                             </div>
+                            }
+
                             <div style={{textAlign: 'right'}}>
                                 <p style={{fontSize:"50px", margin: 20}}> <img className="tile-rating" src={star} style= {{width : "40px"}} alt = ""/> 4.3</p>
                                 <p style={{color:"grey", fontSize:"34px", margin: 20}}>73 Miles away</p>
@@ -170,7 +201,7 @@ const SpacePage = () => {
 
                         <div>
                             <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>
-                            <BasePopup id={id} open={open} anchor={anchor}>
+                            <BasePopup id={popupState} open={open} anchor={anchor}>
                                 <Popup/>
                             </BasePopup>
                         </div>

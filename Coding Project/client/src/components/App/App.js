@@ -16,9 +16,9 @@ export default function App() {
       <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
           <Route path="home" element={<HomePage />} />
+          <Route path="spaces/:id" element={<SpacePage />} />
           <Route path="sign-up" element={<CreateAccount />} />
           <Route path="log-in" element={<LogIn />} />
-          <Route path="space" element={<SpacePage />} />
           <Route path="resources" element={<ResourcesPage/>} />
           <Route path="*" element={<NoPage />} />
         </Route>

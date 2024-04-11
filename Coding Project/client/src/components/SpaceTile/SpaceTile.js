@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Heart from "react-animated-heart";
 
 
-const SpaceTile = ({details, style}) => {
+const SpaceTile = ({details, style, path}) => {
     let nameToDisplay = ""
 
     const [isClick, setClick] = useState(false);
@@ -21,7 +21,7 @@ const SpaceTile = ({details, style}) => {
         <div className="space-tile" style={{style}}>
             <Heart isClick={isClick} onClick={() => setClick(!isClick)} styles={{position:"absolute", right:"-12px", top:"-12px", }} />
 
-            <Link to = {details.path} style={{ textDecoration: 'none' }}>
+            <Link to = {path} style={{ textDecoration: 'none' }}>
             <div className="spacetile-image" >
                 <img src={(details.img === undefined ? studySpace : details.img)} alt = "" style={{width:"100%", objectFit: "cover"}}/>
             </div>
