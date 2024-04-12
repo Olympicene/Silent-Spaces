@@ -1,0 +1,55 @@
+.main-timer {
+    background-color: #f2fff4;
+    margin-top: 5rem;
+    position: absolute;
+    width : 17rem;
+    border: solid;
+    border-color: #254d32;
+    border-radius: 10px;
+}
+
+.timer-times > h1 {
+    font-size: 9rem;
+    margin: 0;
+    padding: 0;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    color: #254d32;
+    font-family: 'poppins', sans-serif;
+    font-weight: 300;
+}
+
+.timer-action {
+    border: solid;
+    border-color: #254d32;
+    margin: 5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.timer-action > h3 {
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+    color: #254d32;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.timer-button {
+    background-color: #8ee6a3;
+    border: none;
+    margin-left: 6rem;
+    padding-left: 2rem;
+    padding-right : 2rem;
+    padding-top : 1rem;
+    padding-bottom : 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.timer-icons {
+    color: #254d32;
+    font-size: 1.5rem;
+}
