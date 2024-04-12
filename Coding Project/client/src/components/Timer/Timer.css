@@ -1,8 +1,9 @@
 .main-timer {
     background-color: #f2fff4;
     margin-top: 5rem;
-    position: absolute;
+    /* position: absolute; */
     width : 17rem;
+    height : 30rem;
     border: solid;
     border-color: #254d32;
     border-radius: 10px;
@@ -26,6 +27,15 @@
     border-radius: 10px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    display: flex;
+}
+
+.timer-action-icon {
+    font-size: 1.5rem;
+    color: #254d32;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+    margin-right: 0.4rem;
 }
 
 .timer-action > h3 {
