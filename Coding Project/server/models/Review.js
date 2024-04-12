@@ -48,15 +48,15 @@ const ReviewSchema = new mongoose.Schema(
             type: {
                 noiseLevels: {
                     type: Number,
-                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                    enum: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5,3.0, 3.5, 4.0, 4.5, 5.0]
                 },
                 occupancy: {
                     type: Number,
-                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                    enum: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5,3.0, 3.5, 4.0, 4.5, 5.0]
                 },
                 connectivity: {
                     type: Number,
-                    enum: [0, 0.5, 1, 1.5, 2, 2.5,3, 3.5, 4, 4.5, 5]
+                    enum: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5,3.0, 3.5, 4.0, 4.5, 5.0]
                 }
             }
         },

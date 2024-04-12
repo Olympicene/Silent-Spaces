@@ -14,7 +14,8 @@ const SpaceSchema = new mongoose.Schema(
             max: 25,
         },
         img: {
-            type: String,
+            type: Array,
+            default: []
         },
         desc: {
             type: String,
@@ -54,6 +55,11 @@ const SpaceSchema = new mongoose.Schema(
             type: Array,
             default: []
         },
+        tags:{
+            type: Array,
+            default: []
+        },
+
         amenities: {
             type: {
                 has_outlets: {
