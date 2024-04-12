@@ -1,0 +1,24 @@
+
+.space-stats {
+    box-shadow: 6px 6px;
+    padding: 5px 0px;
+}
+
+.space-stats div{
+    /* background-color: red; */
+    margin: 5px 5px;
+    width: 90%;
+    /* background-color: #e9e9e9; */
+    /* padding: 0px 20px; */
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.space-stats-label {
+    font-size: 1.7rem;
+    margin: 0;
+}

@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import NavBar from '../../components/NavBar/NavBar';
 import { Link } from "react-router-dom";
 import { IconContext } from 'react-icons';
 import { IoIosArrowBack } from "react-icons/io";
-import { IoShareSocialOutline } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
 import star from "../../assets/blackstar.svg";
 import Tag from '../../components/Tag/Tag';
 import Amenity from '../../components/Amenity/Amenity';
+
+import {useParams} from "react-router-dom";
+import Heart from "react-animated-heart";
+import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import Button from '../../components/Button/Button'
 import Popup from '../../components/Popup/Popup';
-import { Slider } from '@mui/material';
-
-import { FaVolumeMute } from "react-icons/fa";
-import { FaVolumeHigh } from "react-icons/fa6";
-import { MdOutlinePersonOff } from "react-icons/md";
-import { MdOutlinePeople } from "react-icons/md";
-import { PiWifiSlashBold } from "react-icons/pi";
-import { PiWifiHighBold } from "react-icons/pi";
-import {useParams} from "react-router-dom";
+import SpaceStats from '../../components/SpaceStats/SpaceStats';
 
 const SpacePage = () => {
     const {id} = useParams();
     const navigate = useNavigate();
-
+    const [isClick, setClick] = useState(false);
     const [userData, setUserData] = useState({
         first_name: '',
         last_name: '',
@@ -111,19 +104,14 @@ const SpacePage = () => {
             <div style={{marginLeft : "20vw"}}  className='space-content'>
                 <IconContext.Provider value={{color:"grey", size:"1.5rem"}}>
                 <div className='space-menu-bar'>
-                    <Link to="/menu">
+                    <Link onClick={() => navigate(-1)}>
                         <IoIosArrowBack />
                     </Link>
-                    <div className='interactables'>
-                        <div>
-                            <IoShareSocialOutline />
-                            <u>share</u>
-                        </div>
-                        <div>
-                            <FaRegHeart/>
-                            <u>save</u>
-                        </div>
-                    </div>
+                    {/* <div className='interactables'>
+
+                        <IoShareSocialOutline />
+                        <Heart isClick={isClick} onClick={() => setClick(!isClick)} styles={{position:"relative", marginRight: "-20px"}} />
+                    </div> */}
                 </div>
                 </IconContext.Provider>
                 <div className='imageCarousel'>
@@ -131,81 +119,58 @@ const SpacePage = () => {
                 </div>
                 <div className='space-info'>
                     <div className='space-labels'>
+
+                        {/* MAIN INFO */}
                         <div className='space-main-label'>
 
-                            { spaceData &&
-                            <div>
-                                <p style={{fontSize:"50px", margin: 20}}> {spaceData.name}</p>
-                                <p style={{color:"grey", fontSize:"34px", margin: 20}}> {spaceData.address}</p>
-                            </div>
-                            }
+                            { spaceData.name && spaceData.rating &&
+                            <div className='space-name-rating'>
+                                <p style={{fontSize: "50px", textOverflow: "ellipsis",}}> {spaceData.name}</p>
+                                <p style={{fontSize:"50px"}}> <img className="tile-rating" src={star} style= {{width : "40px"}} alt = ""/> {spaceData.rating.toFixed(1)}</p>
+                            </div>}
+                            
+                            {spaceData.address && spaceData.location && spaceData.reviews &&
+                            <div className='space-address'>
+                                <p style={{fontSize:"34px", color:"grey"}}> {spaceData.address}</p>
+                                <p style={{fontSize:"24px", color:"grey"}}>73 miles away - {spaceData.reviews.length} {spaceData.reviews.length == 1 ? "review" : "reviews"}</p>
+                            </div>}
 
-                            <div style={{textAlign: 'right'}}>
-                                <p style={{fontSize:"50px", margin: 20}}> <img className="tile-rating" src={star} style= {{width : "40px"}} alt = ""/> 4.3</p>
-                                <p style={{color:"grey", fontSize:"34px", margin: 20}}>73 Miles away</p>
-                            </div>
                         </div>
+                        
+                        {/* DESCRIPTION */}
+                        { spaceData.desc &&
+                        <div className='space-description'>
+                                <p>{spaceData.desc}</p>
+                        </div>}
+
+                        {/* TAGS */}
+                        { spaceData.tags &&
                         <div className='space-tags'>
-                            <Tag>crowd favorite</Tag>
-                            <Tag>coffee shop</Tag>
-                            <Tag>group-friendly</Tag>
-                            <Tag>comfy</Tag>
-                            <Tag>locally-owned</Tag>
-                            <Tag>2024 Winner</Tag>
-                        </div>
+                            {spaceData.tags.map((item, index) => (
+                                <Tag>{item}</Tag>
+                            ))}
+                        </div>}
+
+                        {/* AMENETIES */}
+                        { spaceData.ameneties &&
                         <div className='space-ameneties'>
                             <p style={{color:"black", fontSize:"30px", margin: 20}}>amenities:</p>
                             <div className='space-ameneties-list'>
-                                <Amenity>power outlets</Amenity>
-                                <Amenity>drinks allowed</Amenity>
-                                <Amenity>whiteboards</Amenity>
-                                <Amenity>printers</Amenity>
-                                <Amenity>coffee machine</Amenity>
-                                <Amenity>free computers</Amenity>
+                                {spaceData.ameneties.map((item, index) => (
+                                    <Amenity>{item}</Amenity>
+                                ))}
                             </div>
                         </div>
+                        }
                     </div>
                     <div className='space-ratings'>
-                        <IconContext.Provider value={{color:"grey", size:"3rem"}}>
-                        <div className='space-stats'> 
-                            
-                            <div>
-                                <FaVolumeMute />
-                                <div className='space-stats-sound'>
-                                    <Slider disabled defaultValue={60} aria-label="Disabled slider" color="secondary" />
-                                </div>
-                                <FaVolumeHigh />
-                            </div>
-
-
-                            <div>
-                                <MdOutlinePersonOff />
-                                <div className='space-stats-crowd'>
-                                    <Slider disabled defaultValue={50} aria-label="Disabled slider" color="secondary" />
-                                </div>
-                                <MdOutlinePeople />
-                            </div>
-
-                            <div>
-                            <PiWifiSlashBold />
-                            <div className='space-stat-wifi'>
-                                <Slider disabled defaultValue={80} aria-label="Disabled slider" color="secondary" />
-                            </div>
-                            <PiWifiHighBold />
-                            </div>
-
-                             
-                            
-                        </div>
-                        </IconContext.Provider>
-
+                        <SpaceStats></SpaceStats>
                         <div>
                             <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>
                             <BasePopup id={popupState} open={open} anchor={anchor}>
                                 <Popup/>
                             </BasePopup>
                         </div>
-
                     </div>
                 </div>
             </div>
