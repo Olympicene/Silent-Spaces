@@ -14,14 +14,17 @@ import User from "../models/User.js"
 
 export async function Register(req, res) {
     try {
-        const {first_name, last_name, email, password} = req.body
+        const {username, first_name, last_name, email, password} = req.body
 
         // create new user
         const newUser = new User({
-            first_name, 
-            last_name, 
-            email, 
-            password,
+            username: username,
+            first_name: first_name, 
+            last_name: last_name, 
+            email: email, 
+            password: password,
+            favorite_spaces: [],
+            user_reviews: []
         });
 
         // check if exists

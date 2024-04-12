@@ -9,9 +9,9 @@ const Timer = () => {
   require('./Timer.css');
 
   // variables for timers
-  const WORKTIME = 25;
-  const SHORTBREAK = 5;
-  const LONGBREAK = 15; 
+  const WORKTIME = 3;
+  const SHORTBREAK = 2;
+  const LONGBREAK = 1; 
   
   const [minutes, setMinutes] = useState(WORKTIME);
   const [seconds, setSeconds] = useState(0);
@@ -35,7 +35,7 @@ const Timer = () => {
     }
 
     if (seconds === 0 && minutes === 0) {
-      if (action == WORKTIME) {
+      if (action === WORKTIME) {
         if (tasks < 3) {
           setMinutes(SHORTBREAK)
           setAction(SHORTBREAK)
@@ -45,12 +45,12 @@ const Timer = () => {
           setAction(LONGBREAK)
         }
       }
-      else if (action == SHORTBREAK) {
+      else if (action === SHORTBREAK) {
         setMinutes(WORKTIME)
         setAction(WORKTIME)
         setTasks(tasks+1)
       }
-      else if (action == LONGBREAK) {
+      else if (action === LONGBREAK) {
         setMinutes(WORKTIME)
         setAction(WORKTIME)
         setTasks(1)
@@ -69,24 +69,13 @@ const Timer = () => {
     setRunning(false);
   }
 
-  function renderHeader () {
-
-    if (action == WORKTIME) {
-      return <h1 style={{fontSize:"3rem", marginLeft:"3rem"}}>focus</h1>
-    }
-    else if (action == SHORTBREAK) {
-      return <p>short break!</p>
-    }
-    else if (action == LONGBREAK) {
-      return <p>long break!</p>
-    }
-  }
-
   return (
     
     <div className = "main-timer">
+
       <div className="timer-action">
-        <h3>{action == WORKTIME ? "focus" : "break"}</h3>
+        {action === WORKTIME ? (<PiBrain className="timer-action-icon"/>) : (<FaCoffee className="timer-action-icon"/>)}
+        <h3>{action === WORKTIME ? "focus" : "break"}</h3>
       </div>
 
       <div className="timer-times">

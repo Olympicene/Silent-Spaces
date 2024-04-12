@@ -39,7 +39,7 @@ const UserSchema = new mongoose.Schema(
         role: {
             type: String,
             required: true,
-            default: "0x01",
+            default: "Student",
         },
         favorite_spaces: [
             {
