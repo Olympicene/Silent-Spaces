@@ -6,8 +6,16 @@
     height : 15rem;
     padding : 1rem;
     position: relative;
+
+    border-radius: 15px;
+    transition: 0.6s;
   }
 
+  .space-tile:hover {
+    transition: 0.6s;
+    scale: 1.02;
+    box-shadow: 5px 5px;
+}
   
   .tile-rating {
     display: inline-block; 
