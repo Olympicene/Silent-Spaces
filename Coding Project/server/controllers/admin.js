@@ -4,8 +4,11 @@ import Space from "../models/Space.js"
  * @route POST admin/add-space-basic
  * @desc Adds a basic space (id, name, desc, coords, address) -- Annie's using this one 
  * @access Public
+ * 
+ * @input every field that u wanna add
+ * @inputExample  -- on postman........
+ * @outputExample -- just the new space info (this is admin only so no example :P)
  */
-
 export async function AddSpaceBasic(req, res) {
     try {
         const { id, name, img, desc, lat, lon, address } = req.body

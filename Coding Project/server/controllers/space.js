@@ -5,7 +5,35 @@ import Space from "../models/Space.js"
  * @route GET /space/all-spaces
  * @desc Fetch all spaces summaries listed in the database
  * @access Public
+ * 
+ * @input user is logged in
+ * @inputExample  -- GET http://localhost:5005/space/all-spaces
+ * @outputExample -- next comment block
  */
+/*
+{
+    "status": "success",
+    "data": [
+        [
+            {
+                "_id": "65f37ad4f16cf8c61893d072",
+                "id": 0,
+                "name": "WiCS Lounge",
+                "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+                "rating": 4
+            },
+            {
+                "_id": "65f391a5c18e8779421ce0bd",
+                "id": 1,
+                "name": "IDEA Commons",
+                "img": "https://library.uic.edu/wp-content/uploads/sites/196/2020/02/idea.jpg",
+                "rating": 4.5
+            },
+        ]
+    ],
+    "message": "Spaces fetched successfully!"
+}
+*/
 export async function AllSpacesSummary(req, res) {
     try {
         const spacesArray = await Space.find({}, {id:1, name:1, img:1, coords:1, rating:1});
@@ -31,7 +59,37 @@ export async function AllSpacesSummary(req, res) {
  * @route GET /space/space-info/:id
  * @desc Get full information of a space given its ID
  * @access Public
+ * 
+ * @input :id - id of space requested
+ *        user is logged in
+ * @inputExample  -- GET http://localhost:5005/space/space-info/0
+ * @outputExample -- next comment block
  */
+/*
+{
+    "status": "success",
+    "data": [
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.648167,
+                    41.870278
+                ]
+            },
+            "reviews": [],
+            "_id": "65f37ad4f16cf8c61893d072",
+            "id": 0,
+            "name": "WiCS Lounge",
+            "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+            "desc": "Study space for Women in Computer Science at UIC",
+            "address": "SELE 2268, 950 S Halsted St, Chicago, IL 60607",
+            "rating": 4
+        }
+    ],
+    "message": "Space full information fetched successfully!"
+}
+*/
 export async function FullSpaceInfo(req, res) {
     try {
         var queryid = req.params.id;
@@ -56,9 +114,38 @@ export async function FullSpaceInfo(req, res) {
 
 /**
  * @route GET /space/sort?lat=&lon=
- * @desc Fetch all spaces sorted by user proximity
+ * @desc Fetch all spaces sorted by proximity to the user's location
  * @access Public
+ * 
+ * @input :id - space to add in path parameters
+ *        user is logged in
+ * @inputExample  -- GET http://localhost:5005/space/sort?lat=41.8720&lon=-87.6479
+ * @outputExample -- next comment block
  */
+/*
+{
+    "status": "success",
+    "data": [
+        [
+            {
+                "_id": "6606da6628c41e053b834b23",
+                "id": 4,
+                "name": "UIC Student Center East",
+                "img": "https://studentcenters.uic.edu/wp-content/uploads/sites/159/2017/12/SC_Slides_EastTerrace2.jpg",
+                "rating": 4.3
+            },
+            {
+                "_id": "65f37ad4f16cf8c61893d072",
+                "id": 0,
+                "name": "WiCS Lounge",
+                "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+                "rating": 4
+            }
+        ]
+    ],
+    "message": "Spaces fetched successfully!"
+}
+*/
 export async function SortedByProximity(req, res) {
     try {
         var latitude = req.query.lat;
@@ -350,5 +437,3 @@ export async function filterByAmenities (req,res) {
         res.status(500).json({ message: 'Internal server error dingus' });
     }
 }
-
-// GET a list of spaces based on distance
