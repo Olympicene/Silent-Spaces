@@ -2,7 +2,7 @@ import express from "express"
 import User from "../models/User.js"
 import { Verify } from "../middleware/verify.js";
 import Validate from "../middleware/validate.js"
-import { GetFavoriteSpaces, AddFavoriteSpace, DeleteFavoriteSpace } from "../controllers/user.js";
+import { GetFavoriteSpaces, GetFavoriteIds, AddFavoriteSpace, DeleteFavoriteSpace } from "../controllers/user.js";
 
 var router = express.Router();
 
@@ -17,6 +17,13 @@ router.get(
     '/fav-space/all',
     Verify, 
     GetFavoriteSpaces,
+);
+
+/* GET favorite spaces IDS only from current user */
+router.get(
+    '/fav-space/ids',
+    Verify, 
+    GetFavoriteIds,
 );
 
 /* POST new favorite space for current user*/

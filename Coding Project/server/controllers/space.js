@@ -16,19 +16,38 @@ import Space from "../models/Space.js"
     "data": [
         [
             {
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -87.648167,
+                        41.870278
+                    ]
+                },
                 "_id": "65f37ad4f16cf8c61893d072",
                 "id": 0,
                 "name": "WiCS Lounge",
-                "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+                "img": [
+                    "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg"
+                ],
                 "rating": 4
             },
             {
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -87.650503,
+                        41.871707
+                    ],
+                    "_id": "65f391a5c18e8779421ce0be"
+                },
                 "_id": "65f391a5c18e8779421ce0bd",
                 "id": 1,
                 "name": "IDEA Commons",
-                "img": "https://library.uic.edu/wp-content/uploads/sites/196/2020/02/idea.jpg",
+                "img": [
+                    "https://library.uic.edu/wp-content/uploads/sites/196/2020/02/idea.jpg"
+                ],
                 "rating": 4.5
-            },
+            }
         ]
     ],
     "message": "Spaces fetched successfully!"
@@ -36,7 +55,7 @@ import Space from "../models/Space.js"
 */
 export async function AllSpacesSummary(req, res) {
     try {
-        const spacesArray = await Space.find({}, {id:1, name:1, img:1, coords:1, rating:1});
+        const spacesArray = await Space.find({}, {id:1, name:1, img:1, location:1, rating:1});
 
         res.status(200).json({
             status: "success",
@@ -128,17 +147,35 @@ export async function FullSpaceInfo(req, res) {
     "data": [
         [
             {
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -87.6479,
+                        41.8719
+                    ]
+                },
                 "_id": "6606da6628c41e053b834b23",
                 "id": 4,
                 "name": "UIC Student Center East",
-                "img": "https://studentcenters.uic.edu/wp-content/uploads/sites/159/2017/12/SC_Slides_EastTerrace2.jpg",
+                "img": [
+                    "https://studentcenters.uic.edu/wp-content/uploads/sites/159/2017/12/SC_Slides_EastTerrace2.jpg"
+                ],
                 "rating": 4.3
             },
             {
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -87.648167,
+                        41.870278
+                    ]
+                },
                 "_id": "65f37ad4f16cf8c61893d072",
                 "id": 0,
                 "name": "WiCS Lounge",
-                "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+                "img": [
+                    "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg"
+                ],
                 "rating": 4
             }
         ]
@@ -161,7 +198,7 @@ export async function SortedByProximity(req, res) {
                 $maxDistance: 100000000,
               },
             },
-          }, {id:1, name:1, img:1, coords:1, rating:1});
+          }, {id:1, name:1, img:1, location:1, rating:1});
 
         res.status(200).json({
             status: "success",
@@ -257,7 +294,7 @@ export async function deleteSpace (req, res) {
 export async function updateSpace (req, res) {
     const { id } = req.params
     //update the only the fields we need to update
-    //
+
     const review = await Space.findOneAndUpdate({id: id}, {
         ...req.body
     }, {new: true}) // you can set this to false to return the old document instead

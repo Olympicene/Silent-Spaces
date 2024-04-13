@@ -15,19 +15,37 @@ import User from "../models/User.js";
     "status": "success",
     "data": [
         {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.648167,
+                    41.870278
+                ]
+            },
             "_id": "65f37ad4f16cf8c61893d072",
             "id": 0,
             "name": "WiCS Lounge",
-            "img": "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg",
+            "img": [
+                "https://today.uic.edu/wp-content/uploads/2020/01/CS-Lounge-WiCS_6x4.jpg"
+            ],
             "rating": 4
         },
         {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6506,
+                    41.8745
+                ]
+            },
             "_id": "6606db4928c41e053b834b25",
             "id": 5,
             "name": "UIC Academic and Residential Complex",
-            "img": "https://bestinamericanliving.com/wp-content/uploads/awards/2020/2020-9302/09arcatuicdaveburk-2000x1192.jpg",
+            "img": [
+                "https://bestinamericanliving.com/wp-content/uploads/awards/2020/2020-9302/09arcatuicdaveburk-2000x1192.jpg"
+            ],
             "rating": 3.7
-        },
+        }
     ],
     "message": "Favorite spaces fetched successfully!"
 }
@@ -44,11 +62,59 @@ export async function GetFavoriteSpaces(req, res) {
         });
         
         // get space summaries of spaces in idArray
-        const spacesArray = await Space.find({id: {$in: idArray}}, {id:1, name:1, img:1, coords:1, rating:1});
+        const spacesArray = await Space.find({id: {$in: idArray}}, {id:1, name:1, img:1, location:1, rating:1});
 
         res.status(200).json({
             status: "success",
             data: spacesArray,
+            message: "Favorite spaces fetched successfully!"
+        });
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ 
+            status: 'err',
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        })
+    }
+}
+
+/**
+ * @route GET /user/fav-space/ids
+ * @desc Fetch space ids for user's favorite spaces
+ * @access Public
+ * 
+ * @input user is logged in
+ * @inputExample  -- GET http://localhost:5005/user/fav-space/ids
+ * @outputExample -- next comment block
+ */
+/*
+{
+    "status": "success",
+    "data": [
+        0,
+        5,
+        6
+    ],
+    "message": "Favorite spaces fetched successfully!"
+}
+*/
+export async function GetFavoriteIds(req, res) {
+    try {
+        const queryname = req.user.username; // get username
+        const favSpaces = await User.find({username: queryname}, {favorite_spaces:1, _id:0}); // find user's fav spaces
+
+        // clean array
+        const idArray = [];
+        favSpaces[0].favorite_spaces.forEach(function(obj) {
+            idArray.push(obj.space_id);
+        });
+
+        res.status(200).json({
+            status: "success",
+            data: idArray,
             message: "Favorite spaces fetched successfully!"
         });
 
