@@ -178,6 +178,43 @@ export async function Logout(req, res) {
     }
 }
 
+/**
+ * @router GET v1/auth/<user>/info
+ * @desc gets all information regarding the user
+ * @access Public
+ * 
+ * @input : id - username of the person you want to search for
+ *         user is logged in
+ * @inputExample -- GET http://localhost:5005/v1/auth/emend1/info
+ * @outputExample -- next comment block
+ * 
+ */
+/**
+ * {
+    "_id": "66055c0e84cc0c2072f1b2ca",
+    "username": "emend1",
+    "first_name": "emily",
+    "last_name": "Mendoza",
+    "email": "emend1@uic.edu",
+    "role": "Student",
+    "favorite_spaces": [
+        {
+            "space_id": 1,
+            "_id": "6606280f2adc8c8f94440afd"
+        },
+        {
+            "space_id": 2,
+            "_id": "6606280f2adc8c8f94440afe"
+        }
+    ],
+    "user_reviews": [],
+    "createdAt": "2024-03-28T12:01:18.695Z",
+    "updatedAt": "2024-03-29T02:31:43.208Z",
+    "__v": 0
+}
+ * 
+ */
+
 export async function getUser (req, res){
     const { id } = req.params
 
@@ -189,6 +226,44 @@ export async function getUser (req, res){
     res.status(200).json(user)
 
 }
+
+/**
+ * 
+ * @route PATCH /v1/auth/<username>/update
+ * @desc Update information to the user 
+ * @access Public
+ * 
+ * @input : id - username of user you want to update
+ *          user is logged in
+ * 
+ * @inputExample -- GET http://localhost:5005/v1/auth/emend1/update
+ * @outputExample -- next comment block
+ */
+/**
+ * 
+ * {
+    "_id": "66055c0e84cc0c2072f1b2ca",
+    "username": "emend1",
+    "first_name": "emily",
+    "last_name": "Mendoza",
+    "email": "emend1@uic.edu",
+    "role": "Student",
+    "favorite_spaces": [
+        {
+            "space_id": 1,
+            "_id": "661c4311fc60b3c6f0c1a39a"
+        },
+        {
+            "space_id": 2,
+            "_id": "661c4311fc60b3c6f0c1a39b"
+        }
+    ],
+    "user_reviews": [],
+    "createdAt": "2024-03-28T12:01:18.695Z",
+    "updatedAt": "2024-04-14T20:56:49.128Z",
+    "__v": 0
+}
+ */
 
 export async function updateUser (req, res) {
     const { id } = req.params
