@@ -22,7 +22,7 @@ import Mongoose from "mongoose"
             "_id": "6606036e80b695a0bf503d3e",
             "review_id": 3,
             "space_id": 2,
-            "email": "michael.johnson@example.com",
+            "username": "michael.johnson@example.com",
             "comment": "Overall a good experience, but the noise level was a bit high.",
             "amenities": {
                 "has_outlets": true,
@@ -78,7 +78,7 @@ export async function getReviews (req,res) {
             "_id": "6605ebed665b96d4f854b104",
             "review_id": 123,
             "space_id": 1,
-            "email": "example@uic.edu",
+            "username": "example@uic.edu",
             "comment": "This space was very gross",
             "amenities": {
                 "has_outlets": true,
@@ -137,7 +137,7 @@ export async function getSpaceReviews (req,res) {
             "_id": "6605ebed665b96d4f854b104",
             "review_id": 123,
             "space_id": 1,
-            "email": "example@uic.edu",
+            "username": "emend7",
             "comment": "This space was very gross",
             "amenities": {
                 "has_outlets": true,
@@ -259,7 +259,7 @@ export async function getSpaceAverages (req, res) {
 {
   "review_id": 125,
   "space_id": 1,
-  "email": "examp2e@uic.edu",
+  "username": "emend7",
   "comment": "This space was fantastic!",
   "amenities": {
     "has_outlets": true,
@@ -287,7 +287,7 @@ export async function getSpaceAverages (req, res) {
         {
             "review_id": 125,
             "space_id": 1,
-            "email": "examp2e@uic.edu",
+            "username": "emend7",
             "comment": "This space was fantastic!",
             "amenities": {
                 "has_outlets": true,
@@ -319,10 +319,10 @@ export async function getSpaceAverages (req, res) {
 // POST one review
 export async function postReview (req, res) {
     
-    const {review_id, space_id, email, comment, amenities, statistics} = req.body
+    const {review_id, space_id, username, comment, amenities, statistics} = req.body
 
     try {
-        const review = await Review.create({review_id, space_id, email, comment, amenities, statistics})
+        const review = await Review.create({review_id, space_id, username, comment, amenities, statistics})
         res.status(200).json({
             status: "success",
             data: [review],
@@ -363,7 +363,7 @@ export async function postReview (req, res) {
             "_id": "661c5a63fc60b3c6f0c1a3ad",
             "review_id": 125,
             "space_id": 1,
-            "email": "examp2e@uic.edu",
+            "username": "emend7",
             "comment": "This space was fantastic!",
             "amenities": {
                 "has_outlets": true,
@@ -440,7 +440,7 @@ export async function deleteReview (req, res) {
             "_id": "6605ebed665b96d4f854b104",
             "review_id": 123,
             "space_id": 1,
-            "email": "example@uic.edu",
+            "username": "emend7",
             "comment": "This space was very gross",
             "amenities": {
                 "has_outlets": true,
