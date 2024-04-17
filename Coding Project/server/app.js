@@ -38,7 +38,7 @@ mongoose
 // === config routes ===
 // when we want to link these routes, we import them and pass the app to the route
 import { router as authRouter } from './routes/auth.js';
-app.use('/v1/auth', authRouter);
+app.use('/auth', authRouter);
 
 import { router as adminRouter } from './routes/admin.js';
 app.use('/admin', adminRouter);

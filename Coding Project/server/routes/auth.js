@@ -3,6 +3,8 @@ import { Register, Login, getUser, updateUser} from "../controllers/auth.js"
 import Validate from "../middleware/validate.js"
 import { check } from "express-validator"
 import { Logout } from "../controllers/auth.js"
+import { Verify } from "../middleware/verify.js";
+
 const router = express.Router();
 
 router.post(
@@ -49,8 +51,15 @@ router.post(
 
 router.get('/logout', Logout);
 
-router.get('/:id/info', Validate, getUser);
+router.get('/user', Verify, (req, res) => {  
+    res.status(200).json({
+      status: "Success",
+      data: [req.user],
+    })
+  })
 
-router.patch('/:id/update/', Validate, updateUser);
+router.get('/:id/info', Verify, getUser);
+
+router.patch('/:id/update/', Verify, updateUser);
 
 export { router }
