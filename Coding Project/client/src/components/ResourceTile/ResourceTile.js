@@ -1,5 +1,4 @@
 import React from "react";
-import tileimage from "../../assets/resourcetile.svg";
 
 const ResourceTile = ({data}) => {
     console.log(data)
@@ -7,7 +6,7 @@ const ResourceTile = ({data}) => {
     require('./ResourceTile.css');
     return (
         <div className="resource-tile">
-            <img src={tileimage}></img>
+            <img src={data.image}></img>
             <div className="resource-content" >
                 <h2>{data.title}</h2>
                 <div className="resource-link">
