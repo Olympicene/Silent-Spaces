@@ -17,7 +17,7 @@ const HomePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://localhost:5005/v1/user', {
+            const response = await fetch('http://localhost:5005/auth/user', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -57,7 +57,7 @@ const HomePage = () => {
 
             const res = await response.json();
             console.log(res)
-            const updatedSpaceData = res.data[0];
+            const updatedSpaceData = res.data;
 
             setSpaceData(updatedSpaceData);
 
@@ -71,17 +71,17 @@ const HomePage = () => {
         let endpoint = ''; // Define endpoint based on the selected option
 
         if (option === 'A-Z') {
-            endpoint = 'http://localhost:5005/space/alphabetical-order/sort?order=asc';
+            endpoint = 'http://localhost:5005/space/sort/alphabetical-order?order=asc';
         } else if (option === 'Z-A') {
-            endpoint = 'http://localhost:5005/space/alphabetical-order/sort?order=desc';
+            endpoint = 'http://localhost:5005/space/sort/alphabetical-order?order=desc';
         } else if (option === 'distance: nearest first') {
-          endpoint = 'http://localhost:5005/space/sort?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'distance: furthest first') {
-          endpoint = 'http://localhost:5005/space/sort?lat=40.7061&lon=-74.0089';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'ratings: highest first') {
-          endpoint = 'http://localhost:5005/space/overall-ratings/sort?order=desc';
+          endpoint = 'http://localhost:5005/space/sort/overall-ratings?order=desc';
         } else if (option === 'ratings: lowest first') {
-          endpoint = 'http://localhost:5005/space/overall-ratings/sort?order=asc';
+          endpoint = 'http://localhost:5005/space/sort/overall-ratings?order=asc';
         }
 
         try {

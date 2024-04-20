@@ -29,7 +29,7 @@ const SpacePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://localhost:5005/v1/user', {
+            const response = await fetch('http://localhost:5005/auth/user', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -69,7 +69,7 @@ const SpacePage = () => {
 
             const res = await response.json();
             // console.log(res.data[0])
-            setSpaceData(res.data[0])
+            setSpaceData(res.data)
 
 
         } catch (error) {
