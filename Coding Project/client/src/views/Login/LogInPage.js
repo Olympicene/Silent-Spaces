@@ -9,7 +9,6 @@ const LogIn = () => {
     return (
         <div className={styles['login-container']}>
             <div className={styles['left-half']}>
-                <h1 className={styles['login-title']}>LOGIN</h1>
                 <Login/>
             </div>
             
