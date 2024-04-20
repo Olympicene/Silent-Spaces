@@ -15,6 +15,7 @@ import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import Button from '../../components/Button/Button'
 import Popup from '../../components/Popup/Popup';
 import SpaceStats from '../../components/SpaceStats/SpaceStats';
+import styles from "./Space.module.css"
 
 const SpacePage = () => {
     const {id} = useParams();
@@ -84,9 +85,6 @@ const SpacePage = () => {
     }, []);
 
 
-
-    require('./Space.css')
-
     const [anchor, setAnchor] = useState(null);
 
     const handleClick = (event) => {
@@ -99,38 +97,38 @@ const SpacePage = () => {
 
     return (
          
-        <div className='spacePage'>
+        <div className={styles['spacePage']}>
             <NavBar info={userData}/>
-            <div style={{marginLeft : "20vw"}}  className='space-content'>
+            <div style={{marginLeft : "20vw"}}  className={styles['space-content']}>
                 <IconContext.Provider value={{color:"grey", size:"1.5rem"}}>
-                <div className='space-menu-bar'>
+                <div className={styles['space-menu-bar']}>
                     <Link onClick={() => navigate(-1)}>
                         <IoIosArrowBack />
                     </Link>
-                    {/* <div className='interactables'>
+                    {/* <div className={styles['interactables']}>
 
                         <IoShareSocialOutline />
                         <Heart isClick={isClick} onClick={() => setClick(!isClick)} styles={{position:"relative", marginRight: "-20px"}} />
                     </div> */}
                 </div>
                 </IconContext.Provider>
-                <div className='imageCarousel'>
+                <div className={styles['imageCarousel']}>
                     <img src={spaceData.img} alt="" />
                 </div>
-                <div className='space-info'>
-                    <div className='space-labels'>
+                <div className={styles['space-info']}>
+                    <div className={styles['space-labels']}>
 
                         {/* MAIN INFO */}
-                        <div className='space-main-label'>
+                        <div className={styles['space-main-label']}>
 
                             { spaceData.name && spaceData.rating &&
-                            <div className='space-name-rating'>
+                            <div className={styles['space-name-rating']}>
                                 <p style={{fontSize: "50px", textOverflow: "ellipsis",}}> {spaceData.name}</p>
-                                <p style={{fontSize:"50px"}}> <img className="tile-rating" src={star} style= {{width : "40px"}} alt = ""/> {spaceData.rating.toFixed(1)}</p>
+                                <p style={{fontSize:"50px"}}> <img className={styles['tile-rating']} src={star} style= {{width : "40px"}} alt = ""/> {spaceData.rating.toFixed(1)}</p>
                             </div>}
                             
                             {spaceData.address && spaceData.location && spaceData.reviews &&
-                            <div className='space-address'>
+                            <div className={styles['space-address']}>
                                 <p style={{fontSize:"34px", color:"grey"}}> {spaceData.address}</p>
                                 <p style={{fontSize:"24px", color:"grey"}}>73 miles away - {spaceData.reviews.length} {spaceData.reviews.length == 1 ? "review" : "reviews"}</p>
                             </div>}
@@ -139,13 +137,13 @@ const SpacePage = () => {
                         
                         {/* DESCRIPTION */}
                         { spaceData.desc &&
-                        <div className='space-description'>
+                        <div className={styles['space-description']}>
                                 <p>{spaceData.desc}</p>
                         </div>}
 
                         {/* TAGS */}
                         { spaceData.tags &&
-                        <div className='space-tags'>
+                        <div className={styles['space-tags']}>
                             {spaceData.tags.map((item, index) => (
                                 <Tag>{item}</Tag>
                             ))}
@@ -153,9 +151,9 @@ const SpacePage = () => {
 
                         {/* AMENETIES */}
                         { spaceData.ameneties &&
-                        <div className='space-ameneties'>
+                        <div className={styles['space-ameneties']}>
                             <p style={{color:"black", fontSize:"30px", margin: 20}}>amenities:</p>
-                            <div className='space-ameneties-list'>
+                            <div className={styles['space-ameneties-list']}>
                                 {spaceData.ameneties.map((item, index) => (
                                     <Amenity>{item}</Amenity>
                                 ))}
@@ -163,7 +161,7 @@ const SpacePage = () => {
                         </div>
                         }
                     </div>
-                    <div className='space-ratings'>
+                    <div className={styles['space-ratings']}>
                         <SpaceStats></SpaceStats>
                         <div>
                             <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>

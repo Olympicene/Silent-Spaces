@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import InputBox from "../../components/InputBox/InputBox";
+import styles from './Login.module.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -53,7 +54,6 @@ const Login = () => {
       }
     };
   
-    require('./Login.css')
     return (
         <form onSubmit={handleSubmit}>
             <InputBox features={{id:"email", name:"email", type:"text", placeholder:"Email"}} 
@@ -63,9 +63,9 @@ const Login = () => {
             change={handleChange} 
             style={{display : "block", backgroundColor: "#F2F1DC", color: "#254D32", marginBottom : "4rem"}}/>
         
-            <div className='button-div'>
-                <button className='forgot-pw-button'>Forgot your Password?</button>
-                <button type="submit" className='login-button'>Log in</button>
+            <div className={styles['button-div']}>
+                <button className={styles['forgot-pw-button']}>Forgot your Password?</button>
+                <button type="submit" className={styles['login-button']}>Log in</button>
                 {<p>{errors}</p>}
             </div>
             

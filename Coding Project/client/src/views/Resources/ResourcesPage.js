@@ -7,9 +7,9 @@ import campusimg from "../../assets/campus.svg";
 import internimg from "../../assets/intern.svg";
 import studentorgimg from "../../assets/studentorg.svg";
 import trackersimg from "../../assets/trackers.svg";
+import styles from "./Resources.module.css"
 
 const ResourcesPage = () => {
-    require('./ResourcesPage.css')
 
     const dummyuser = {
         first_name: 'naan',
@@ -51,10 +51,10 @@ const ResourcesPage = () => {
     ]
 
     return (
-        <div className="resources-page">
+        <div className={styles['resources-page']}>
             <NavBar info={dummyuser} page="resources" />
-            <div className="resource-right">
-                <h1 className="resource-header">RESOURCE LIBRARY</h1>
+            <div className={styles['resource-right']}>
+                <h1 className={styles['resource-header']}>RESOURCE LIBRARY</h1>
                     {resourceData.map((item, index) => {
                     return (
                         <ResourceTile data={item}/>

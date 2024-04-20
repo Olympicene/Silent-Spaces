@@ -1,9 +1,8 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
+import styles from "./Calendar.module.css";
 
 const CalendarPage = () => {
-
-    require("./Calendar.css");
 
     const dummyuser = {
         first_name: 'naan',
@@ -12,9 +11,9 @@ const CalendarPage = () => {
     }
 
     return(
-        <div className="calendar-nav">
+        <div className={styles['calendar-nav']}>
             <NavBar info={dummyuser} page="calendar"/>
-            <div className="calendar-main">
+            <div className={styles['calendar-main']}>
                 <iframe src="https://embed.styledcalendar.com/#MWjeHzi9msi7VRxUkYRz" title="Styled Calendar" 
                 class="styled-calendar-container" 
                 style={{width: "100%", height:"85vh", border: "none"}} data-cy="calendar-embed-iframe"></iframe>

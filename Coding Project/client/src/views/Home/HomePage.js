@@ -4,6 +4,8 @@ import SpaceTile from '../../components/SpaceTile/SpaceTile';
 import NavBar from '../../components/NavBar/NavBar';
 import Searchbar from '../../components/SearchBar/Searchbar';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import styles from './Home.module.css';
+
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -111,27 +113,26 @@ const HomePage = () => {
         getSpaces('http://localhost:5005/space/all-spaces');
     }, []);
 
-    require('./HomePage.css');
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
     const filterbyOptions = ['amenities', 'tags', 'favorites'];
 
     return (
-        <div className='menu-page'>
+        <div className={styles['menu-page']}>
             <NavBar info={userData} page="home" />
 
-            <div className='right-side-menu' style={{ marginLeft: "20vw"}}>
+            <div className={styles['right-side-menu']} style={{ marginLeft: "20vw"}}>
 
                 <Searchbar />
-                <div className='sort-and-filter'>
+                <div className={styles['sort-and-filter']}>
                     <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortFilterChange} />
                     <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} />
                 </div>
 
                 <hr width="90%" size="2" />
 
-                <div className='spacetiles-container'>
+                <div className={styles['spacetiles-container']}>
                     {spaceData && spaceData.map((item, index) => (
-                        <div className='spacetile'>
+                        <div className={styles['spacetile']}>
                             <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating }} />
                         </div>
                     ))}

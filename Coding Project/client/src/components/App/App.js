@@ -8,7 +8,7 @@ import NoPage from "../../views/Error/NoPage";
 import LogIn from "../../views/Login/LogInPage";
 import SpacePage from "../../views/Space/SpacePage";
 import ResourcesPage from "../../views/Resources/ResourcesPage";
-import CalendarPage from "../../views/Calendar/Calendar";
+import CalendarPage from "../../views/Calendar/CalendarPage";
 import StudyHubPage from "../../views/StudyHub/StudyHubPage";
 
 export default function App() {

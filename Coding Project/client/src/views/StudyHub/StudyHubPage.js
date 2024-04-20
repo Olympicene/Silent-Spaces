@@ -1,9 +1,9 @@
 import Timer from "../../components/Timer/Timer";
 import NavBar from "../../components/NavBar/NavBar";
 import StickyNote from "../../components/StickyNote/StickyNote";
+import styles from "./StudyHub.module.css";
 
 const StudyHubPage = () => {
-    require("./StudyHub.css");
 
     const dummyuser = {
         first_name: 'naan',
