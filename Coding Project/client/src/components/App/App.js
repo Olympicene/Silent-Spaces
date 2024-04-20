@@ -10,6 +10,7 @@ import SpacePage from "../../views/Space/SpacePage";
 import ResourcesPage from "../../views/Resources/ResourcesPage";
 import CalendarPage from "../../views/Calendar/CalendarPage";
 import StudyHubPage from "../../views/StudyHub/StudyHubPage";
+import FavoritesPage from "../../views/Favorites/FavoritesPage";
 
 export default function App() {
   return (
@@ -20,10 +21,11 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="spaces/:id" element={<SpacePage />} />
           <Route path="sign-up" element={<CreateAccount />} />
-          <Route path="log-in" element={<LogIn />} />
+          <Route path="log-in" element={<LogIn/>} />
           <Route path="resources" element={<ResourcesPage/>} />
           <Route path="calendar" element={<CalendarPage/>} />
           <Route path="study-hub" element={<StudyHubPage/>} />
+          <Route path="favorites" element={<FavoritesPage/>} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
