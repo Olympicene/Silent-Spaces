@@ -1,61 +1,41 @@
 /* landing page */
-.landing-page {
-    background: linear-gradient(to right, #3A7D44 50%, #ffff 50%);
-    height:100vh;
-    display: flex;
-    align-items: center;
-  }
-  
+.main {
+  background: linear-gradient(to right, #3A7D44 50%, #ffff 50%);
+  height:100vh;
+  display: flex;
+  justify-content: space-between;
+}
 
+.left-half {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   
-  .landing-right-half {
-    float: right;
-    width: 50%;
-    overflow:hidden;
-    position: relative;
-    height: 100%; 
-    background-image: url('../../assets/laptop.svg');  
-    background-size: cover;
-  }
-  
-  .div-title {
-    display: block;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    margin-bottom: -40px;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    margin: 0 auto 0 auto;
-    padding-right: 3rem;
-  }
-  
-  .logo-left {
-    float: left;
-    width: 50%;
-    text-align: right;
-  }
-  
-  .logo h1 {
-    margin: -2rem 0;
-  }
-  
-  .land-title {
-    font-family: 'poppins-bold', sans-serif;
-    font-size: 8rem;
-    margin: 0;
-    padding: 0;
-  }
-  
+  width: 50%;
+}
 
-  
-  .button-div {
-    width: 50%;
-    margin: auto;
-    margin-top: 4rem;
-    text-align: center;
-  }
+.logo {
+  /* text-align: center; */
+  width: 80%;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.CTA-buttons {
+  width: 40%;
+}
+
+.right-half {
+  width: 50%;
+  height: 100%; 
+
+  overflow:hidden;
+  background-image: url('../../assets/laptop.svg');  
+  background-size: cover;
+}
+
