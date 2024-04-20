@@ -45,8 +45,6 @@ const Login = () => {
 
           throw new Error('Login failed');
         }
-  
-        const data = await response.json();
         navigate('/home')
 
       } catch (error) {

@@ -10,7 +10,6 @@ import Tag from '../../components/Tag/Tag';
 import Amenity from '../../components/Amenity/Amenity';
 
 import {useParams} from "react-router-dom";
-import Heart from "react-animated-heart";
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import Button from '../../components/Button/Button'
 import Popup from '../../components/Popup/Popup';
@@ -20,7 +19,6 @@ import styles from "./Space.module.css"
 const SpacePage = () => {
     const {id} = useParams();
     const navigate = useNavigate();
-    const [isClick, setClick] = useState(false);
     const [userData, setUserData] = useState({
         first_name: '',
         last_name: '',
@@ -82,7 +80,7 @@ const SpacePage = () => {
     useEffect(() => {
         checkAuth();
         getSpace();
-    }, []);
+    });
 
 
     const [anchor, setAnchor] = useState(null);
@@ -130,7 +128,7 @@ const SpacePage = () => {
                             {spaceData.address && spaceData.location && spaceData.reviews &&
                             <div className={styles['space-address']}>
                                 <p style={{fontSize:"34px", color:"grey"}}> {spaceData.address}</p>
-                                <p style={{fontSize:"24px", color:"grey"}}>73 miles away - {spaceData.reviews.length} {spaceData.reviews.length == 1 ? "review" : "reviews"}</p>
+                                <p style={{fontSize:"24px", color:"grey"}}>73 miles away - {spaceData.reviews.length} {spaceData.reviews.length === 1 ? "review" : "reviews"}</p>
                             </div>}
 
                         </div>

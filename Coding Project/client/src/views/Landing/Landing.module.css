@@ -6,18 +6,7 @@
     align-items: center;
   }
   
-  .left-half {
-    display: flexbox;
-    float: left;
-    width: 50%;
-  }
-  
-  .laptop-img {
-    height: 15rem;
-    width: 15rem;
-    object-fit: cover;
-    margin-left: -6rem;
-  }
+
   
   .landing-right-half {
     float: right;
