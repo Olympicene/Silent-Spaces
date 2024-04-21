@@ -53,7 +53,6 @@ const RegistrationForm = () => {
           setErrors(res.message)
         }
 
-
         throw new Error('Registration failed');
       }
 
@@ -169,7 +168,7 @@ const RegistrationForm = () => {
           Already have an account?
         </Typography>
 
-        {errors &&
+        {errors && !success &&
           <Typography
             fontSize="sm"
             sx={{
@@ -178,6 +177,17 @@ const RegistrationForm = () => {
             }}
           >
             {errors}
+          </Typography> || 
+          
+          success && <Typography
+            fontSize="sm"
+            success
+            sx={{
+              alignSelf: 'center',
+              color: 'green'
+            }}
+          >
+            SUCCESS Please navigate to login
           </Typography>}
       </Sheet>
     </main>
