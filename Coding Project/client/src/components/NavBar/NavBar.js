@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import {NavbarData} from './NavbarData'
 import { IconContext } from 'react-icons';
 import * as FaIcons from "react-icons/fa";
+import logo from '../../assets/logo_white2.svg'
+
+
 import styles from "./NavBar.module.css"
 
 function NavBar({info, page}) {
@@ -13,8 +16,10 @@ function NavBar({info, page}) {
       <IconContext.Provider value={{color:"#ffff", size:"2rem"}}>
       <nav className={[styles['nav-menu'], styles['active']].join(' ')}> 
         <ul className={styles['nav-menu-items']}>
-          <h1 style={{marginTop:"1.5rem", marginBottom:"-10px", marginLeft:"25px"}}>SILENT</h1>
-          <h1 style={{marginLeft:"25px"}}> SPACES</h1>
+          <img className={styles['title']} alt="logo" src={logo}/>
+
+          {/* <h1 style={{marginTop:"1.5rem", marginBottom:"-10px", marginLeft:"25px"}}>SILENT</h1>
+          <h1 style={{marginLeft:"25px"}}> SPACES</h1> */}
           {NavbarData.map((item, index) => {
             return (
               <li key = {index} className={styles[page === item.title ? "nav-text-focus" : item.className]}>
