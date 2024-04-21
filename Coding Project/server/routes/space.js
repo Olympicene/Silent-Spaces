@@ -7,6 +7,7 @@ import {  AllSpacesSummary, FullSpaceInfo,
           sortByRatings, sortByNoise, sortByOccupancy, sortByConnectivity,
           sortByLetter, sortByProximity,
           filterByAmenities, 
+          searchSpace,
           createSpace, deleteSpace, updateSpace} from "../controllers/space.js";
 
 // router we will be using to handle get and post requests
@@ -38,22 +39,27 @@ router.get(
 
 // ---- SORT SPACE QUERIES ---- //
 
-// GET a list of spaces based on ratings
+/* GET a list of spaces based on ratings */
 router.get('/sort/overall-ratings', Verify, sortByRatings)
 router.get('/sort/noise-ratings', Verify, sortByNoise)
 router.get('/sort/occupancy-ratings', Verify, sortByOccupancy)
 router.get('/sort/connectivity-ratings', Verify, sortByConnectivity)
 
-// GET a list of spaces based on alphabetical order
+/* GET a list of spaces based on alphabetical order */
 router.get('/sort/alphabetical-order', Verify, sortByLetter)
 
-// GET all spaces sorted by distance/proximity from the user
+/* GET all spaces sorted by distance/proximity from the user */
 router.get('/sort/proximity', Verify,  sortByProximity)
 
 // ---- FILTER SPACE QUERIES ---- //
 
-// GET a list of spaces based on amenities
+/* GET a list of spaces based on amenities */
 router.get('/filter/amenities', Verify, filterByAmenities)
+
+// ---- SEARCH SPACE QUERY ---- //
+
+/* POST a name search query (returns summary of spaces that match that name) */
+router.post('/search/', Verify, searchSpace)
 
 // ---- ADMIN QUERIES ---- //
 //POST a new space

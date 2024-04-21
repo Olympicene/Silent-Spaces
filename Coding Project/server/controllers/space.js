@@ -472,6 +472,55 @@ export async function filterByAmenities (req,res) {
 }
 
 //-------------------------------------------------------//
+//                    SEARCH QUERIES                     //
+//-------------------------------------------------------//
+/**
+ * @route POST /space/search
+ * @desc Fetch a space that matches 
+ * 
+ * @input BODY: json object with the name to be search-queried for
+ * @inputExample  -- POST http://localhost:5005/space/search
+ * @inputBody     -- next comment block 
+ * @outputExample -- next comment block
+ */
+/*
+> input body:
+{
+    name: "Library"
+}
+
+> output example:
+
+
+*/
+export async function searchSpace(req, res) {
+    try {
+        const { namequery } = req.body;
+
+        const resultSpaces = await Space
+        .find({
+            'name' : { '$regex' : namequery, '$options' : 'i'}
+        }, {id:1, name:1, img:1, location:1, rating:1});
+
+        res.status(200).json({
+            status: "success",
+            data: resultSpaces,
+            message: "Spaces fetched successfully!"
+        });
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ 
+            status: err,
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        })
+    }
+}
+
+
+//-------------------------------------------------------//
 //                    ADMIN QUERIES                      //
 //-------------------------------------------------------//
 
