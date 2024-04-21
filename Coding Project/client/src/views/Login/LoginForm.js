@@ -117,6 +117,15 @@ const Login = () => {
           >
             Don&apos;t have an account?
           </Typography>
+
+          {errors && 
+          <Typography
+            fontSize="sm"
+            sx={{ alignSelf: 'center',
+                  color: 'red' }}
+          >
+              {errors}
+          </Typography>}
         </Sheet>
       </main>
     );
