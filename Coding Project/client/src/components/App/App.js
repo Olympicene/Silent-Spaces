@@ -11,6 +11,8 @@ import ResourcesPage from "../../views/Resources/ResourcesPage";
 import CalendarPage from "../../views/Calendar/CalendarPage";
 import StudyHubPage from "../../views/StudyHub/StudyHubPage";
 import FavoritesPage from "../../views/Favorites/FavoritesPage";
+import ScrollToTop from "../../helpers/scrollToTop";
+
 import {
   experimental_extendTheme as materialExtendTheme,
   Experimental_CssVarsProvider as MaterialCssVarsProvider,
@@ -89,6 +91,7 @@ export default function App() {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider theme={githubTheme}>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<LandingPage />} />
