@@ -550,30 +550,82 @@ export async function filterByAmenities (req,res) {
 //-------------------------------------------------------//
 /**
  * @route POST /space/search
- * @desc Fetch a space that matches 
+ * @desc Fetch a space that matches the name given in the body
  * 
- * @input BODY: json object with the name to be search-queried for
+ * @input ADD BODY: json object with the 'name' string to be search-queried for (example below)
  * @inputExample  -- POST http://localhost:5005/space/search
- * @inputBody     -- next comment block 
+ * @requestBodymm -- { name: "library" }
  * @outputExample -- next comment block
  */
 /*
-> input body:
 {
-    name: "Library"
+    "status": "success",
+    "data": [
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.632015,
+                    41.853783
+                ]
+            },
+            "_id": "660646d6fc4da9f5d39c60e0",
+            "id": 2,
+            "name": "Chinatown Branch, Chicago Public Library",
+            "img": [
+                "https://chipublib.bibliocommons.com/events/uploads/images/full/b4c2f1ea58572c02e4ed70cd0bb1a18f/chinatown.jpg",
+                "https://map.lisc-cnda.org/static/1134931d9dca124162af89fe4b08a1a3/8e2a4/featured.jpg",
+                "https://www.som.com/wp-content/uploads/fly-images/7623/chinatownlibrary_680x510_jonmiller_hedrichblessing_05-1366x1024-c.jpg"
+            ],
+            "rating": 3.5
+        },
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.627907,
+                    41.877129
+                ]
+            },
+            "_id": "66064779fc4da9f5d39c60e1",
+            "id": 3,
+            "name": "Harold Washington Library Center, Chicago Public Library",
+            "img": [
+                "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/b8/2f/4a/winter-garden.jpg?w=1200&h=1200&s=1",
+                "https://chipublib.bibliocommons.com/events/uploads/images/full/6314ef45d17ac782240765bc7e5489b8/harold-washington-library-center.jpg",
+                "https://chicagoeventvenues.com/wp-content/uploads/2018/08/hwl9.jpg"
+            ],
+            "rating": 4.6
+        },
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6605,
+                    41.8696
+                ]
+            },
+            "_id": "6606dc0b28c41e053b834b26",
+            "id": 6,
+            "name": "Little Italy Branch, Chicago Public Library",
+            "img": [
+                "https://www.som.com/wp-content/uploads/fly-images/41715/217138_000_N44_large-scaled-1366x910-c.jpg",
+                "https://www.som.com/wp-content/uploads/2017/10/TSLA_SOM-c-Tom-Harris-1_large-1634315655-scaled.jpg",
+                "https://www.som.com/wp-content/uploads/fly-images/57996/217138_000_N89_large-1631188551-scaled-1366x920-c.jpg"
+            ],
+            "rating": 4.6
+        }
+    ],
+    "message": "Spaces fetched successfully!"
 }
-
-> output example:
-
-
 */
 export async function searchSpace(req, res) {
     try {
-        const { namequery } = req.body;
+        const { name } = req.body;
 
         const resultSpaces = await Space
         .find({
-            'name' : { '$regex' : namequery, '$options' : 'i'}
+            'name' : { '$regex' : name, '$options' : 'i'}
         }, {id:1, name:1, img:1, location:1, rating:1});
 
         res.status(200).json({
@@ -592,7 +644,6 @@ export async function searchSpace(req, res) {
         })
     }
 }
-
 
 //-------------------------------------------------------//
 //                    ADMIN QUERIES                      //
