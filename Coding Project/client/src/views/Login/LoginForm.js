@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import * as React from 'react';
-import { useColorScheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
@@ -9,6 +8,7 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import Person from '@mui/icons-material/Person';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -91,8 +91,7 @@ const Login = () => {
               name="email"
               type="email"
               placeholder="johndoe@email.com"
-              // js attributes
-              features={{id:"email", name:"email", type:"text", placeholder:"Email"}}
+              // js
               onChange={handleChange} 
             />
           </FormControl>
@@ -104,12 +103,11 @@ const Login = () => {
               name="password"
               type="password"
               placeholder="password"
-              // js atributes
-              features={{id:"password", name:"password", type:"password", placeholder:"Password"}} 
+              // js
               onChange={handleChange} 
             />
           </FormControl>
-          <Button onClick={handleSubmit} sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+          <Button onClick={handleSubmit} sx={{ mt: 1, /* margin top */ }}>Log in</Button>
           <Typography
             endDecorator={<Link href="/sign-up">Sign up</Link>}
             fontSize="sm"

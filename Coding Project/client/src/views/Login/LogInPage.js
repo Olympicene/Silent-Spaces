@@ -7,7 +7,7 @@ import studyimage from "../../assets/abtractPeoplePeerProgramming.svg";
 const LogIn = () => {
 
     return (
-        <div className={styles['login-container']}>
+        <div className={styles['main']}>
             <div className={styles['left-half']}>
                 <Login/>
             </div>

@@ -1,18 +1,9 @@
 /* Log in page styles */
-.login-container{
+.main{
   background: #254D32;
   height:100vh;
   display: flex;
   justify-content: space-between;
-}
-
-.login-title {
-  text-align: center;
-  font-family: 'poppins-bold', sans-serif;
-  font-size: 4rem;
-  margin-top: 6rem;
-  color: #F2F1DC;
-  font-weight: 600;
 }
 
 .left-half {
