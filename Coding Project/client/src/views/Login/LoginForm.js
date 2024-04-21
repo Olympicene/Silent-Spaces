@@ -64,7 +64,7 @@ const Login = () => {
         <CssBaseline />
         <Sheet
           sx={{
-            width: 700,
+            width: 600,
             mx: 'auto', // margin left & right
             my: 4, // margin top & bottom
             py: 6, // padding top & bottom
