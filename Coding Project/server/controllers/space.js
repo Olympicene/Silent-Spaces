@@ -124,44 +124,56 @@ export async function FullSpaceInfo(req, res) {
         //const spaceInfo = await Space.find({id: queryid}, {});
 
         const reviews = await Review.find({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
+        if(reviews.length < 1){
+            const spaceUpdate = await Space.find({id: queryid}, {});
 
-        const allinfoReviews = await Review.find({space_id: queryid});
+            console.log(spaceUpdate)
 
-        // Calculate the total sum of all Levels using an aggregate function 
-        const total_noise = allinfoReviews.reduce((acc, review) => acc + review.statistics.noiseLevels, 0);
-        const total_occ = allinfoReviews.reduce((acc, review) => acc + review.statistics.occupancy, 0);
-        const total_connect = allinfoReviews.reduce((acc, review) => acc + review.statistics.connectivity, 0);
-
-        // Calculate the average Levels
-        const average_noise = (total_noise / allinfoReviews.length).toFixed(1);
-        const average_occ = (total_occ / allinfoReviews.length).toFixed(1);
-        const average_connect = (total_connect / allinfoReviews.length).toFixed(1);
-
-        //round it off to the nearest half point
-
-        const rounded_noise = round(average_noise, 0.5)
-        const rounded_occ = round(average_occ, 0.5)
-        const rounded_connect = round(average_connect, 0.5)
-
-        let updateStats = {
-            "noiseLevels": rounded_noise,
-            "occupancy": rounded_occ,
-            "connectivity": rounded_connect
+            res.status(200).json({
+                status: "success",
+                data: spaceUpdate,
+                message: "Space full information fetched successfully!"
+            });
         }
-        console.log(updateStats)
-        
-        const sum = (parseFloat(average_noise) + parseFloat(average_occ) + parseFloat(average_connect)).toFixed(2);
-        const overall_average = (parseFloat(sum) / 3.0).toFixed(1);
+        else {
 
-        const spaceUpdate = await Space.findOneAndUpdate({id: queryid}, {reviews: reviews, rating: overall_average, statistics: updateStats}, {new: true})
+            const allinfoReviews = await Review.find({space_id: queryid});
 
-        console.log(spaceUpdate)
+            // Calculate the total sum of all Levels using an aggregate function 
+            const total_noise = allinfoReviews.reduce((acc, review) => acc + review.statistics.noiseLevels, 0);
+            const total_occ = allinfoReviews.reduce((acc, review) => acc + review.statistics.occupancy, 0);
+            const total_connect = allinfoReviews.reduce((acc, review) => acc + review.statistics.connectivity, 0);
 
-        res.status(200).json({
-            status: "success",
-            data: spaceUpdate,
-            message: "Space full information fetched successfully!"
-        });
+            // Calculate the average Levels
+            const average_noise = (total_noise / allinfoReviews.length).toFixed(1);
+            const average_occ = (total_occ / allinfoReviews.length).toFixed(1);
+            const average_connect = (total_connect / allinfoReviews.length).toFixed(1);
+
+            //round it off to the nearest half point
+            const rounded_noise = round(average_noise, 0.5)
+            const rounded_occ = round(average_occ, 0.5)
+            const rounded_connect = round(average_connect, 0.5)
+
+            let updateStats = {
+                "noiseLevels": rounded_noise,
+                "occupancy": rounded_occ,
+                "connectivity": rounded_connect
+            }
+            console.log(updateStats)
+            
+            const sum = (parseFloat(average_noise) + parseFloat(average_occ) + parseFloat(average_connect)).toFixed(2);
+            const overall_average = (parseFloat(sum) / 3.0).toFixed(1);
+
+            const spaceUpdate = await Space.findOneAndUpdate({id: queryid}, {reviews: reviews, rating: overall_average, statistics: updateStats}, {new: true})
+
+            console.log(spaceUpdate)
+
+            res.status(200).json({
+                status: "success",
+                data: spaceUpdate,
+                message: "Space full information fetched successfully!"
+            });
+    }
 
     } catch (err) {
         console.log(err)
@@ -542,6 +554,106 @@ export async function filterByAmenities (req,res) {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Internal server error dingus' });
+    }
+}
+
+//-------------------------------------------------------//
+//                    SEARCH QUERIES                     //
+//-------------------------------------------------------//
+/**
+ * @route POST /space/search
+ * @desc Fetch a space that matches the name given in the body
+ * 
+ * @input ADD BODY: json object with the 'name' string to be search-queried for (example below)
+ * @inputExample  -- POST http://localhost:5005/space/search
+ * @requestBodymm -- { name: "library" }
+ * @outputExample -- next comment block
+ */
+/*
+{
+    "status": "success",
+    "data": [
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.632015,
+                    41.853783
+                ]
+            },
+            "_id": "660646d6fc4da9f5d39c60e0",
+            "id": 2,
+            "name": "Chinatown Branch, Chicago Public Library",
+            "img": [
+                "https://chipublib.bibliocommons.com/events/uploads/images/full/b4c2f1ea58572c02e4ed70cd0bb1a18f/chinatown.jpg",
+                "https://map.lisc-cnda.org/static/1134931d9dca124162af89fe4b08a1a3/8e2a4/featured.jpg",
+                "https://www.som.com/wp-content/uploads/fly-images/7623/chinatownlibrary_680x510_jonmiller_hedrichblessing_05-1366x1024-c.jpg"
+            ],
+            "rating": 3.5
+        },
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.627907,
+                    41.877129
+                ]
+            },
+            "_id": "66064779fc4da9f5d39c60e1",
+            "id": 3,
+            "name": "Harold Washington Library Center, Chicago Public Library",
+            "img": [
+                "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/b8/2f/4a/winter-garden.jpg?w=1200&h=1200&s=1",
+                "https://chipublib.bibliocommons.com/events/uploads/images/full/6314ef45d17ac782240765bc7e5489b8/harold-washington-library-center.jpg",
+                "https://chicagoeventvenues.com/wp-content/uploads/2018/08/hwl9.jpg"
+            ],
+            "rating": 4.6
+        },
+        {
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    -87.6605,
+                    41.8696
+                ]
+            },
+            "_id": "6606dc0b28c41e053b834b26",
+            "id": 6,
+            "name": "Little Italy Branch, Chicago Public Library",
+            "img": [
+                "https://www.som.com/wp-content/uploads/fly-images/41715/217138_000_N44_large-scaled-1366x910-c.jpg",
+                "https://www.som.com/wp-content/uploads/2017/10/TSLA_SOM-c-Tom-Harris-1_large-1634315655-scaled.jpg",
+                "https://www.som.com/wp-content/uploads/fly-images/57996/217138_000_N89_large-1631188551-scaled-1366x920-c.jpg"
+            ],
+            "rating": 4.6
+        }
+    ],
+    "message": "Spaces fetched successfully!"
+}
+*/
+export async function searchSpace(req, res) {
+    try {
+        const { name } = req.body;
+
+        const resultSpaces = await Space
+        .find({
+            'name' : { '$regex' : name, '$options' : 'i'}
+        }, {id:1, name:1, img:1, location:1, rating:1});
+
+        res.status(200).json({
+            status: "success",
+            data: resultSpaces,
+            message: "Spaces fetched successfully!"
+        });
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ 
+            status: err,
+            code: 500,
+            data: [],
+            message: "Internal Server Error",
+        })
     }
 }
 
