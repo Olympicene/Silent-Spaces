@@ -1,16 +1,16 @@
 .resource-tile {
     background-color: #e9e9e9;
     margin: 3rem;
+    display: flex;
 }
 
 .resource-tile > img{
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 1rem;
+    width: 12rem;
+    height: 12rem;
 }
 
 .resource-content {
-    display: inline-block;
     margin : 1rem;
 }
 
@@ -19,7 +19,6 @@
     font-weight: 300;
     color: #254D32;
     font-size: 2rem;
-    margin-top: -2rem;
 }
 
 .resource-link > a{

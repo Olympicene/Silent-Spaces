@@ -1,0 +1,127 @@
+.spacePage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.space-content {
+    padding: 5px 60px; 
+    width: 100%;
+    height: 100%;
+
+}
+
+.space-menu-bar {
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    /* background-color: red; */
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.interactables {
+    display: flex;
+    align-items: center;
+    color: grey;
+}
+
+.imageCarousel {
+    background-color: rgba(108, 108, 108, 0.235);
+    width: 100%;
+    height: 50vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.imageCarousel img {
+    flex-shrink: 0;
+    max-width:100%;
+    max-height:100%;
+}
+
+.space-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10px;
+}
+
+.space-labels {
+    /* background-color: red; */
+    flex-basis: 60%;
+}
+
+
+.space-main-label {
+    padding-bottom:  5px;
+    border-bottom: 2px solid;
+    border-color: grey;
+}
+
+.space-name-rating {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.space-address {   
+    margin-top: 10px;
+}
+
+.space-info .space-labels .space-main-label p {
+    margin: 0;
+}
+
+.space-description {
+    padding-right: 10%;
+    padding-top:  1rem;
+    padding-bottom:  1.5rem;
+    border-bottom: 2px solid;
+    border-color: grey;
+    color: grey;
+}
+
+.space-tags {
+    padding-right: 10%;
+    padding-top:  1rem;
+    padding-bottom:  1.5rem;
+    border-bottom: 2px solid;
+    border-color: grey;
+}
+
+.space-ameneties {
+    padding-bottom: 10vh;
+
+}
+
+.space-ameneties-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Space Ratings */
+
+.space-ratings {
+    /* background-color: blue; */
+    flex-basis: 36%;
+}
+
+
+.space-stats {
+    margin: 20px;
+    background-color: rgb(205, 205, 205);
+    width: 95%;
+    border-radius: 20px;
+    
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.6s;
+}

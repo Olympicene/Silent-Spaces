@@ -1,0 +1,12 @@
+.calendar-nav {
+    width: 100vw;
+    display: flex;
+}
+
+.calendar-main {
+    margin: 2rem;
+    margin-left: 23vw;
+    width: 100%;
+}
+
+

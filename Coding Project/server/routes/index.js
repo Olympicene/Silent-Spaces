@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 /* GET home page. */
-router.get('/v1', (req, res) => {
+router.get('/v1/', (req, res) => {
   try {
     // res.render('index', { title: 'Express' });
     res.status(200).json({

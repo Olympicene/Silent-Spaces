@@ -1,0 +1,35 @@
+/* Create Account page styles */
+.main{
+  background: #254D32;
+  height:100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #F2F1DC;
+  
+  width: 50%;
+}
+
+.left-half {
+  width: 50%;
+  height: 100%;  
+  overflow:hidden;
+}
+
+.img {
+  height: auto;
+  width: 100%;
+  border-radius: 50%;
+}
+
+/* FORM BS */
+.form-name {
+  display: flex;
+  justify-content: space-between;
+}

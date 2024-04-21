@@ -1,14 +1,11 @@
 import mongoose from "mongoose"
 
-// TODO: not tested, preliminary
-
 const ReviewSchema = new mongoose.Schema(
     {
         review_id: Number,
         space_id: Number,
-        email: {
+        username: {
             type: String,
-            unique: true,
             lowercase: true,
             trim: true,
         },

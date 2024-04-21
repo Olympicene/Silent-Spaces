@@ -85,7 +85,7 @@ const SpaceSchema = new mongoose.Schema(
                 },
                 seating_type: {
                     type: String,
-                    enum: ["Group Seating", "Individual Seating"]
+                    enum: ["group-seating", "individual-seating"]
                 }
             },
         }

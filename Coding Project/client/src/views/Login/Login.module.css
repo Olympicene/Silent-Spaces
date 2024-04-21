@@ -1,0 +1,23 @@
+/* Log in page styles */
+.main{
+  background: #254D32;
+  height:100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #F2F1DC;
+  
+  width: 50%;
+}
+
+.right-half {
+  width: 50%;
+  height: 100%;  
+  overflow:hidden;
+}

@@ -2,20 +2,23 @@ import mongoose from "mongoose"
 
 const CheckInSchema = new mongoose.Schema (
     {
+        id: {
+            type: Number
+        },
+        space_id: {
+            type: Number
+        },
+        username: {
+            type: String,
+        },
         noiseLevels: {
             type: Number,
-            min: [0, "you can not give a negative review"],
-            max: [5, "you can not give a review greater than 5"]
         },
         occupancy: {
             type: Number,
-            min: [0, "you can not give a negative review"],
-            max: [5, "you can not give a review greater than 5"]
         },
         connectivity: {
             type: Number,
-            min: [0, "you can not give a negative review"],
-            max: [5, "you can not give a review greater than 5"]
         }
     },
     { timestamps: true}

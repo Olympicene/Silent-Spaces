@@ -111,14 +111,55 @@ export async function AllSpacesSummary(req, res) {
     "message": "Space full information fetched successfully!"
 }
 */
+
+function round(value, step) {
+    step || (step = 1.0);
+    var inv = 1.0 / step;
+    return Math.round(value * inv) / inv;
+}
+
 export async function FullSpaceInfo(req, res) {
     try {
         var queryid = req.params.id;
-        const spaceInfo = await Space.find({id: queryid}, {});
+        //const spaceInfo = await Space.find({id: queryid}, {});
+
+        const reviews = await Review.find({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
+
+        const allinfoReviews = await Review.find({space_id: queryid});
+
+        // Calculate the total sum of all Levels using an aggregate function 
+        const total_noise = allinfoReviews.reduce((acc, review) => acc + review.statistics.noiseLevels, 0);
+        const total_occ = allinfoReviews.reduce((acc, review) => acc + review.statistics.occupancy, 0);
+        const total_connect = allinfoReviews.reduce((acc, review) => acc + review.statistics.connectivity, 0);
+
+        // Calculate the average Levels
+        const average_noise = (total_noise / allinfoReviews.length).toFixed(1);
+        const average_occ = (total_occ / allinfoReviews.length).toFixed(1);
+        const average_connect = (total_connect / allinfoReviews.length).toFixed(1);
+
+        //round it off to the nearest half point
+
+        const rounded_noise = round(average_noise, 0.5)
+        const rounded_occ = round(average_occ, 0.5)
+        const rounded_connect = round(average_connect, 0.5)
+
+        let updateStats = {
+            "noiseLevels": rounded_noise,
+            "occupancy": rounded_occ,
+            "connectivity": rounded_connect
+        }
+        console.log(updateStats)
+        
+        const sum = (parseFloat(average_noise) + parseFloat(average_occ) + parseFloat(average_connect)).toFixed(2);
+        const overall_average = (parseFloat(sum) / 3.0).toFixed(1);
+
+        const spaceUpdate = await Space.findOneAndUpdate({id: queryid}, {reviews: reviews, rating: overall_average, statistics: updateStats}, {new: true})
+
+        console.log(spaceUpdate)
 
         res.status(200).json({
             status: "success",
-            data: spaceInfo,
+            data: spaceUpdate,
             message: "Space full information fetched successfully!"
         });
 
@@ -435,39 +476,72 @@ export async function sortByProximity(req, res) {
 //-------------------------------------------------------//
 
 // GET a list of spaces based on amenities
+/**
+ * @route GET /space/filter/amenities?<param>=<value>&<param>=<value>
+ * @desc will filter spaces based on the params we are searching for
+ * 
+ * @input all properties and the values you are requesting
+ *        user is logged in
+ * @inputExample  -- GET http://localhost:5005/space/filter/amenities?has_outlets=true&seating_type=group-seating
+ * @outputExample -- next comment block
+ */
+/**
+ * {
+    "status": "success",
+    "data": [
+        [
+            {
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -74.006,
+                        40.7128
+                    ],
+                    "_id": "66056abb634bddec4146daf3"
+                },
+                "_id": "66056abb634bddec4146daf2",
+                "id": 24,
+                "name": "New York City Hall",
+                "img": [
+                    "https://images.ctfassets.net/1aemqu6a6t65/4hwGvD49bq0K8BE7ye7ddn/80830227e48d18ece85a62b431d821f8/city_hall-33_sky_fixed?w=1200&h=800&q=75",
+                    "https://www.nyc.gov/assets/dcas/images/business/manhattan-buildings/cityhall_1.jpg",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/cf/41/9d/img-20180429-123049-largejpg.jpg?w=1200&h=-1&s=1"
+                ],
+                "rating": 4,
+                "statistics": {
+                    "noiseLevels": 3,
+                    "occupancy": 4,
+                    "connectivity": 4.5,
+                    "_id": "66056abb634bddec4146daf4"
+                }
+            }
+        ]
+    ],
+    "message": "Spaces found"
+}
+ */
 export async function filterByAmenities (req,res) {
-    const filters = {}
-    const parameters = ['has_outlets', 'has_whiteboards', 'has_screen', 'is_food_beverage_friendly', 'has_printer', 'has_breakout_rooms', 'restrooms']
+    const parameters = ['has_outlets', 'has_whiteboards', 'has_screen', 'is_food_beverage_friendly', 'has_printer', 'has_breakout_rooms', 'restrooms', 'seating_type']
+
+    let filters = []
     for (const param of parameters){
         if(req.query[param] !== undefined){
-            filters['amenities.$(param)'] = Boolean(req.query[param])
-            console.log(param)
-            console.log(Boolean(req.query[param]))
-        }
-        else{
-            //WHAT CAN I PUT HERE INSTEAD
-            filters['amenities.$(param)'] = undefined 
+            filters.push({[`amenities.${param}`]: req.query[param]})
         }
     }
-    console.log(filters)
-    if(req.query.seating_type !== undefined){
-        filters['amenities.seating_type'] = (req.query[seating_type])
-    }
+    let finRequest = {'$and': filters}
 
     try {
-        const spaces = await Space.find(filters).sort()
-        
-        res.status(200).json({ spaces });
-        
+        const spaces = await Space.find(finRequest, {id:1, name:1, img:1, location:1, rating:1, statistics:1})
 
+        res.status(200).json({
+            status: "success",
+            data: [spaces],
+            message: "Spaces found"
+        });
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ 
-            status: 'err',
-            code: 500,
-            data: [],
-            message: "Internal Server Error",
-        })
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error dingus' });
     }
 }
 
@@ -528,7 +602,54 @@ export async function searchSpace(req, res) {
  * @route POST /space/add-space-basic
  * @desc Adds a basic space (id, name, desc, coords, address) -- Emily's using this one 
  * @access Public
+ * 
+ * @input id - id you want to associate the space with
+ *              user is logged in
+ * @inputExamples -- http://localhost:5005/space/ input json next comment block
+ * 
+ * @outputExamples -- second comment block
  */
+/**
+ * {
+  "id": 22,
+  "name": "Cozy Cafe",
+  "desc": "Comfy comfy.",
+  "coords": {
+    "lat": 40.7128,
+    "lon": -74.006
+  },
+  "address": "123 State Street, Chicago, IL 10001",
+  "rating": 4.5,
+  "statistics": {
+    "noiseLevels": 3,
+    "occupancy": 4,
+    "connectivity": 4.5
+  },
+  "reviews": [
+    {
+      "user": "ayou1",
+      "comment": "Smells!",
+      "rating": 1
+    },
+    {
+      "user": "nan1",
+      "comment": "Could be cozier.",
+      "rating": 3
+    }
+  ],
+  "amenities": {
+    "has_outlets": false,
+    "has_whiteboards": true,
+    "has_screen": false,
+    "is_food_beverage_friendly": false,
+    "has_printer": true,
+    "has_breakout_rooms": false,
+    "restrooms": false,
+    "seating_type": "Individual Seating"
+  }
+}
+ */
+
 export async function createSpace (req, res) {
 
     try {

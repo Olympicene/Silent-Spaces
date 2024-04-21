@@ -1,9 +1,9 @@
 import Timer from "../../components/Timer/Timer";
 import NavBar from "../../components/NavBar/NavBar";
 import StickyNote from "../../components/StickyNote/StickyNote";
+// import styles from "./StudyHub.module.css";
 
 const StudyHubPage = () => {
-    require("./StudyHub.css");
 
     const dummyuser = {
         first_name: 'naan',
@@ -18,7 +18,7 @@ const StudyHubPage = () => {
 
                 <Timer/>
                 <div style={{marginTop:"5rem", border:"none"}}>
-                    <iframe style={{borderRadius:"12px" }}
+                    <iframe title="Spotify" style={{borderRadius:"12px" }}
                     src="https://open.spotify.com/embed/playlist/37i9dQZF1DX8Uebhn9wzrS?utm_source=generator" 
                     width="100%" height="480" allowfullscreen="" 
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 

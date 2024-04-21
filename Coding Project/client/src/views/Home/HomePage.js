@@ -4,6 +4,8 @@ import SpaceTile from '../../components/SpaceTile/SpaceTile';
 import NavBar from '../../components/NavBar/NavBar';
 import Searchbar from '../../components/SearchBar/Searchbar';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import styles from './Home.module.css';
+
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -17,7 +19,7 @@ const HomePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://localhost:5005/v1/user', {
+            const response = await fetch('http://localhost:5005/auth/user', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -57,7 +59,7 @@ const HomePage = () => {
 
             const res = await response.json();
             console.log(res)
-            const updatedSpaceData = res.data[0];
+            const updatedSpaceData = res.data;
 
             setSpaceData(updatedSpaceData);
 
@@ -71,17 +73,17 @@ const HomePage = () => {
         let endpoint = ''; // Define endpoint based on the selected option
 
         if (option === 'A-Z') {
-            endpoint = 'http://localhost:5005/space/alphabetical-order/sort?order=asc';
+            endpoint = 'http://localhost:5005/space/sort/alphabetical-order?order=asc';
         } else if (option === 'Z-A') {
-            endpoint = 'http://localhost:5005/space/alphabetical-order/sort?order=desc';
+            endpoint = 'http://localhost:5005/space/sort/alphabetical-order?order=desc';
         } else if (option === 'distance: nearest first') {
-          endpoint = 'http://localhost:5005/space/sort?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'distance: furthest first') {
-          endpoint = 'http://localhost:5005/space/sort?lat=40.7061&lon=-74.0089';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'ratings: highest first') {
-          endpoint = 'http://localhost:5005/space/overall-ratings/sort?order=desc';
+          endpoint = 'http://localhost:5005/space/sort/overall-ratings?order=desc';
         } else if (option === 'ratings: lowest first') {
-          endpoint = 'http://localhost:5005/space/overall-ratings/sort?order=asc';
+          endpoint = 'http://localhost:5005/space/sort/overall-ratings?order=asc';
         }
 
         try {
@@ -109,29 +111,28 @@ const HomePage = () => {
     useEffect(() => {
         checkAuth();
         getSpaces('http://localhost:5005/space/all-spaces');
-    }, []);
+    });
 
-    require('./HomePage.css');
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
     const filterbyOptions = ['amenities', 'tags', 'favorites'];
 
     return (
-        <div className='menu-page'>
+        <div className={styles['menu-page']}>
             <NavBar info={userData} page="home" />
 
-            <div className='right-side-menu' style={{ marginLeft: "20vw"}}>
+            <div className={styles['right-side-menu']} style={{ marginLeft: "20vw"}}>
 
                 <Searchbar />
-                <div className='sort-and-filter'>
+                <div className={styles['sort-and-filter']}>
                     <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortFilterChange} />
                     <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} />
                 </div>
 
                 <hr width="90%" size="2" />
 
-                <div className='spacetiles-container'>
+                <div className={styles['spacetiles-container']}>
                     {spaceData && spaceData.map((item, index) => (
-                        <div className='spacetile'>
+                        <div className={styles['spacetile']}>
                             <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating }} />
                         </div>
                     ))}
