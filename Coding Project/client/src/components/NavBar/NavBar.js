@@ -4,8 +4,6 @@ import {NavbarData} from './NavbarData'
 import { IconContext } from 'react-icons';
 import * as FaIcons from "react-icons/fa";
 import logo from '../../assets/logo_white2.svg'
-
-
 import styles from "./NavBar.module.css"
 
 function NavBar({info, page}) {
