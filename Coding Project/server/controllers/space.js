@@ -124,44 +124,56 @@ export async function FullSpaceInfo(req, res) {
         //const spaceInfo = await Space.find({id: queryid}, {});
 
         const reviews = await Review.find({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
+        if(reviews.length < 1){
+            const spaceUpdate = await Space.find({id: queryid}, {});
 
-        const allinfoReviews = await Review.find({space_id: queryid});
+            console.log(spaceUpdate)
 
-        // Calculate the total sum of all Levels using an aggregate function 
-        const total_noise = allinfoReviews.reduce((acc, review) => acc + review.statistics.noiseLevels, 0);
-        const total_occ = allinfoReviews.reduce((acc, review) => acc + review.statistics.occupancy, 0);
-        const total_connect = allinfoReviews.reduce((acc, review) => acc + review.statistics.connectivity, 0);
-
-        // Calculate the average Levels
-        const average_noise = (total_noise / allinfoReviews.length).toFixed(1);
-        const average_occ = (total_occ / allinfoReviews.length).toFixed(1);
-        const average_connect = (total_connect / allinfoReviews.length).toFixed(1);
-
-        //round it off to the nearest half point
-
-        const rounded_noise = round(average_noise, 0.5)
-        const rounded_occ = round(average_occ, 0.5)
-        const rounded_connect = round(average_connect, 0.5)
-
-        let updateStats = {
-            "noiseLevels": rounded_noise,
-            "occupancy": rounded_occ,
-            "connectivity": rounded_connect
+            res.status(200).json({
+                status: "success",
+                data: spaceUpdate,
+                message: "Space full information fetched successfully!"
+            });
         }
-        console.log(updateStats)
-        
-        const sum = (parseFloat(average_noise) + parseFloat(average_occ) + parseFloat(average_connect)).toFixed(2);
-        const overall_average = (parseFloat(sum) / 3.0).toFixed(1);
+        else {
 
-        const spaceUpdate = await Space.findOneAndUpdate({id: queryid}, {reviews: reviews, rating: overall_average, statistics: updateStats}, {new: true})
+            const allinfoReviews = await Review.find({space_id: queryid});
 
-        console.log(spaceUpdate)
+            // Calculate the total sum of all Levels using an aggregate function 
+            const total_noise = allinfoReviews.reduce((acc, review) => acc + review.statistics.noiseLevels, 0);
+            const total_occ = allinfoReviews.reduce((acc, review) => acc + review.statistics.occupancy, 0);
+            const total_connect = allinfoReviews.reduce((acc, review) => acc + review.statistics.connectivity, 0);
 
-        res.status(200).json({
-            status: "success",
-            data: spaceUpdate,
-            message: "Space full information fetched successfully!"
-        });
+            // Calculate the average Levels
+            const average_noise = (total_noise / allinfoReviews.length).toFixed(1);
+            const average_occ = (total_occ / allinfoReviews.length).toFixed(1);
+            const average_connect = (total_connect / allinfoReviews.length).toFixed(1);
+
+            //round it off to the nearest half point
+            const rounded_noise = round(average_noise, 0.5)
+            const rounded_occ = round(average_occ, 0.5)
+            const rounded_connect = round(average_connect, 0.5)
+
+            let updateStats = {
+                "noiseLevels": rounded_noise,
+                "occupancy": rounded_occ,
+                "connectivity": rounded_connect
+            }
+            console.log(updateStats)
+            
+            const sum = (parseFloat(average_noise) + parseFloat(average_occ) + parseFloat(average_connect)).toFixed(2);
+            const overall_average = (parseFloat(sum) / 3.0).toFixed(1);
+
+            const spaceUpdate = await Space.findOneAndUpdate({id: queryid}, {reviews: reviews, rating: overall_average, statistics: updateStats}, {new: true})
+
+            console.log(spaceUpdate)
+
+            res.status(200).json({
+                status: "success",
+                data: spaceUpdate,
+                message: "Space full information fetched successfully!"
+            });
+    }
 
     } catch (err) {
         console.log(err)
