@@ -111,7 +111,7 @@ const HomePage = () => {
     useEffect(() => {
         checkAuth();
         getSpaces('http://localhost:5005/space/all-spaces');
-    });
+    }, []);
 
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
     const filterbyOptions = ['amenities', 'tags', 'favorites'];

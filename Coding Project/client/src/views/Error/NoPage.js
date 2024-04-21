@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Error.modules.css'
+import styles from './Error.module.css'
 
 const NoPage = () => {
   return <div className={styles['main']}>

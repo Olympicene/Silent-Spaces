@@ -80,7 +80,7 @@ const SpacePage = () => {
     useEffect(() => {
         checkAuth();
         getSpace();
-    });
+    }, []);
 
 
     const [anchor, setAnchor] = useState(null);
