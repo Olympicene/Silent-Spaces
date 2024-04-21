@@ -3,11 +3,9 @@ import { PiBrain } from "react-icons/pi";
 import { FaCoffee } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
+import styles from "./Timer.module.css"
 
 const Timer = () => {
-
-  require('./Timer.css');
-
   // variables for timers
   const WORKTIME = 3;
   const SHORTBREAK = 2;
@@ -73,22 +71,22 @@ const Timer = () => {
     
     <div className = "main-timer">
 
-      <div className="timer-action">
-        {action === WORKTIME ? (<PiBrain className="timer-action-icon"/>) : (<FaCoffee className="timer-action-icon"/>)}
+      <div className={styles['timer-action']}>
+        {action === WORKTIME ? (<PiBrain className={styles['timer-action-icon']}/>) : (<FaCoffee className={styles['timer-action-icon']}/>)}
         <h3>{action === WORKTIME ? "focus" : "break"}</h3>
       </div>
 
-      <div className="timer-times">
+      <div className={styles['timer-times']}>
         <h1 style={{marginTop:"-3rem"}}>{minutes < 10 ? "0" + minutes : minutes}</h1>
         <h1 style={{marginTop:"-6rem"}}>{seconds < 10 ? "0" + seconds : seconds}</h1>
       </div>
 
       <div>
         {!running && (
-          <button className="timer-button" onClick={startTimer}><FaPlay className="timer-icons"/></button>
+          <button className={styles['timer-button']} onClick={startTimer}><FaPlay className={styles['timer-icons']}/></button>
         )}
         {running && (
-          <button className="timer-button" onClick={pauseTimer}><FaPause className="timer-icons"/></button>
+          <button className={styles['timer-button']} onClick={pauseTimer}><FaPause className={styles['timer-icons']}/></button>
         )}
       </div>
 

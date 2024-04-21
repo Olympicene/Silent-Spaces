@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import './Dropdown.css';
+
+import styles from "./Dropdown.module.css"
+
 const Dropdown = ({drop, onChange}) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleOptionSelect = (option) => {
@@ -7,10 +9,10 @@ const Dropdown = ({drop, onChange}) => {
         setIsOpen(false); // Close the dropdown after selecting an option
     };
     return (
-        <div className="dropdown">
+        <div className={styles['dropdown']}>
             <button onClick={() => setIsOpen(!isOpen)}>{drop.feature}</button>
             {isOpen ? (
-            <ul className="dropdown-menu">
+            <ul className={styles['dropdown-menu']}>
                 {drop.options.map((option, index) => (
                     <li>
                         <button onClick={() => handleOptionSelect(option)}>{option}</button>

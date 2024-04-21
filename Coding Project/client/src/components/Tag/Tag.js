@@ -1,10 +1,10 @@
 import React from "react";
+import styles from "./Tag.module.css"
 
 const Tag = ({children, style}) => {
-    require('./Tag.css')
     return (
         <div 
-            className="tag" 
+            className={styles['tag']} 
             style = {style}>
                 
             {children}

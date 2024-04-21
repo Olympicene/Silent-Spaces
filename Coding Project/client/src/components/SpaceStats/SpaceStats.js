@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import './SpaceStats.css';
 
 import { FaVolumeMute } from "react-icons/fa";
 import { FaVolumeHigh } from "react-icons/fa6";
@@ -10,6 +9,7 @@ import { PiWifiHighBold } from "react-icons/pi";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { IconContext } from 'react-icons';
 import Rating from '@mui/material/Rating';
+import styles from "./SpaceStats.module.css"
 
 
 
@@ -37,7 +37,7 @@ const SpaceStats = ({stats, style}) => {
     
     return (
             <IconContext.Provider value={{color:"grey", size:"3rem"}}>
-            <div className='space-stats'> 
+            <div className={styles['space-stats']}> 
                 
                 <div>
                     <FaVolumeHigh style={{marginRight: "20px", color: "black"}}/>
@@ -49,7 +49,7 @@ const SpaceStats = ({stats, style}) => {
                     }} />  
                     <FaVolumeMute style={{marginLeft: "20px", color: "black"}}/>
                 </div>
-                <p className="space-stats-label">
+                <p className={styles['space-stats-label']}>
                     {Wifilabels[2]}
                 </p>
                 
@@ -64,7 +64,7 @@ const SpaceStats = ({stats, style}) => {
                     }} />
                     <MdOutlinePersonOff style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
                 </div>
-                <p className="space-stats-label">
+                <p className={styles['space-stats-label']}>
                     {Wifilabels[2]}
                 </p>
 
@@ -90,7 +90,7 @@ const SpaceStats = ({stats, style}) => {
                     />
                     <PiWifiHighBold style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
                 </div>
-                <p className="space-stats-label">
+                <p className={styles['space-stats-label']}>
                     {Wifilabels[hover !== -1 ? hover : value]}
                 </p>
             </div>

@@ -11,8 +11,14 @@ import ResourcesPage from "../../views/Resources/ResourcesPage";
 import CalendarPage from "../../views/Calendar/CalendarPage";
 import StudyHubPage from "../../views/StudyHub/StudyHubPage";
 import FavoritesPage from "../../views/Favorites/FavoritesPage";
-import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
+import {
+  experimental_extendTheme as materialExtendTheme,
+  Experimental_CssVarsProvider as MaterialCssVarsProvider,
+  THEME_ID as MATERIAL_THEME_ID,
+} from '@mui/material/styles';
+import { CssVarsProvider as JoyCssVarsProvider, extendTheme } from '@mui/joy/styles';
 
+const materialTheme = materialExtendTheme();
 const githubTheme = extendTheme({
   colorSchemes: {
     light: {
@@ -80,24 +86,26 @@ const githubTheme = extendTheme({
 });
 export default function App() {
   return (
-    <CssVarsProvider theme={githubTheme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<LandingPage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="spaces/:id" element={<SpacePage />} />
-            <Route path="sign-up" element={<CreateAccount />} />
-            <Route path="log-in" element={<LogIn />} />
-            <Route path="resources" element={<ResourcesPage />} />
-            <Route path="calendar" element={<CalendarPage />} />
-            <Route path="study-hub" element={<StudyHubPage />} />
-            <Route path="favorites" element={<FavoritesPage />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CssVarsProvider>
+    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
+      <JoyCssVarsProvider theme={githubTheme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<LandingPage />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="spaces/:id" element={<SpacePage />} />
+              <Route path="sign-up" element={<CreateAccount />} />
+              <Route path="log-in" element={<LogIn />} />
+              <Route path="resources" element={<ResourcesPage />} />
+              <Route path="calendar" element={<CalendarPage />} />
+              <Route path="study-hub" element={<StudyHubPage />} />
+              <Route path="favorites" element={<FavoritesPage />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </JoyCssVarsProvider>
+    </MaterialCssVarsProvider>
   );
 }
 

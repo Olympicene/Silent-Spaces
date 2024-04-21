@@ -1,15 +1,15 @@
 import React from "react";
+import styles from "./ResourceTile.module.css"
 
 const ResourceTile = ({data}) => {
     console.log(data)
 
-    require('./ResourceTile.css');
     return (
-        <div className="resource-tile">
+        <div className={styles['resource-tile']}>
             <img src={data.image}></img>
-            <div className="resource-content" >
+            <div className={styles['resource-content']} >
                 <h2>{data.title}</h2>
-                <div className="resource-link">
+                <div className={styles['resource-link']}>
                     <a href={data.link}>learn more</a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
+import styles from "./Layout.module.css"
 
 const Layout = () => {
-  require('./Layout.css')
   return (
     <div>
       {/* <nav>

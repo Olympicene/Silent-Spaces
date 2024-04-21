@@ -1,9 +1,9 @@
 import React from "react";
-import './InputBox.css';
+import styles from "./InputBox.module.css"
 
 const InputBox = ({features, change, style}) => {
     return (
-        <div className='standard-input-box'>
+        <div className={styles['standard-input-box']}>
             <input id= {features.id}
                     name= {features.name}
                     type= {features.type}

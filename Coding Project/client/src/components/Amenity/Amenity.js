@@ -1,10 +1,10 @@
 import React from "react";
+import styles from "./Amenity.module.css"
 
 const Amenity = ({children, style}) => {
-    require('./Amenity.css')
     return (
         <div 
-            className="amenity" 
+            className={styles['amenity']} 
             style = {style}>
                 
             {children}

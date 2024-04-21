@@ -12,11 +12,11 @@ import { PiWifiHighBold } from "react-icons/pi";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { IconContext } from 'react-icons';
 import Rating from '@mui/material/Rating';
+import styles from "./FavoriteTile.module.css"
 
 
 
 const FavoriteTile = ({details, path}) => {
-    require("./FavoriteTile.css");
 
     const [value, setValue] = React.useState(2);
     const [hover, setHover] = React.useState(-1);
@@ -39,25 +39,25 @@ const FavoriteTile = ({details, path}) => {
     }
     return(
         <Link to = {path} style={{ textDecoration: 'none' }}>
-        <div className="favoritetile-main">
-            <div className="favtile-img">
+        <div className={styles['favoritetile-main']}>
+            <div className={styles['favtile-img']}>
                 <img src={spaceimg} alt = ""/>
                 <Heart isClick={true} styles={{position:"absolute", right:"-25px", top:"-30px", }} />
             </div>
 
-            <div className="favtile-middle">
+            <div className={styles['favtile-middle']}>
                 <h2>sample study space</h2>
-                <div className="favtile-location">
-                    <FaLocationDot className="favtile-loc-icon" />
+                <div className={styles['favtile-location']}>
+                    <FaLocationDot className={styles['favtile-loc-icon']} />
                     <h3>410 s morgan st</h3>
                 </div>
-                <div className="favtile-rating">
+                <div className={styles['favtile-rating']}>
                     <h2>4.3</h2>
                 </div>
             </div>
             
-            <div className="favtile-stats">
-                <div className="favtile-stats-tile">
+            <div className={styles['favtile-stats']}>
+                <div className={styles['favtile-stats-tile']}>
                     <div>
                         <FaVolumeHigh style={{marginRight: "20px", color: "black"}}/>
                         <Rating name="size-large" readOnly defaultValue={2} sx={{
@@ -70,7 +70,7 @@ const FavoriteTile = ({details, path}) => {
                     </div>
                 </div>
 
-                <div className="favtile-stats-tile">
+                <div className={styles['favtile-stats-tile']}>
                     <div>
                         <MdOutlinePeople style={{marginRight: "20px", color: "black", height: "3rem"}}/>
                         <Rating readOnly value={2} sx={{
@@ -83,7 +83,7 @@ const FavoriteTile = ({details, path}) => {
                     </div>
                 </div>
 
-                <div className="favtile-stats-tile">
+                <div className={styles['favtile-stats-tile']}>
                     <div>
                         <PiWifiSlashBold style={{marginRight: "20px", color: "black", height: "3rem"}}/>
                         <Rating readOnly value={2} sx={{

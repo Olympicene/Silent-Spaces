@@ -1,12 +1,13 @@
+import styles from "./StickyNote.module.css"
+
 export default function StickyNote() {
-    require('./StickyNote.css');
       
     return (
-        <div className="stickynote-container">
-            <div className="stickynote-header">
+        <div className={styles['stickynote-container']}>
+            <div className={styles['stickynote-header']}>
                 <div>notes</div>
             </div>
-            <textarea className='stickynote-textarea'></textarea>
+            <textarea className={styles['stickynote-textarea']}></textarea>
         </div>
     );
 }

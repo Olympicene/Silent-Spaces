@@ -67,7 +67,7 @@ const SpacePage = () => {
             }
 
             const res = await response.json();
-            // console.log(res.data[0])
+            console.log(res.data[0])
             setSpaceData(res.data)
 
 

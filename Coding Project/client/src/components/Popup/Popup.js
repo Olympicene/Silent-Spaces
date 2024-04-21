@@ -9,9 +9,9 @@ import { PiWifiSlashBold } from "react-icons/pi";
 import { PiWifiHighBold } from "react-icons/pi";
 import Button from '../../components/Button/Button'
 import InputBox from '../InputBox/InputBox';
+import styles from "./Popup.module.css"
 
 export default function Popup() {
-    require('./Popup.css')
     const [volume, setVolume] = useState(0);
     const [people, setPeople] = useState(0);
     const [wifi, setWifi] = useState(0);
@@ -35,8 +35,8 @@ export default function Popup() {
       };
     
   return (
-    <div className='popup'>
-        <div className='each-stats'>
+    <div className={styles['popup']}>
+        <div className={styles['each-stats']}>
 
             <IconContext.Provider value={{color:"black", size:"3rem"}}>
             <p>noise</p>
@@ -68,15 +68,15 @@ export default function Popup() {
             </IconContext.Provider>
 
         </div>
-        <p className='p-popup'>select amenities:</p>
-        <div className='all-amenities-list'>
+        <p className={styles['p-popup']}>select amenities:</p>
+        <div className={styles['all-amenities-list']}>
             <Button theme="light" style={{padding: 10, margin: 10, fontSize: "25px"}}>outlets</Button>
             <Button theme="light" style={{padding: 10, margin: 10, fontSize: "25px"}}>whiteboards</Button>
             <Button theme="light" style={{padding: 10, margin: 10, fontSize: "25px"}}>printers</Button>
             <Button theme="light" style={{padding: 10, margin: 10, fontSize: "25px"}}>long tables</Button>
             <Button theme="light" style={{padding: 10, margin: 10, fontSize: "25px"}}>drinks allowed</Button>
         </div>
-        <p className='p-popup'>leave a review:</p>
+        <p className={styles['p-popup']}>leave a review:</p>
         <InputBox features={{id:"review", name:"review", type:"text", placeholder:"enter text here"}} change={handleChange} 
         style={{backgroundColor: "#254D32", color: "#ffff"}}/>
         <Button theme="contrast" style={{width: "50%", margin: 20}}>add rating</Button>

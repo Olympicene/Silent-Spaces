@@ -1,10 +1,10 @@
 import React from "react";
+import styles from "./Button.module.css"
 
 const Button = ({children, theme, change, style, ...buttonProps}) => {
-    require('./Button.css')
     return (
         <button 
-                className={theme + " CTA-Button"} 
+                className={[styles["CTA-Button"], styles[theme]].join(' ')} 
                 style={style}
                 onChange={change}
                 {...buttonProps}
