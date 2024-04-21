@@ -44,10 +44,15 @@ const githubTheme = extendTheme({
     JoyButton: {
       styleOverrides: {
         root: ({ ownerState }) => ({
+          backgroundColor: "#2c5b3b",
           borderRadius: '6px',
           boxShadow: '0 1px 0 0 rgba(27, 31, 35, 0.04)',
           transition: '80ms cubic-bezier(0.33, 1, 0.68, 1)',
           transitionProperty: 'color,background-color,box-shadow,border-color',
+          '&:hover': {
+            backgroundColor: '#52a55e',
+            
+          },
           ...(ownerState.size === 'md' && {
             fontWeight: 600,
             minHeight: '32px',
@@ -73,7 +78,6 @@ const githubTheme = extendTheme({
     },
   },
 });
-
 export default function App() {
   return (
     <CssVarsProvider theme={githubTheme}>
