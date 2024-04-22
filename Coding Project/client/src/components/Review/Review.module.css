@@ -1,0 +1,12 @@
+.review {
+    border-radius: 15px;
+    background: #F2F2F2;
+    overflow: hidden;
+    font-family: 'poppins', sans-serif;
+    width : 40%;
+    height : 15rem;
+    padding : 1rem;
+    position: relative;
+
+    margin: 1rem;
+}
