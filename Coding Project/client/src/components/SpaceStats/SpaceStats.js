@@ -13,10 +13,36 @@ import styles from "./SpaceStats.module.css"
 
 
 
-const SpaceStats = ({stats, style}) => {   
+const SpaceStats = ({statistics, style}) => {   
 
     const [value, setValue] = React.useState(2);
     const [hover, setHover] = React.useState(-1);
+
+    const LoudnessLabels = {
+        0.5: 'Extremely Loud',
+        1: 'Deafening',
+        1.5: 'Very Loud',
+        2: 'Loud',
+        2.5: 'Average Noise',
+        3: 'Moderate Noise',
+        3.5: 'Low Noise',
+        4: 'Quiet',
+        4.5: 'Very Quiet',
+        5: 'Silent',
+    };
+    
+    const CrowdednessLabels = {
+        0.5: 'Extremely Crowded',
+        1: 'Very Crowded',
+        1.5: 'Crowded',
+        2: 'Busy',
+        2.5: 'Average Crowds',
+        3: 'Moderate Crowds',
+        3.5: 'Low Crowds',
+        4: 'Sparse',
+        4.5: 'Nearly Empty',
+        5: 'Empty',
+    };
 
     const Wifilabels = {
         0.5: 'Useless',
@@ -41,7 +67,7 @@ const SpaceStats = ({stats, style}) => {
                 
                 <div>
                     <FaVolumeHigh style={{marginRight: "20px", color: "black"}}/>
-                    <Rating name="size-large" readOnly defaultValue={2} sx={{
+                    <Rating readOnly value={statistics.noiseLevels} defaultValue={2} sx={{
                         fontSize: "3.5rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -50,13 +76,13 @@ const SpaceStats = ({stats, style}) => {
                     <FaVolumeMute style={{marginLeft: "20px", color: "black"}}/>
                 </div>
                 <p className={styles['space-stats-label']}>
-                    {Wifilabels[2]}
+                    {LoudnessLabels[statistics.noiseLevels]}
                 </p>
                 
                 {/* CROWD STATUS */}
                 <div>
                     <MdOutlinePeople style={{marginRight: "20px", color: "black", height: "3rem"}}/>
-                    <Rating readOnly value={2} sx={{
+                    <Rating readOnly value={statistics.occupancy} sx={{
                         fontSize: "3.5rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -65,7 +91,7 @@ const SpaceStats = ({stats, style}) => {
                     <MdOutlinePersonOff style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
                 </div>
                 <p className={styles['space-stats-label']}>
-                    {Wifilabels[2]}
+                {CrowdednessLabels[statistics.occupancy]}
                 </p>
 
                 {/* WIFI STATUS */}

@@ -96,7 +96,7 @@ const SpacePage = () => {
     return (
          
         <div className={styles['spacePage']}>
-            <NavBar info={userData}/>
+            <NavBar info={userData} page="home"/>
             <div style={{marginLeft : "20vw"}}  className={styles['space-content']}>
                 <IconContext.Provider value={{color:"grey", size:"1.5rem"}}>
                 <div className={styles['space-menu-bar']}>
@@ -160,7 +160,10 @@ const SpacePage = () => {
                         }
                     </div>
                     <div className={styles['space-ratings']}>
-                        <SpaceStats></SpaceStats>
+                        { spaceData.statistics &&
+                            <SpaceStats statistics={spaceData.statistics}></SpaceStats>
+                        }
+                        
                         <div>
                             <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>
                             <BasePopup id={popupState} open={open} anchor={anchor}>
