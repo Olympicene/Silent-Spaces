@@ -20,6 +20,7 @@ import { Person, Outlet, Tv, CoPresent, Fastfood, Print, MeetingRoom, Wc, Group 
 import MyGallery from '../../components/ImageGallery/ImageGallery';
 import Review from '../../components/Review/Review';
 import CheckIn from '../../components/CheckIn/CheckIn'
+import RatingPage from '../../components/Rating/RatingPage';
 
 
 const SpacePage = () => {
@@ -35,6 +36,7 @@ const SpacePage = () => {
     const [reviews, setReviews] = useState([]);
 
     const [checkIn, setCheckIn] = useState(false);
+    const [rating, setRating] = useState(false);
 
     const checkAuth = async () => {
         try {
@@ -216,11 +218,12 @@ const SpacePage = () => {
                         }
                         <SpaceLive></SpaceLive>
                     {!checkIn && <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>}
-                        <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={handleClick}> Add Rating </Button>
-                        <BasePopup id={popupState} open={open} anchor={anchor}>
+                    {!rating && <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={() => setRating(true)}> Add Rating </Button>}
+                        {/* <BasePopup id={popupState} open={open} anchor={anchor}>
                             <Popup />
-                        </BasePopup>
+                        </BasePopup> */}
                     {checkIn && <CheckIn space_id={spaceData.id} user={userData.username}/>}
+                    {rating && <RatingPage space_id={spaceData.id} user={userData.username}/>}
                     </div>
 
                 </div>
