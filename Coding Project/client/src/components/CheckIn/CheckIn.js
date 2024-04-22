@@ -30,7 +30,7 @@ export default function CheckIn({space_id, user}) {
   const handleCheckIn = async () => {
 
     try {
-        const response = await fetch(`http://localhost:5005/checkin/`, {
+        const response = await fetch(`http://silentspaces.info:5005/checkin/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

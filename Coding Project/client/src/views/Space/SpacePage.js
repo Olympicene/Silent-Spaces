@@ -40,7 +40,7 @@ const SpacePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://localhost:5005/auth/user', {
+            const response = await fetch('http://silentspaces.info:5005/auth/user', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -70,7 +70,7 @@ const SpacePage = () => {
 
     const getSpace = async () => {
         try {
-            const response = await fetch(`http://localhost:5005/space/space-info/${id}`, {
+            const response = await fetch(`http://silentspaces.info:5005/space/space-info/${id}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -92,7 +92,7 @@ const SpacePage = () => {
 
     const getReviews = async () => {
         try {
-            const response = await fetch(`http://localhost:5005/review/${id}/all`, {
+            const response = await fetch(`http://silentspaces.info:5005/review/${id}/all`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -113,7 +113,7 @@ const SpacePage = () => {
 
     const getLastCheckin = async () => {
         try {
-            const response = await fetch(`http://localhost:5005/checkin/live/${id}`, {
+            const response = await fetch(`http://silentspaces.info:5005/checkin/live/${id}`, {
                 method: 'GET',
                 credentials: 'include',
             });
