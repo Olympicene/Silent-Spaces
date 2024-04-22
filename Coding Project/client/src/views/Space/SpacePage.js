@@ -30,7 +30,7 @@ const SpacePage = () => {
         first_name: '',
         last_name: '',
         email: '',
-        username:''
+        username: ''
     });
     const [spaceData, setSpaceData] = useState({});
     const [reviews, setReviews] = useState([]);
@@ -124,7 +124,7 @@ const SpacePage = () => {
 
             const res = await response.json();
             console.log(res)
-            if(res.status === "success") {
+            if (res.status === "success") {
                 setCheckInData(res)
             }
 
@@ -235,6 +235,9 @@ const SpacePage = () => {
                                     <Review data={item} key={index}></Review>
                                 ))}
                             </div>}
+                            <div style={{height: "50vh"}}>
+
+                            </div>
                     </div>
                     <div className={styles['space-ratings']}>
                         {spaceData.statistics &&
@@ -244,13 +247,16 @@ const SpacePage = () => {
                         {checkInData.status &&
                             <SpaceLive stats={checkInData}></SpaceLive>
                         }
-                    {!checkIn && <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>}
-                    {!rating && <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={() => setRating(true)}> Add Rating </Button>}
+                        {!checkIn && <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={() => setCheckIn(true)}> Check-In </Button>}
+                        {!rating && <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={() => setRating(true)}> Add Rating </Button>}
                         {/* <BasePopup id={popupState} open={open} anchor={anchor}>
                             <Popup />
                         </BasePopup> */}
-                    {checkIn && <CheckIn space_id={spaceData.id} user={userData.username}/>}
-                    {rating && <RatingPage space_id={spaceData.id} user={userData.username}/>}
+                        <div>
+                            {checkIn && <CheckIn space_id={spaceData.id} user={userData.username} />}
+                            {rating && <RatingPage space_id={spaceData.id} user={userData.username} />}
+                        </div>
+
                     </div>
 
                 </div>
