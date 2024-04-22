@@ -57,24 +57,24 @@ import Space from "../models/Space.js"
 */
 export async function AllSpacesSummary(req, res) {
     try {
-        //const spacesArray = await Space.find({}, {id:1, name:1, img:1, location:1, rating:1});
-        const spacesArray = await Space.aggregate([
-            {
-                $project: {
-                    id: 1,
-                    name: 1,
-                    location: 1,
-                    rating: 1,
-                    img: {
-                        $cond: {
-                            if: { $eq: [{ $size: "$img" }, 0] }, // Check if the img array is empty
-                            then: [], // If img array is empty, pass an empty array
-                            else: { $arrayElemAt: ["$img", 0] } // Otherwise, select the first item in the 'img' array
-                        }
-                    }
-                }
-            }
-        ]);
+        const spacesArray = await Space.find({}, {id:1, name:1, img:1, location:1, rating:1});
+        // const spacesArray = await Space.aggregate([
+        //     {
+        //         $project: {
+        //             id: 1,
+        //             name: 1,
+        //             location: 1,
+        //             rating: 1,
+        //             img: {
+        //                 $cond: {
+        //                     if: { $eq: [{ $size: "$img" }, 0] }, // Check if the img array is empty
+        //                     then: [], // If img array is empty, pass an empty array
+        //                     else: { $arrayElemAt: ["$img", 0] } // Otherwise, select the first item in the 'img' array
+        //                 }
+        //             }
+        //         }
+        //     }
+        // ]);
 
         res.status(200).json({
             status: "success",
