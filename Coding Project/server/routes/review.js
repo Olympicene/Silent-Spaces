@@ -19,23 +19,23 @@ var router = express.Router();
 
 
 // GET all reviews
-router.get('/', Validate, getReviews);
+router.get('/', Verify, getReviews);
 
 //GET a single review
 // we can use the :id for route parameters, it can change
-router.get('/:id', Validate, getReview);
+router.get('/:id', Verify, getReview);
 
 //gets all the reviews that share the same space id.
-router.get('/:space_id/all', Validate, getSpaceReviews);
+router.get('/:space_id/all', Verify, getSpaceReviews);
 
 //gets all the reviews that share the same space id.
-router.get('/:space_id/score', Validate, getSpaceAverages);
+router.get('/:space_id/score', Verify, getSpaceAverages);
 
 //POST a new review
 router.post('/', Validate, postReview)
 
 // Delete a review
-router.delete('/:id', Validate, deleteReview)
+router.delete('/:id', Verify, deleteReview)
 
 // Update a review
 router.patch('/update/:id', Validate, updateReview)

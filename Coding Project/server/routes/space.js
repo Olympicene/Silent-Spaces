@@ -63,12 +63,12 @@ router.post('/search/', Verify, searchSpace)
 
 // ---- ADMIN QUERIES ---- //
 //POST a new space
-router.post('/', Verify, createSpace)
+router.post('/', Validate, createSpace)
 
 // Delete a space
 router.delete('/:id', Verify, deleteSpace)
 
 // Update a space
-router.patch('/:id', Verify, updateSpace)
+router.patch('/:id', Validate, updateSpace)
 
 export { router }
