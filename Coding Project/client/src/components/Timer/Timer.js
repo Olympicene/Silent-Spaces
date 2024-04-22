@@ -69,7 +69,7 @@ const Timer = () => {
 
   return (
     
-    <div className = "main-timer">
+    <div className = {styles['main-timer']}>
 
       <div className={styles['timer-action']}>
         {action === WORKTIME ? (<PiBrain className={styles['timer-action-icon']}/>) : (<FaCoffee className={styles['timer-action-icon']}/>)}

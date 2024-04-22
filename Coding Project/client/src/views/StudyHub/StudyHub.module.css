@@ -1,5 +1,6 @@
 .studyhub-main {
-    height: 150vh;
+    margin: 0;
+    padding: 0;
     width: 100vw;
     display: flex;
     background-color: #f2fff4;

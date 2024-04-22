@@ -1,7 +1,7 @@
 import Timer from "../../components/Timer/Timer";
 import NavBar from "../../components/NavBar/NavBar";
 import StickyNote from "../../components/StickyNote/StickyNote";
-// import styles from "./StudyHub.module.css";
+import styles from "./StudyHub.module.css";
 
 const StudyHubPage = () => {
 
@@ -12,9 +12,9 @@ const StudyHubPage = () => {
     }
 
     return (
-        <div className="studyhub-main">
+        <div className={styles['studyhub-main']}>
             <NavBar info={dummyuser} page="study hub" />
-            <div className="studyhub-right" style={{marginLeft: "20vw"}}>
+            <div className={styles['studyhub-right']} style={{marginLeft: "20vw"}}>
 
                 <Timer/>
                 <div style={{marginTop:"5rem", border:"none"}}>
