@@ -31,7 +31,7 @@ const SpaceTile = ({details, style, path}) => {
                 </div>
                 <div className={styles['spacetile-rating']} >
                     <img className={styles['tile-rating']} src={star} alt = ""/>
-                    <p className={styles['tile-rating']} style={{color: "black", fontSize:"1.5rem"}}>{(details.rating === undefined? "N/A" : details.rating)}</p>
+                    <p className={styles['tile-rating']} style={{color: "black", fontSize:"1.5rem"}}>{(details.rating === undefined? "N/A" : details.rating.toFixed(1))}</p>
                 </div>
             </div>
 

@@ -62,7 +62,7 @@ export async function GetFavoriteSpaces(req, res) {
         });
         
         // get space summaries of spaces in idArray
-        const spacesArray = await Space.find({id: {$in: idArray}}, {id:1, name:1, img:1, location:1, rating:1});
+        const spacesArray = await Space.find({id: {$in: idArray}});
 
         res.status(200).json({
             status: "success",
