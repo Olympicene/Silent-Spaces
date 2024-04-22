@@ -12,8 +12,9 @@ const HomePage = () => {
     const [userData, setUserData] = useState({
         first_name: '',
         last_name: '',
-        email: '',
+        email: ''
     });
+    const [userFavorites, setUserFavorites] = useState([]);
 
     const [spaceData, setSpaceData] = useState([]);
 
@@ -35,10 +36,11 @@ const HomePage = () => {
             const updatedUserData = {
                 first_name: res.data[0].first_name,
                 last_name: res.data[0].last_name,
-                email: res.data[0].email,
+                email: res.data[0].email
             };
 
             setUserData(updatedUserData);
+            setUserFavorites(res.data[0].favorite_spaces)
 
         } catch (error) {
             console.error(error);
@@ -167,7 +169,7 @@ const HomePage = () => {
                 <div className={styles['spacetiles-container']}>
                     {spaceData && spaceData.map((item, index) => (
                         <div className={styles['spacetile']}>
-                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating, id:item.id }} />
+                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating, id:item.id}} favorites={userFavorites} />
                         </div>
                     ))}
                 </div>
