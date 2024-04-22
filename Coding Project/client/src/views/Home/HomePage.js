@@ -58,7 +58,7 @@ const HomePage = () => {
             }
 
             const res = await response.json();
-            console.log(res)
+            console.log(res.data[0])
             const updatedSpaceData = res.data;
 
             setSpaceData(updatedSpaceData);
@@ -92,15 +92,9 @@ const HomePage = () => {
               credentials: 'include',
           });
 
-          const res = await response.json();
-
-          if(option !== 'distance: furthest first' && option !== 'distance: nearest first') {
-            console.log(res)
-            setSpaceData(res.spaces);
-          } else {
-            console.log(res)
-            setSpaceData(res.data[0]);
-          }
+        const res = await response.json();
+        setSpaceData(res.data);
+          
 
       } catch (error) {
           console.error(error);

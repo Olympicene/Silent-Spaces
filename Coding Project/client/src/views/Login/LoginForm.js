@@ -9,6 +9,7 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import Person from '@mui/icons-material/Person';
+import styles from "./Login.module.css"
 
 const Login = () => {
     const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Login = () => {
     };
   
     return (
-      <main>
+      <main className={styles['login']}>
         <CssBaseline />
         <Sheet
           sx={{

@@ -67,7 +67,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <main>
+    <main className={styles['create-account']}>
       <CssBaseline />
       <Sheet
         sx={{

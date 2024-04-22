@@ -16,6 +16,16 @@
   width: 50%;
 }
 
+.login {
+  animation: fade 0.5s ease-in;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}
+
 .right-half {
   width: 50%;
   height: 100%;  
