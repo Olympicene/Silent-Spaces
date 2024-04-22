@@ -16,6 +16,8 @@ import Popup from '../../components/Popup/Popup';
 import SpaceStats from '../../components/SpaceStats/SpaceStats';
 import styles from "./Space.module.css"
 import SpaceLive from '../../components/SpaceLive/SpaceLive';
+import { Person, Outlet, Tv, CoPresent, Fastfood, Print, MeetingRoom, Wc, Group } from "@mui/icons-material";
+
 
 const SpacePage = () => {
     const {id} = useParams();
@@ -149,13 +151,23 @@ const SpacePage = () => {
                         </div>}
 
                         {/* AMENETIES */}
-                        { spaceData.ameneties &&
+                        { spaceData.amenities &&
                         <div className={styles['space-ameneties']}>
-                            <p style={{color:"black", fontSize:"30px", margin: 20}}>amenities:</p>
+                            <div style={{width: "100%"}}>
+                                <p style={{color:"black", fontSize:"30px", margin: 10}}>amenities:</p>  
+                            </div>
                             <div className={styles['space-ameneties-list']}>
-                                {spaceData.ameneties.map((item, index) => (
-                                    console.log(item)
-                                ))}
+                                {spaceData.amenities.has_outlets === true && <Amenity> <Outlet fontSize="large" style={{marginRight: "20px"}}/>outlets</Amenity>}
+                                {spaceData.amenities.has_whiteboards === true && <Amenity> <CoPresent fontSize="large" style={{marginRight: "20px"}}/>whiteboards</Amenity>}
+                                {spaceData.amenities.has_screen === true && <Amenity> <Tv fontSize="large" style={{marginRight: "20px"}}/>screens</Amenity>}
+                                {spaceData.amenities.is_food_beverage_friendly == true && <Amenity> <Fastfood fontSize="large" style={{marginRight: "20px"}}/>allows food</Amenity>}
+                                {spaceData.amenities.has_printer === true && <Amenity> <Print fontSize="large" style={{marginRight: "20px"}}/>printers</Amenity>}
+                                {spaceData.amenities.has_breakout_rooms === true && <Amenity> <MeetingRoom fontSize="large" style={{marginRight: "20px"}}/>breakout rooms</Amenity>}
+                                {spaceData.amenities.restrooms === true && <Amenity> <Wc fontSize="large" style={{marginRight: "20px"}}/>restrooms</Amenity>}
+                                {spaceData.amenities.seating_type === 'group-seating' && <Amenity> <Group fontSize="large" style={{marginRight: "20px"}}/>group seating</Amenity>}
+                                {spaceData.amenities === 'individual-seating' && <Amenity> <Person fontSize="large" style={{marginRight: "20px"}}/>single seating</Amenity>}
+
+
                             </div>
                         </div>
                         }

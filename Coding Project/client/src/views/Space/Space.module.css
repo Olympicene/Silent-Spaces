@@ -97,11 +97,16 @@
 
 .space-ameneties {
     padding-bottom: 10vh;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .space-ameneties-list {
+    width: 80%;
     display: flex;
+    justify-content: left;
     flex-wrap: wrap;
 }
 
@@ -110,6 +115,7 @@
 .space-ratings {
     /* background-color: blue; */
     flex-basis: 36%;
+    margin-left: 1rem;
 }
 
 
@@ -125,3 +131,4 @@
     align-items: center;
     transition: 0.6s;
 }
+
