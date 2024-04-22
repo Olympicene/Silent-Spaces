@@ -22,7 +22,7 @@ const SpaceTile = ({details, style, path}) => {
 
             <Link to = {path} style={{ textDecoration: 'none' }}>
             <div className={styles['spacetile-image']} >
-                <img src={(details.img === undefined ? studySpace : details.img)} alt = "" style={{width:"100%", objectFit: "cover"}}/>
+                <img src={(details.img[0] || details.img)} alt = "" style={{width:"100%", objectFit: "cover"}}/>
             </div>
             <div className={styles['spacetile-summary']}> 
                 <div className={styles['spacetile-info']}>

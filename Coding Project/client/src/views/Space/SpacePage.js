@@ -111,7 +111,7 @@ const SpacePage = () => {
                 </div>
                 </IconContext.Provider>
                 <div className={styles['imageCarousel']}>
-                    <img src={spaceData.img} alt="" />
+                    <img src={spaceData.img === undefined? undefined : spaceData.img[0]} alt="" />
                 </div>
                 <div className={styles['space-info']}>
                     <div className={styles['space-labels']}>
