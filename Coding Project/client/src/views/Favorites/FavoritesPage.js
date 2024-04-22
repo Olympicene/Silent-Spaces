@@ -39,7 +39,7 @@ const FavoritesPage = () => {
     };
 
     useEffect(() => {
-        getFavSpaces('http://localhost:5005/user/fav-space/all');
+        getFavSpaces('http://silentspaces.info:5005/user/fav-space/all');
     }, []);
 
     return (

@@ -31,7 +31,7 @@ export default function RatingPage({space_id, user}) {
 
   const addRating = async () => {
     try {
-        const response = await fetch("http://localhost:5005/review/", {
+        const response = await fetch("http://silentspaces.info:5005/review/", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

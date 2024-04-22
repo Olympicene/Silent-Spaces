@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dac326f9.css",
+    "main.js": "/static/js/main.9dae750a.js",
+    "static/media/wics.svg": "/static/media/wics.f97341e6deac7043b0397f804aabce23.svg",
+    "static/media/campus.svg": "/static/media/campus.cb886f459afc720e0f803c1ba5cb2f02.svg",
+    "static/media/resourcetile.svg": "/static/media/resourcetile.01a384349c146cbe9d16f8bca4ef7aeb.svg",
+    "static/media/studentorg.svg": "/static/media/studentorg.5f23a79823477427072d9b68334c521a.svg",
+    "static/media/intern.svg": "/static/media/intern.6f14d45a2569baa125d091627bca4c87.svg",
+    "static/media/abtractPeoplePeerProgramming.svg": "/static/media/abtractPeoplePeerProgramming.05ee0a10796ef702035f2e1bd0522dcf.svg",
+    "static/media/trackers.svg": "/static/media/trackers.a7936f12d9e58bddb3f6c65fd800755f.svg",
+    "static/media/windowIntoStudyGroup.svg": "/static/media/windowIntoStudyGroup.23d5fa173482cf851bf64061caa706b7.svg",
+    "static/media/laptop.svg": "/static/media/laptop.c92ee7cb981921804ba7.svg",
+    "static/media/blackstar.svg": "/static/media/blackstar.221e2290f597ac420ae319536de07ffe.svg",
+    "static/media/logo_white2.svg": "/static/media/logo_white2.3f47fd4672194ccc88fbc30244af1744.svg",
+    "index.html": "/index.html",
+    "main.dac326f9.css.map": "/static/css/main.dac326f9.css.map",
+    "main.9dae750a.js.map": "/static/js/main.9dae750a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dac326f9.css",
+    "static/js/main.9dae750a.js"
+  ]
+}
