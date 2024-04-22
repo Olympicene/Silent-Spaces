@@ -32,16 +32,16 @@ const SpaceStats = ({statistics, style}) => {
     };
     
     const CrowdednessLabels = {
-        0.5: 'Extremely Crowded',
+        0.5: 'Standing Room Only',
         1: 'Very Crowded',
         1.5: 'Crowded',
         2: 'Busy',
         2.5: 'Average Crowds',
         3: 'Moderate Crowds',
         3.5: 'Low Crowds',
-        4: 'Sparse',
+        4: 'Sparsely Populated',
         4.5: 'Nearly Empty',
-        5: 'Empty',
+        5: 'Ghost Town',
     };
 
     const Wifilabels = {
@@ -57,17 +57,14 @@ const SpaceStats = ({statistics, style}) => {
         5: 'Very Fast',
       };
 
-      function getLabelText() {
-        return `${value} Star${value !== 1 ? 's' : ''}, ${Wifilabels[value]}`;
-      }
     
     return (
             <IconContext.Provider value={{color:"grey", size:"3rem"}}>
             <div className={styles['space-stats']}> 
                 
-                <div>
+                <div className={styles['space-stars']}>
                     <FaVolumeHigh style={{marginRight: "20px", color: "black"}}/>
-                    <Rating readOnly value={statistics.noiseLevels} defaultValue={2} sx={{
+                    <Rating precision={0.5} readOnly value={statistics.noiseLevels} defaultValue={2} sx={{
                         fontSize: "3.5rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -76,13 +73,13 @@ const SpaceStats = ({statistics, style}) => {
                     <FaVolumeMute style={{marginLeft: "20px", color: "black"}}/>
                 </div>
                 <p className={styles['space-stats-label']}>
-                    {LoudnessLabels[statistics.noiseLevels]}
+                {LoudnessLabels[statistics.noiseLevels]}
                 </p>
                 
                 {/* CROWD STATUS */}
-                <div>
+                <div className={styles['space-stars']}>
                     <MdOutlinePeople style={{marginRight: "20px", color: "black", height: "3rem"}}/>
-                    <Rating readOnly value={statistics.occupancy} sx={{
+                    <Rating precision={0.5} readOnly value={statistics.occupancy} sx={{
                         fontSize: "3.5rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -95,29 +92,18 @@ const SpaceStats = ({statistics, style}) => {
                 </p>
 
                 {/* WIFI STATUS */}
-                <div>
+                <div className={styles['space-stars']}>
                     <PiWifiSlashBold style={{marginRight: "20px", color: "black", height: "3rem"}}/>
-                    <Rating name="hover-feedback"
-                        value={value}
-                        precision={0.5}
-                        getLabelText={getLabelText}
-                        onChange={(event, newValue) => {
-                        setValue(newValue);
-                        }}
-                        onChangeActive={(event, newHover) => {
-                        setHover(newHover);
-                        }}
-                        sx={{
-                            fontSize: "3.5rem",
-                            '& .MuiRating-iconFilled': {
-                                color: 'black',
-                              },
-                        }}
-                    />
+                    <Rating precision={0.5} readOnly value={statistics.connectivity} sx={{
+                        fontSize: "3.5rem",
+                        '& .MuiRating-iconFilled': {
+                            color: 'black',
+                          },
+                    }} />
                     <PiWifiHighBold style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
                 </div>
                 <p className={styles['space-stats-label']}>
-                    {Wifilabels[hover !== -1 ? hover : value]}
+                    {Wifilabels[statistics.connectivity]}
                 </p>
             </div>
             </IconContext.Provider>

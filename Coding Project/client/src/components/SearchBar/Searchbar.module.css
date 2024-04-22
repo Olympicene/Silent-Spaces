@@ -1,5 +1,5 @@
 .searchbar {
-    margin: auto;
+    margin: 0 auto;
     width: 50%;
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,13 @@
 
 .space-stats {
-    box-shadow: 6px 6px;
+    /* box-shadow: 6px 6px; */
+    margin: 15px 0;
     padding: 5px 0px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
 }
 
 .space-stats div{
@@ -13,7 +19,7 @@
     border-radius: 15px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     align-items: center;
 }
@@ -21,4 +27,5 @@
 .space-stats-label {
     font-size: 1.7rem;
     margin: 0;
+    text-align: center;
 }

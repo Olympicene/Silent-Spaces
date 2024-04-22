@@ -15,6 +15,7 @@ import Button from '../../components/Button/Button'
 import Popup from '../../components/Popup/Popup';
 import SpaceStats from '../../components/SpaceStats/SpaceStats';
 import styles from "./Space.module.css"
+import SpaceLive from '../../components/SpaceLive/SpaceLive';
 
 const SpacePage = () => {
     const {id} = useParams();
@@ -121,7 +122,7 @@ const SpacePage = () => {
 
                             { spaceData.name && spaceData.rating &&
                             <div className={styles['space-name-rating']}>
-                                <p style={{fontSize: "50px", textOverflow: "ellipsis",}}> {spaceData.name}</p>
+                                <p style={{fontSize: "50px", textOverflow: "ellipsis",}}> {spaceData.name.length > 17 ? spaceData.name.slice(0,26) + ".." : spaceData.name}</p>
                                 <p style={{fontSize:"50px"}}> <img className={styles['tile-rating']} src={star} style= {{width : "40px"}} alt = ""/> {spaceData.rating.toFixed(1)}</p>
                             </div>}
                             
@@ -153,27 +154,28 @@ const SpacePage = () => {
                             <p style={{color:"black", fontSize:"30px", margin: 20}}>amenities:</p>
                             <div className={styles['space-ameneties-list']}>
                                 {spaceData.ameneties.map((item, index) => (
-                                    <Amenity>{item}</Amenity>
+                                    console.log(item)
                                 ))}
                             </div>
                         </div>
                         }
                     </div>
                     <div className={styles['space-ratings']}>
-                        { spaceData.statistics &&
-                            <SpaceStats statistics={spaceData.statistics}></SpaceStats>
-                        }
-                        
-                        <div>
-                            <Button theme="contrast" style={{width: "95%", margin: 20}} onClick={handleClick}> Review </Button>
-                            <BasePopup id={popupState} open={open} anchor={anchor}>
-                                <Popup/>
-                            </BasePopup>
-                        </div>
-                    </div>
+                    { spaceData.statistics &&
+                        <SpaceStats statistics={spaceData.statistics}></SpaceStats>
+                    }
+                    <SpaceLive></SpaceLive>
+                    <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={handleClick}> Check-In </Button>
+                    <BasePopup id={popupState} open={open} anchor={anchor}>
+                        <Popup/>
+                    </BasePopup>
                 </div>
             </div>
-        </div>  
+            <div className={styles['space-reviews']}>
+
+            </div>
+                </div>
+            </div>
     );
 };
 
