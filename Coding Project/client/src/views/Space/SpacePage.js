@@ -17,6 +17,7 @@ import SpaceStats from '../../components/SpaceStats/SpaceStats';
 import styles from "./Space.module.css"
 import SpaceLive from '../../components/SpaceLive/SpaceLive';
 import { Person, Outlet, Tv, CoPresent, Fastfood, Print, MeetingRoom, Wc, Group } from "@mui/icons-material";
+import MyGallery from '../../components/ImageGallery/ImageGallery';
 
 
 const SpacePage = () => {
@@ -113,9 +114,11 @@ const SpacePage = () => {
                     </div> */}
                 </div>
                 </IconContext.Provider>
+                { spaceData.img &&
                 <div className={styles['imageCarousel']}>
-                    <img src={spaceData.img === undefined? undefined : spaceData.img[0]} alt="" />
-                </div>
+                    <MyGallery img={spaceData.img}></MyGallery>
+                </div>}
+
                 <div className={styles['space-info']}>
                     <div className={styles['space-labels']}>
 
