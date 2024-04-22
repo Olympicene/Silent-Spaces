@@ -17,19 +17,20 @@ const images = [
 
 const MyGallery = ({img}) => {
 
-    const formattedImage = img.map((url) => ({
+    const formattedImages = img.map((url) => ({
         original: url
     }));
 
 
     return (
-        <ImageGallery
-            className={styles['image-gallery-image']}
-            items={formattedImage}
-            showThumbnails={false}
-            showFullscreenButton={false}
-            showPlayButton={false}
-        />
+        <div className={styles["image-gallery-container"]}>
+            <ImageGallery
+                items={formattedImages}
+                showThumbnails={false}
+                showFullscreenButton={false}
+                showPlayButton={false}
+            />
+        </div>
     )
 }
 
