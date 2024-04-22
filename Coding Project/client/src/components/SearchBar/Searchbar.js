@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import { FaSearch } from "react-icons/fa";
 import styles from "./Searchbar.module.css"
+import Button from '../Button/Button';
+import { useNavigate } from "react-router-dom";
 
-const Searchbar = () => {
+
+const Searchbar = ({onChange}) => {
+    const navigate = useNavigate();
+
     const [searchInput, setSearchInput] = useState("");
 
     const handleChange = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
       };
+
+    const handleSearchSelect = () => {
+        onChange(searchInput)
+    }
 
     useEffect (() => {
         adjustFontSize()
@@ -28,10 +37,12 @@ const Searchbar = () => {
                     placeholder="search for spaces"
                     onChange={handleChange}
                     value={searchInput} />
-                <button className={styles['search-button']}>
-                    <FaSearch style={{fontSize:"1.5rem", height : "3.5rem"}}/>
+                <Button theme="contrast" style={{ padding:"1rem"}} onClick={handleSearchSelect}>
+                    <div style={{display:"flex", gap:"0.5rem"}}>
+                    <FaSearch style={{fontSize:"2rem", marginTop:"0.5rem"}}/>
                     search
-                </button>
+                    </div>
+                </Button>
         </div>
     )
 }

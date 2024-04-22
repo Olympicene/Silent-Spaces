@@ -105,6 +105,31 @@ const HomePage = () => {
       }
     };
 
+    const handleSearch = async (searchInput) => {
+        try {
+            const response = await fetch("http://localhost:5005/space/search", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                  "name": searchInput,
+                })
+            });
+    
+            if (!response.ok) {
+                console.log("error")
+            }
+            setSpaceData([]);
+            const res = await response.json();
+            setSpaceData(res.data);
+            } catch (error) {
+            console.error(error);
+            navigate('/log-in');
+        }
+    }
+
     const handleFilterChange = async (option) => {
         let endpoint = ''; // Define endpoint based on the selected option
 
@@ -160,7 +185,7 @@ const HomePage = () => {
 
             <div className={styles['right-side-menu']} style={{ marginLeft: "20vw"}}>
 
-                <Searchbar />
+                <Searchbar onChange={handleSearch}/>
                 <div className={styles['sort-and-filter']}>
                     <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortChange} />
                     <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} onChange={handleFilterChange} />
