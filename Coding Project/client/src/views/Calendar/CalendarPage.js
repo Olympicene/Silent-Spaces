@@ -5,9 +5,9 @@ import styles from "./Calendar.module.css";
 const CalendarPage = () => {
 
     const dummyuser = {
-        first_name: 'naan',
-        last_name: 'sheri',
-        email: 'urmom@gmail.com',
+        first_name: 'Kevin',
+        last_name: 'Cordero',
+        email: 'thing@gmail.com',
     }
 
     return(

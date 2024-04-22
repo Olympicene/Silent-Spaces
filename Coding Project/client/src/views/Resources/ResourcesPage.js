@@ -12,9 +12,9 @@ import styles from "./Resources.module.css"
 const ResourcesPage = () => {
 
     const dummyuser = {
-        first_name: 'naan',
-        last_name: 'sheri',
-        email: 'urmom@gmail.com',
+        first_name: 'Kevin',
+        last_name: 'Cordero',
+        email: 'thing@gmail.com',
     }
 
     const resourceData = [

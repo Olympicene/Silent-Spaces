@@ -85,9 +85,9 @@ const HomePage = () => {
         } else if (option === 'Z-A') {
             endpoint = 'http://localhost:5005/space/sort/alphabetical-order?order=desc';
         } else if (option === 'distance: nearest first') {
-          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8686&lon=-87.6484';
         } else if (option === 'distance: furthest first') {
-          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://localhost:5005/space/sort/proximity?lat=41.8686&lon=-87.6484';
         } else if (option === 'ratings: highest first') {
           endpoint = 'http://localhost:5005/space/sort/overall-ratings?order=desc';
         } else if (option === 'ratings: lowest first') {
