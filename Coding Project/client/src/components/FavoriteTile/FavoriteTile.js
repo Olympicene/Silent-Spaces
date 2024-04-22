@@ -27,7 +27,7 @@ const FavoriteTile = ({data, path}) => {
 
     return(
         <Link to = {path} style={{ textDecoration: 'none' }}>
-        <IconContext.Provider value={{size:"1.5rem"}}>
+        <IconContext.Provider value={{size:"2rem"}}>
         <div className={styles['favoritetile-main']}>
             <div className={styles['favtile-img']}>
                 <img src={data.img[0]} alt = "" style={{width:"100%", objectFit: "cover"}}/>
@@ -36,21 +36,21 @@ const FavoriteTile = ({data, path}) => {
 
             <div className={styles['favtile-middle']}>
                 <div>
-                    <h2>{nameToDisplay}</h2>
+                    <h2 className={styles['favtile-header']}>{nameToDisplay}</h2>
                 </div>
                 <div className={styles['favtile-location']}>
                     <FaLocationDot className={styles['favtile-loc-icon']} />
-                    <h3>{data.address}</h3>
+                    <h3 style={{color:"black"}}>{data.address}</h3>
                 </div>
                 <div className={styles['favtile-rating']}>
-                    <h2>{data.rating}</h2>
+                    <h2>{data.rating.toFixed(1)}</h2>
                 </div>
             </div>
             
             <div className={styles['favtile-stats']}>
                 <div className={styles['favtile-stats-tile']}>
                     <FaVolumeHigh style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
-                    <Rating name="size-large" readOnly value={data.statistics.noiseLevels} sx={{
+                    <Rating precision={0.5} name="size-large" readOnly value={data.statistics.noiseLevels} sx={{
                         fontSize: "2rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -61,7 +61,7 @@ const FavoriteTile = ({data, path}) => {
 
                 <div className={styles['favtile-stats-tile']}>
                     <MdOutlinePeople style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
-                    <Rating readOnly value={data.statistics.occupancy} sx={{
+                    <Rating precision={0.5} readOnly value={data.statistics.occupancy} sx={{
                         fontSize: "2rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',
@@ -72,7 +72,7 @@ const FavoriteTile = ({data, path}) => {
 
                 <div className={styles['favtile-stats-tile']}>
                     <PiWifiSlashBold style={{marginLeft: "20px", color: "black", height: "3rem"}}/>
-                    <Rating readOnly value={data.statistics.connectivity} sx={{
+                    <Rating precision={0.5} readOnly value={data.statistics.connectivity} sx={{
                         fontSize: "2rem",
                         '& .MuiRating-iconFilled': {
                             color: 'black',

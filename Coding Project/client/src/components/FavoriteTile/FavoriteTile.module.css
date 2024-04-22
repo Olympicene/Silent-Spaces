@@ -1,12 +1,20 @@
 .favoritetile-main {
     background-color: white;
-    margin: 1rem;
+    margin: 1.5rem;
     display: flex;
     height : 15rem;
-    width : 76rem;
+    width : 95%;
     position: relative;
     overflow: hidden;
     padding : 1rem;
+    border-radius: 15px;
+    transition: 0.6s;
+}
+
+.favoritetile-main:hover {
+    transition: 0.6s;
+    scale: 1.02;
+    box-shadow: 5px 5px;
 }
 
 .favtile-img {
@@ -35,15 +43,17 @@
     gap: 1rem;
 }
 
-.favtile-middle > h2 {
+.favtile-header {
     position: absolute;
-    top: -1rem;
+    top: -3rem;
+    color: black;
+    font-size: 2rem;
 }
 
 .favtile-location {
     display: flex;
     position: absolute;
-    top: 3rem;
+    top: 3.5rem;
 }
 
 .favtile-loc-icon {
