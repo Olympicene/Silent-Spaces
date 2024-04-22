@@ -124,7 +124,8 @@ export async function FullSpaceInfo(req, res) {
         //const spaceInfo = await Space.find({id: queryid}, {});
 
         const reviews = await Review.findOne({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
-        if(reviews.length < 1){
+
+        if(!reviews){
             const spaceUpdate = await Space.find({id: queryid}, {});
 
             console.log(spaceUpdate)
@@ -136,7 +137,6 @@ export async function FullSpaceInfo(req, res) {
             });
         }
         else {
-
             const allinfoReviews = await Review.find({space_id: queryid});
 
             // Calculate the total sum of all Levels using an aggregate function 
