@@ -69,7 +69,7 @@ const HomePage = () => {
         }
     };
 
-    const handleSortFilterChange = async (option) => {
+    const handleSortChange = async (option) => {
         let endpoint = ''; // Define endpoint based on the selected option
 
         if (option === 'A-Z') {
@@ -102,13 +102,53 @@ const HomePage = () => {
       }
     };
 
+    const handleFilterChange = async (option) => {
+        let endpoint = ''; // Define endpoint based on the selected option
+
+        if (option === 'outlets') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?has_outlets=true';
+        } else if (option === 'whiteboards') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?has_whiteboards=true';
+        } else if (option === 'screen') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?has_screen=true';
+        } else if (option === 'food & beverage') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?is_food_beverage_friendly=true';
+        } else if (option === 'printers') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?has_printer=true';
+        } else if (option === 'breakout rooms') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?has_breakout_rooms=true';
+        } else if (option === 'restrooms') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?restrooms=true';
+        } else if (option === 'group seating') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?seating_type=group-seating';
+        } else if (option === 'individual seating') {
+            endpoint = 'http://localhost:5005/space/filter/amenities?seating_type=individual-seating';
+        } else if (option === 'clear filters') {
+            endpoint = 'http://localhost:5005/space/all-spaces';
+        }
+
+        try {
+          const response = await fetch(endpoint, {
+              method: 'GET',
+              credentials: 'include',
+          });
+
+        const res = await response.json();
+        setSpaceData(res.data);
+          
+      } catch (error) {
+          console.error(error);
+          navigate('/log-in');
+      }
+    };
+
     useEffect(() => {
         checkAuth();
         getSpaces('http://localhost:5005/space/all-spaces');
     }, []);
 
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
-    const filterbyOptions = ['amenities', 'tags', 'favorites'];
+    const filterbyOptions = ['outlets', 'whiteboards', 'screen', 'food & beverage', 'printers', 'breakout rooms', 'restrooms', 'group seating', 'individual seating', 'clear filters'];
 
     return (
         <div className={styles['menu-page']}>
@@ -118,8 +158,8 @@ const HomePage = () => {
 
                 <Searchbar />
                 <div className={styles['sort-and-filter']}>
-                    <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortFilterChange} />
-                    <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} />
+                    <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortChange} />
+                    <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} onChange={handleFilterChange} />
                 </div>
 
                 <hr width="90%" size="2" />
