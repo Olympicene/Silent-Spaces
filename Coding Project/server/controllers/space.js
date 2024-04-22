@@ -548,7 +548,7 @@ export async function filterByAmenities (req,res) {
 
         res.status(200).json({
             status: "success",
-            data: [spaces],
+            data: spaces,
             message: "Spaces found"
         });
     } catch (err) {
