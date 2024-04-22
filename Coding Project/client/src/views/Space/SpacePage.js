@@ -184,7 +184,7 @@ const SpacePage = () => {
                         <SpaceStats statistics={spaceData.statistics}></SpaceStats>
                     }
                     <SpaceLive></SpaceLive>
-                    <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>
+                    {!checkIn && <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>}
                     <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={handleClick}> Add Rating </Button>
                     <BasePopup id={popupState} open={open} anchor={anchor}>
                         <Popup/>
