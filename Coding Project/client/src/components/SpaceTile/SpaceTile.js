@@ -1,24 +1,49 @@
 import React, {useState} from "react";
-import studySpace from "../../assets/studyspace.svg";
 import star from "../../assets/blackstar.svg";
 import { Link } from 'react-router-dom'
 import Heart from "react-animated-heart";
 import styles from "./SpaceTile.module.css"
+import { useNavigate } from "react-router-dom";
 
 const SpaceTile = ({details, style, path}) => {
+    const navigate = useNavigate();
     let nameToDisplay = ""
 
     const [isClick, setClick] = useState(false);
+
     if (details.name.length > 17) {
         nameToDisplay = details.name.slice(0,17) + "..";
     }
     else {
         nameToDisplay = details.name;
     }
+
+    const handleFavorites = async () => {
+        if (!isClick) {
+            try {
+                const response = await fetch(`http://localhost:5005/user/fav-space/add/${details.id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                });
+
+                if (!response.ok) {
+                    console.log("error")
+                    }
+                  setClick(true)
+            
+                } catch (error) {
+                console.error(error);
+                navigate('/log-in');
+            }
+        }
+    }
     
     return (
         <div className={styles['space-tile']} style={{style}}>
-            <Heart isClick={isClick} onClick={() => setClick(!isClick)} styles={{position:"absolute", right:"-12px", top:"-12px", }} />
+            <Heart isClick={isClick} onClick={handleFavorites} styles={{position:"absolute", right:"-12px", top:"-12px", }} />
 
             <Link to = {path} style={{ textDecoration: 'none' }}>
             <div className={styles['spacetile-image']} >

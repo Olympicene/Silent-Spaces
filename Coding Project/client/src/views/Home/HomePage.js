@@ -167,7 +167,7 @@ const HomePage = () => {
                 <div className={styles['spacetiles-container']}>
                     {spaceData && spaceData.map((item, index) => (
                         <div className={styles['spacetile']}>
-                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating }} />
+                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating, id:item.id }} />
                         </div>
                     ))}
                 </div>

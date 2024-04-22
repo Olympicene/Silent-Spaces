@@ -28,7 +28,6 @@ const FavoritesPage = () => {
             }
 
             const res = await response.json();
-            console.log(res.data[0])
             const updatedFavData = res.data;
 
             setFavData(updatedFavData);
@@ -42,7 +41,7 @@ const FavoritesPage = () => {
     useEffect(() => {
         getFavSpaces('http://localhost:5005/user/fav-space/all');
     }, []);
-    console.log(favData);
+
     return (
         <div className={styles['favorites-main']}>
             <NavBar info={dummyuser} page="favorites" />

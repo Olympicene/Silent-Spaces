@@ -1,5 +1,4 @@
 import React from "react";
-import spaceimg from "../../assets/space.svg";
 import { Link } from 'react-router-dom';
 import Heart from "react-animated-heart";
 import { FaLocationDot } from "react-icons/fa6";
