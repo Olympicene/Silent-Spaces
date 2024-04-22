@@ -17,6 +17,7 @@ import SpaceStats from '../../components/SpaceStats/SpaceStats';
 import styles from "./Space.module.css"
 import SpaceLive from '../../components/SpaceLive/SpaceLive';
 import { Person, Outlet, Tv, CoPresent, Fastfood, Print, MeetingRoom, Wc, Group } from "@mui/icons-material";
+import CheckIn from '../../components/CheckIn/CheckIn';
 
 
 const SpacePage = () => {
@@ -26,8 +27,10 @@ const SpacePage = () => {
         first_name: '',
         last_name: '',
         email: '',
+        username:''
     });
     const [spaceData, setSpaceData] = useState({});
+    const [checkIn, setCheckIn] = useState(false);
 
     const checkAuth = async () => {
         try {
@@ -48,6 +51,7 @@ const SpacePage = () => {
                 first_name: res.data[0].first_name,
                 last_name: res.data[0].last_name,
                 email: res.data[0].email,
+                username: res.data[0].username
             };
 
             setUserData(updatedUserData);
@@ -70,7 +74,7 @@ const SpacePage = () => {
             }
 
             const res = await response.json();
-            console.log(res.data[0])
+            console.log(res.data)
             setSpaceData(res.data)
 
 
@@ -177,10 +181,12 @@ const SpacePage = () => {
                         <SpaceStats statistics={spaceData.statistics}></SpaceStats>
                     }
                     <SpaceLive></SpaceLive>
-                    <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={handleClick}> Check-In </Button>
+                    <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>
+                    <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={handleClick}> Add Rating </Button>
                     <BasePopup id={popupState} open={open} anchor={anchor}>
                         <Popup/>
                     </BasePopup>
+                    {checkIn && <CheckIn space_id={spaceData.id} user={userData.username}/>}
                 </div>
             </div>
             <div className={styles['space-reviews']}>
