@@ -123,7 +123,7 @@ export async function FullSpaceInfo(req, res) {
         var queryid = req.params.id;
         //const spaceInfo = await Space.find({id: queryid}, {});
 
-        const reviews = await Review.find({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
+        const reviews = await Review.findOne({space_id: queryid},{review_id:1, comment:1, email: 1}).sort({createdAt: -1})
         if(reviews.length < 1){
             const spaceUpdate = await Space.find({id: queryid}, {});
 
