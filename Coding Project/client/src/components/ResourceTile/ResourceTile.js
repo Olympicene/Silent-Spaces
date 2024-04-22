@@ -6,7 +6,9 @@ const ResourceTile = ({data}) => {
 
     return (
         <div className={styles['resource-tile']}>
-            <img src={data.image}></img>
+            <div className={styles['resource-image']}>
+                <img src={data.image} style={{width:"100%", objectFit: "cover"}}></img>
+            </div>
             <div className={styles['resource-content']} >
                 <h2>{data.title}</h2>
                 <div className={styles['resource-link']}>
