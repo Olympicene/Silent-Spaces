@@ -139,10 +139,13 @@
 
 .space-reviews {
     display: flex;
-    justify-content: left;
-
+    flex-wrap: wrap;
     border-top: 2px solid grey;
-    height: 100vh;
+
+    /* align-items: start;
+
+    height: 100vh; */
+
     
 }
 

@@ -12,12 +12,6 @@ export const NavbarData = [
         className : 'nav-text'
     },
     {
-        title : "map",
-        path : "/map",
-        icon : <FaIcons.FaMapMarkerAlt />,
-        className : 'nav-text'
-    },
-    {
         title : "favorites",
         path : "/favorites",
         icon : <FaIcons.FaHeart />,
@@ -42,9 +36,9 @@ export const NavbarData = [
         className : 'nav-text'
     },
     {
-        title : "settings",
-        path : "/settings",
-        icon : <Io5Icons.IoSettingsSharp />,
+        title : "sign out",
+        path : "/log-in",
+        icon : <FaIcons.FaSignOutAlt />,
         className : 'nav-text'
     }
 ]
