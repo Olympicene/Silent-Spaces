@@ -7,11 +7,11 @@ const SpaceLive = ({stats, style}) => {
         <div className={styles["space-live"]} style={{position: "relative", margin: "20px 0"}}> 
             <p style={{position: "absolute", left: 15, top: -10}}>Live 🔴</p>
             <div style={{display: "flex", justifyContent: "space-evenly", padding: "20px 0"}}>
-                <h1>10db</h1>
+                <h1>{parseFloat(stats.Overall_Noise).toFixed(0)}db</h1>
                 <div style={{  borderLeft: "2px solid #254D32"}}></div>
-                <h1 >~30ppl</h1>   
+                <h1 >~{parseFloat(stats.Overall_Occupancy).toFixed(0)}ppl</h1>   
                 <div style={{  borderLeft: "2px solid #254D32"}}></div>
-                <h1>10ms</h1>           
+                <h1>{parseFloat(stats.Overall_Connectivity).toFixed(0)}ms</h1>           
             </div>
         </div>
     );

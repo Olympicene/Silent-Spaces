@@ -34,7 +34,7 @@ const SpacePage = () => {
     });
     const [spaceData, setSpaceData] = useState({});
     const [reviews, setReviews] = useState([]);
-
+    const [checkInData, setCheckInData] = useState([]);
     const [checkIn, setCheckIn] = useState(false);
     const [rating, setRating] = useState(false);
 
@@ -111,10 +111,34 @@ const SpacePage = () => {
         }
     };
 
+    const getLastCheckin = async () => {
+        try {
+            const response = await fetch(`http://localhost:5005/checkin/live/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                throw new Error('Auth failed');
+            }
+
+            const res = await response.json();
+            console.log(res)
+            if(res.status === "success") {
+                setCheckInData(res)
+            }
+
+        } catch (error) {
+            console.error(error);
+            // navigate('/log-in');
+        }
+    };
+
     useEffect(() => {
         checkAuth();
         getSpace();
         getReviews();
+        getLastCheckin();
     }, []);
 
 
@@ -216,7 +240,10 @@ const SpacePage = () => {
                         {spaceData.statistics &&
                             <SpaceStats statistics={spaceData.statistics}></SpaceStats>
                         }
-                        <SpaceLive></SpaceLive>
+
+                        {checkInData.status &&
+                            <SpaceLive stats={checkInData}></SpaceLive>
+                        }
                     {!checkIn && <Button theme="contrast" style={{width: "95%", marginLeft: 20}} onClick={() => setCheckIn(true)}> Check-In </Button>}
                     {!rating && <Button theme="contrast" style={{ width: "95%", marginLeft: 20 }} onClick={() => setRating(true)}> Add Rating </Button>}
                         {/* <BasePopup id={popupState} open={open} anchor={anchor}>
