@@ -189,7 +189,7 @@ const SpacePage = () => {
                             {spaceData.address && spaceData.location && spaceData.reviews &&
                                 <div className={styles['space-address']}>
                                     <p style={{ fontSize: "34px", color: "grey" }}> {spaceData.address}</p>
-                                    <p style={{ fontSize: "24px", color: "grey" }}>73 miles away - {spaceData.reviews.length} {spaceData.reviews.length === 1 ? "review" : "reviews"}</p>
+                                    <p style={{ fontSize: "24px", color: "grey" }}>{reviews.length} {reviews.length === 1 ? "review" : "reviews"}</p>
                                 </div>}
 
                         </div>

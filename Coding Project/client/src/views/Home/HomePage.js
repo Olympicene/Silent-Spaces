@@ -5,6 +5,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import Searchbar from '../../components/SearchBar/Searchbar';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import styles from './Home.module.css';
+import Button from '../../components/Button/Button';
+import Location from '../../components/Location/Location';
 
 
 const HomePage = () => {
@@ -15,8 +17,12 @@ const HomePage = () => {
         email: ''
     });
     const [userFavorites, setUserFavorites] = useState([]);
-
+    const [userLocation, setUserLocation] = useState({
+        lat:41.8686,
+        long:-87.6484
+    });
     const [spaceData, setSpaceData] = useState([]);
+    const [accessClick, setAccessClick] = useState(false);
 
     const checkAuth = async () => {
         try {
@@ -31,7 +37,7 @@ const HomePage = () => {
 
             const res = await response.json();
 
-            console.log(res)
+            //console.log(res)
 
             const updatedUserData = {
                 first_name: res.data[0].first_name,
@@ -60,7 +66,7 @@ const HomePage = () => {
             }
 
             const res = await response.json();
-            console.log(res.data[0])
+            //console.log(res.data[0])
             const updatedSpaceData = res.data;
 
             setSpaceData(updatedSpaceData);
@@ -171,24 +177,32 @@ const HomePage = () => {
       }
     };
 
+    const handleLocationChange = (location) => {
+        setUserLocation(location);
+    };
+
     useEffect(() => {
         checkAuth();
         getSpaces('http://localhost:5005/space/all-spaces');
-    }, []);
+    }, [userLocation]);
 
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
     const filterbyOptions = ['outlets', 'whiteboards', 'screen', 'food & beverage', 'printers', 'breakout rooms', 'restrooms', 'group seating', 'individual seating', 'clear filters'];
-
+    console.log(userLocation)
     return (
         <div className={styles['menu-page']}>
             <NavBar info={userData} page="home" />
 
             <div className={styles['right-side-menu']} style={{ marginLeft: "20vw"}}>
-
-                <Searchbar onChange={handleSearch}/>
+                <Searchbar style={{width:"100%"}} onChange={handleSearch}/>
+                
                 <div className={styles['sort-and-filter']}>
-                    <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortChange} />
-                    <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} onChange={handleFilterChange} />
+                    <button className={styles['home-loc-button']} onClick={()=>setAccessClick(!accessClick)}>access location</button>
+                    {accessClick && <Location onLocationChange={handleLocationChange}/>}
+                    <div style={{display:"flex"}}>
+                        <Dropdown drop={{ feature: "sort by ▼", options: sortbyOptions }} onChange={handleSortChange} />
+                        <Dropdown drop={{ feature: "filter by ▼", options: filterbyOptions }} onChange={handleFilterChange} />
+                    </div>
                 </div>
 
                 <hr width="90%" size="2" />
@@ -196,7 +210,7 @@ const HomePage = () => {
                 <div className={styles['spacetiles-container']}>
                     {spaceData && spaceData.map((item, index) => (
                         <div className={styles['spacetile']}>
-                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, miles: "< 5 miles", rating: item.rating, id:item.id}} favorites={userFavorites} />
+                            <SpaceTile path={`/spaces/${item.id}`} key={index} details={{ img: item.img, name: item.name, lat: item.location.coordinates[0], long:item.location.coordinates[1], rating: item.rating, id:item.id}} coords = {userLocation} favorites={userFavorites} />
                         </div>
                     ))}
                 </div>
