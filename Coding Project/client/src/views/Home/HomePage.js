@@ -94,6 +94,7 @@ const HomePage = () => {
               credentials: 'include',
           });
 
+        setSpaceData([]);
         const res = await response.json();
         setSpaceData(res.data);
           
@@ -134,7 +135,8 @@ const HomePage = () => {
               method: 'GET',
               credentials: 'include',
           });
-
+        
+        setSpaceData([]);
         const res = await response.json();
         setSpaceData(res.data);
           
