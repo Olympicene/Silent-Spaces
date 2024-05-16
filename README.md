@@ -1,4 +1,4 @@
-## Silent Spaces
+![Silent Spaces Logo](./client/src/assets/logo_black2.svg)
 
 Silent Spaces is an all-in-one study buddy helping you find the best study spaces near you. Built with students in mind Silent Spaces relies on crowdsourced info to deliver frequent, high-quality updates on crowdedness, ambient noise level, and wifi connectivity. 
 
@@ -9,12 +9,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-- [Node.js](https://nodejs.org/) - Last LTS version installed on your machine.
-- TODO
+- [Node.js](https://nodejs.org/) - v21.6.1+
+- [npm](https://www.npmjs.com/) - 10.2.4+
 
-### Installing
+### Deployment
 
-TODO
+client can be deployed as a static site with `npm run build`
+server uses `npm start`
 
 ## Built With
 
