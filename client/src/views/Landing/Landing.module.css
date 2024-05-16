@@ -1,0 +1,41 @@
+/* landing page */
+.main {
+  background: linear-gradient(to right, #3A7D44 50%, #ffff 50%);
+  height:100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-half {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  width: 50%;
+}
+
+.logo {
+  /* text-align: center; */
+  width: 80%;
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.CTA-buttons {
+  width: 40%;
+}
+
+.right-half {
+  width: 50%;
+  height: 100%; 
+
+  overflow:hidden;
+  background-image: url('../../assets/laptop.svg');  
+  background-size: cover;
+}
+

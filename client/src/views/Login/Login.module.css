@@ -1,0 +1,33 @@
+/* Log in page styles */
+.main{
+  background: #254D32;
+  height:100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #E9E9E9;
+  
+  width: 50%;
+}
+
+.login {
+  animation: fade 0.5s ease-in;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}
+
+.right-half {
+  width: 50%;
+  height: 100%;  
+  overflow:hidden;
+}

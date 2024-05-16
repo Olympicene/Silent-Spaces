@@ -1,0 +1,68 @@
+.space-tile {
+    background: #F2F2F2;
+    overflow: hidden;
+    font-family: 'poppins', sans-serif;
+    width : 20rem;
+    height : 15rem;
+    padding : 1rem;
+    position: relative;
+
+    border-radius: 15px;
+    transition: 0.6s;
+    margin: 0.5rem;
+  }
+
+  .space-tile:hover {
+    transition: 0.6s;
+    scale: 1.02;
+    box-shadow: 5px 5px;
+}
+  
+  .tile-rating {
+    display: inline-block; 
+    margin-left: 1rem;
+  }
+
+  .spacetile-image {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    left: 0; 
+    top: 0;
+}
+
+.spacetile-info p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spacetile-image img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    left: 0; 
+    top: 0;
+}
+
+.spacetile-info {
+  /* background-color: blue; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 60%;
+}
+
+.spacetile-rating {
+
+}
+
+.spacetile-summary {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+} 
