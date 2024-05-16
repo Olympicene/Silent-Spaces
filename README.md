@@ -1,4 +1,7 @@
-![Silent Spaces Logo](./client/src/assets/logo_black2.svg)
+
+<p align="center">
+  <img src="./client/src/assets/logo_black2.svg" width="400" title="Silent Spaces Logo">
+</p>
 
 Silent Spaces is an all-in-one study buddy helping you find the best study spaces near you. Built with students in mind Silent Spaces relies on crowdsourced info to deliver frequent, high-quality updates on crowdedness, ambient noise level, and wifi connectivity. 
 
