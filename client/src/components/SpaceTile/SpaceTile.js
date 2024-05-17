@@ -22,7 +22,7 @@ const SpaceTile = ({details, style, path, favorites, coords}) => {
     const handleFavorites = async () => {
         if (!click) {
             try {
-                const response = await fetch(`http://silentspaces.info:5005/user/fav-space/add/${details.id}`, {
+                const response = await fetch(`http://api.silentspaces.olympicene.dev/user/fav-space/add/${details.id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const SpaceTile = ({details, style, path, favorites, coords}) => {
         }
         else {
             try {
-                const response = await fetch(`http://silentspaces.info:5005/user/fav-space/del/${details.id}`, {
+                const response = await fetch(`http://api.silentspaces.olympicene.dev/user/fav-space/del/${details.id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ const HomePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('http://silentspaces.info:5005/auth/user', {
+            const response = await fetch('http://api.silentspaces.olympicene.dev/auth/user', {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -81,17 +81,17 @@ const HomePage = () => {
         let endpoint = ''; // Define endpoint based on the selected option
 
         if (option === 'A-Z') {
-            endpoint = 'http://silentspaces.info:5005/space/sort/alphabetical-order?order=asc';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/alphabetical-order?order=asc';
         } else if (option === 'Z-A') {
-            endpoint = 'http://silentspaces.info:5005/space/sort/alphabetical-order?order=desc';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/alphabetical-order?order=desc';
         } else if (option === 'distance: nearest first') {
-          endpoint = 'http://silentspaces.info:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'distance: furthest first') {
-          endpoint = 'http://silentspaces.info:5005/space/sort/proximity?lat=41.8720&lon=-87.6479';
+          endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/proximity?lat=41.8720&lon=-87.6479';
         } else if (option === 'ratings: highest first') {
-          endpoint = 'http://silentspaces.info:5005/space/sort/overall-ratings?order=desc';
+          endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/overall-ratings?order=desc';
         } else if (option === 'ratings: lowest first') {
-          endpoint = 'http://silentspaces.info:5005/space/sort/overall-ratings?order=asc';
+          endpoint = 'http://api.silentspaces.olympicene.dev/space/sort/overall-ratings?order=asc';
         }
 
         try {
@@ -113,7 +113,7 @@ const HomePage = () => {
 
     const handleSearch = async (searchInput) => {
         try {
-            const response = await fetch("http://silentspaces.info:5005/space/search", {
+            const response = await fetch("http://api.silentspaces.olympicene.dev/space/search", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -140,25 +140,25 @@ const HomePage = () => {
         let endpoint = ''; // Define endpoint based on the selected option
 
         if (option === 'outlets') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?has_outlets=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?has_outlets=true';
         } else if (option === 'whiteboards') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?has_whiteboards=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?has_whiteboards=true';
         } else if (option === 'screen') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?has_screen=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?has_screen=true';
         } else if (option === 'food & beverage') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?is_food_beverage_friendly=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?is_food_beverage_friendly=true';
         } else if (option === 'printers') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?has_printer=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?has_printer=true';
         } else if (option === 'breakout rooms') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?has_breakout_rooms=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?has_breakout_rooms=true';
         } else if (option === 'restrooms') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?restrooms=true';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?restrooms=true';
         } else if (option === 'group seating') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?seating_type=group-seating';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?seating_type=group-seating';
         } else if (option === 'individual seating') {
-            endpoint = 'http://silentspaces.info:5005/space/filter/amenities?seating_type=individual-seating';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/filter/amenities?seating_type=individual-seating';
         } else if (option === 'clear filters') {
-            endpoint = 'http://silentspaces.info:5005/space/all-spaces';
+            endpoint = 'http://api.silentspaces.olympicene.dev/space/all-spaces';
         }
 
         try {
@@ -183,7 +183,7 @@ const HomePage = () => {
 
     useEffect(() => {
         checkAuth();
-        getSpaces('http://silentspaces.info:5005/space/all-spaces');
+        getSpaces('http://api.silentspaces.olympicene.dev/space/all-spaces');
     }, [userLocation]);
 
     const sortbyOptions = ['A-Z', 'Z-A', 'distance: nearest first', 'distance: furthest first', 'ratings: highest first', 'ratings: lowest first'];
