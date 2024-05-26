@@ -18,7 +18,7 @@ let app = express();
 if (process.env.NODE_ENV === 'production') { // enables CORS
   app.use(cors({origin: 'https://silentspaces.info' , credentials :  true}))
 } else {
-  app.use(cors({origin: 'http://localhost' , credentials :  true}))
+  app.use(cors({origin: 'http://localhost:3000' , credentials :  true}))
 }
 console.log(`running ${process.env.NODE_ENV}`)
 app.disable("x-powered-by"); //Reduce fingerprinting
