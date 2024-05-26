@@ -33,7 +33,7 @@ const RegistrationForm = () => {
     console.log(JSON.stringify(formData))
 
     try {
-      const response = await fetch('https://api.silentspaces.olympicene.dev/auth/register', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

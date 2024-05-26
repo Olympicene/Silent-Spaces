@@ -8,6 +8,7 @@ import Button from '../Button/Button';
 import styles from './CheckIn.module.css';
 import { useNavigate } from "react-router-dom";
 
+
 export default function CheckIn({space_id, user}) {
     const navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
@@ -30,7 +31,7 @@ export default function CheckIn({space_id, user}) {
   const handleCheckIn = async () => {
 
     try {
-        const response = await fetch(`https://api.silentspaces.olympicene.dev/checkin/`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/checkin/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

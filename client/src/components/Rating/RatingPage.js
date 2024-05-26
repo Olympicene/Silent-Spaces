@@ -16,6 +16,7 @@ import styles from './Rating.module.css';
 import { IconContext } from 'react-icons';
 import Input from '@mui/joy/Input';
 
+
 export default function RatingPage({space_id, user}) {
     const navigate = useNavigate();
   const [ratingopen, setRatingOpen] = useState(true);
@@ -23,6 +24,7 @@ export default function RatingPage({space_id, user}) {
   const [starpeople, setStarPeople] = useState(2);
   const [starwifi, setStarWifi] = useState(2);
   const [review, setReview] = useState("");
+  
 
   const handleReview = (event) => {
     setReview(event.target.value);
@@ -31,7 +33,7 @@ export default function RatingPage({space_id, user}) {
 
   const addRating = async () => {
     try {
-        const response = await fetch("https://api.silentspaces.olympicene.dev/review/", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/review/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

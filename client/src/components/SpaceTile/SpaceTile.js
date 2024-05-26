@@ -5,6 +5,7 @@ import Heart from "react-animated-heart";
 import styles from "./SpaceTile.module.css"
 import { useNavigate } from "react-router-dom";
 
+
 const SpaceTile = ({details, style, path, favorites, coords}) => {
     const navigate = useNavigate();
     let nameToDisplay = ""
@@ -22,7 +23,7 @@ const SpaceTile = ({details, style, path, favorites, coords}) => {
     const handleFavorites = async () => {
         if (!click) {
             try {
-                const response = await fetch(`https://api.silentspaces.olympicene.dev/user/fav-space/add/${details.id}`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/user/fav-space/add/${details.id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,7 +43,7 @@ const SpaceTile = ({details, style, path, favorites, coords}) => {
         }
         else {
             try {
-                const response = await fetch(`https://api.silentspaces.olympicene.dev/user/fav-space/del/${details.id}`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/user/fav-space/del/${details.id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

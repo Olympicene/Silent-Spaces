@@ -11,6 +11,7 @@ import Link from '@mui/joy/Link';
 import Person from '@mui/icons-material/Person';
 import styles from "./Login.module.css"
 
+
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = React.useState({
@@ -27,10 +28,8 @@ const Login = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       
-      console.log(JSON.stringify(formData))
-
       try {
-        const response = await fetch('https://api.silentspaces.olympicene.dev/auth/login', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

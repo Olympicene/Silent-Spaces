@@ -5,6 +5,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
+
 const FavoritesPage = () => {
     const navigate = useNavigate();
 
@@ -39,7 +40,7 @@ const FavoritesPage = () => {
     };
 
     useEffect(() => {
-        getFavSpaces('https://api.silentspaces.olympicene.dev/user/fav-space/all');
+        getFavSpaces(`${process.env.REACT_APP_API_URL}/user/fav-space/all`);
     }, []);
 
     return (

@@ -40,7 +40,7 @@ const SpacePage = () => {
 
     const checkAuth = async () => {
         try {
-            const response = await fetch('https://api.silentspaces.olympicene.dev/auth/user', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/user`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -70,7 +70,7 @@ const SpacePage = () => {
 
     const getSpace = async () => {
         try {
-            const response = await fetch(`https://api.silentspaces.olympicene.dev/space/space-info/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/space/space-info/${id}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -92,7 +92,7 @@ const SpacePage = () => {
 
     const getReviews = async () => {
         try {
-            const response = await fetch(`https://api.silentspaces.olympicene.dev/review/${id}/all`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/review/${id}/all`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -113,7 +113,7 @@ const SpacePage = () => {
 
     const getLastCheckin = async () => {
         try {
-            const response = await fetch(`https://api.silentspaces.olympicene.dev/checkin/live/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/checkin/live/${id}`, {
                 method: 'GET',
                 credentials: 'include',
             });
