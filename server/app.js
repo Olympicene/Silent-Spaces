@@ -15,7 +15,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 let app = express();
 
 // === config header info ===
-app.use(cors({origin: 'https://silentspaces.info' , credentials :  true})) // enables CORS
+if (process.env.NODE_ENV === 'production') { // enables CORS
+  app.use(cors({origin: 'https://silentspaces.info' , credentials :  true}))
+} else {
+  app.use(cors({origin: 'http://localhost' , credentials :  true}))
+}
+console.log(`running ${process.env.NODE_ENV}`)
 app.disable("x-powered-by"); //Reduce fingerprinting
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));

@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "NODE_ENV=production node ./bin/www",
+    "build": "NODE_ENV=developement node ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
