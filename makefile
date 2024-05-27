@@ -4,7 +4,7 @@ test: test_server test_client
 build : build_client build_server
 
 build_client:
-	cd client; npm install; npm run build; npm install -g serve; serve -s build
+	cd client; npm install; npm run build; npm install -g serve; serve -s build -l 3000
 
 test_client:
 	cd client; npm install; npm run start

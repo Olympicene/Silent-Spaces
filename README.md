@@ -14,11 +14,19 @@ These instructions will get you a copy of the project up and running on your loc
 Before you begin, ensure you have met the following requirements:
 - [Node.js](https://nodejs.org/) - v21.6.1+
 - [npm](https://www.npmjs.com/) - 10.2.4+
+- [docker](https://www.docker.com/) - 26.1.3+
 
 ### Deployment
 
-client can be deployed as a static site with `npm run build`
-server uses `npm start`
+Project is meant to be built and deployed with docker
+
+### `docker buildx build . --tag silent_spaces`
+
+This builds the docker image
+
+### `docker run --env-file .env --name silentspaces.info -p 5005:5005 -p 3000:3000 silent_spaces`
+
+Runs the docker image with provided env file
 
 ## Built With
 
@@ -30,14 +38,22 @@ server uses `npm start`
 
 In the project directory, you can run:
 
-### `npm start`
+### `make test`
 
-Runs the app in the development mode.\
-Open [http://silentspaces.info:3000](http://silentspaces.info:3000) to view it in your browser.
+Runs the app in the test mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+You must run `make test` again when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm run build` fails to minify
+### `test_client`
 
-TODO
+Starts up the react frontend
+
+### `test_server`
+
+Starts up the express backend
+
+### `make build`
+
+Should only be used for production
