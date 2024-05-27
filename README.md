@@ -24,7 +24,7 @@ Project is meant to be built and deployed with docker
 
 This builds the docker image
 
-### `docker run --env-file .env --name silentspaces.info -p 5005:5005 -p 3000:3000 silent_spaces`
+### `docker run --env-file .env --name silentspaces.info -p 5005:5005 -p 3000:3000 --restart unless-stopped silent_spaces`
 
 Runs the docker image with provided env file
 
